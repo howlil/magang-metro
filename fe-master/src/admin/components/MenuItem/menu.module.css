@@ -13,7 +13,15 @@
 .costum li {
     padding: 16px 12px;
     transition: background-color 0.3s ease;
-    border-radius: var(--spacing-md);
+    border-radius: var(--spacing-sm);
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -ms-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+    -webkit-border-radius: var(--spacing-sm);
+    -moz-border-radius: var(--spacing-sm);
+    -ms-border-radius: var(--spacing-sm);
+    -o-border-radius: var(--spacing-sm);
 }
 
 .costum li:hover {
@@ -50,4 +58,15 @@
     -moz-transition: var(--trantition);
     -ms-transition: var(--trantition);
     -o-transition: var(--trantition);
+}
+
+
+
+.link:hover,
+.active {
+    background-color: var(--primary-color);
+}
+
+.costum li .activeText {
+    color: var(--background-color);
 }

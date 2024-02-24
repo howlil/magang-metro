@@ -1,4 +1,3 @@
-// import { ReactComponent as DashboardIcon } from "/public/iconSidebar/dashboard.svg"; // Asumsikan path ini benar
 
 const list = [
   {
@@ -9,27 +8,27 @@ const list = [
   {
     icon: "/public/iconSidebar/addpost.svg",
     nav: "Tambah Postingan",
-    navlink: "/",
+    navlink: "/addPost",
   },
   {
     icon: "/public/iconSidebar/kategori.svg",
-    nav: " Galeri",
-    navlink: "/",
+    nav: " Kategori",
+    navlink: "/kategori",
   },
   {
     icon: "/public/iconSidebar/galeri.svg",
     nav: " Galeri",
-    navlink: "/",
+    navlink: "/galeri",
   },
   {
     icon: "/public/iconSidebar/team.svg",
     nav: "Kelola Tim ",
-    navlink: "/",
+    navlink: "/kelolaTim",
   },
   {
     icon: "/public/iconSidebar/posisi.svg",
     nav: "Kelola Posisi ",
-    navlink: "/",
+    navlink: "/kelolaPosisi",
   },
 ];
 

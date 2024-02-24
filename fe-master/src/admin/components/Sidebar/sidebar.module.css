@@ -2,5 +2,5 @@
     padding: var(--spacing-xl);
     background-color: var(--background-color2);
     width: 20rem;
-    height: 100vh;
+    height: 100%;
 }

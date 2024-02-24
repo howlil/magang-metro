@@ -1,5 +1,9 @@
-
-const addPost = ()=>{
-    return
+import AdminLayout from "../../components/Layout/AdminLayout"
+const AddPost = ()=>{
+    return(
+        <>
+        <AdminLayout></AdminLayout>
+        </>
+    )
 }
-export default addPost
+export default AddPost
