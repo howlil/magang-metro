@@ -2,28 +2,30 @@
 .wrap {
     margin-top: var(--spacing-xxl);
     margin-left: var(--spacing-md);
-
 }
 
 .costum {
     list-style: none;
     margin: 0;
     padding: 0;
-
 }
 
 .costum li {
-    padding: 12px 32px 12px 12px;
+    padding: 16px 12px;
     transition: background-color 0.3s ease;
     border-radius: var(--spacing-md);
-    -webkit-border-radius: var(--spacing-md);
-    -moz-border-radius: var(--spacing-md);
-    -ms-border-radius: var(--spacing-md);
-    -o-border-radius: var(--spacing-md);
 }
 
 .costum li:hover {
     background-color: var(--primary-color);
+}
+
+.costum li:hover h3 {
+    color: var(--background-color);
+}
+
+.costum li:hover .icon {
+    fill: var(--background-color);
 }
 
 .costum li a {
@@ -35,12 +37,17 @@
     padding: var(--spacing-xs);
 }
 
-.costum li img {
+.costum li .icon {
     width: var(--spacing-lg);
-
 }
 
 .costum li h3 {
+    font-weight: 400;
     margin: 0;
     font-size: var(--font-size-base);
+    transition: var(--trantition);
+    -webkit-transition: var(--trantition);
+    -moz-transition: var(--trantition);
+    -ms-transition: var(--trantition);
+    -o-transition: var(--trantition);
 }

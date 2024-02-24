@@ -1,6 +1,6 @@
 .wrapSidebar {
     padding: var(--spacing-xl);
     background-color: var(--background-color2);
-    width: 18rem;
+    width: 20rem;
     height: 100vh;
 }

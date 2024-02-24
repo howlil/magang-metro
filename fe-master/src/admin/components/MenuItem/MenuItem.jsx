@@ -9,7 +9,7 @@ export default function MenuItem() {
         {list.map((item, index) => (
           <li key={index}>
             <Link to={item.navlink}>
-              <img src={item.icon} alt="icon" />
+              <img src={item.icon} alt="" />
               <h3>{item.nav}</h3>
             </Link>
           </li>

@@ -50,8 +50,8 @@
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
 
-  /* animation */
-  --animation: all 0.3s ease-in-out;
+  /* transisi */
+  --trantition: all 0.3s ease-in-out;
 
 
 }
