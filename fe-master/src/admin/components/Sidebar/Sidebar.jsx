@@ -5,7 +5,7 @@ import Logo from "../../../components/Logo/Logo";
 export default function Sidebar() {
   return (
     <div className={styles.wrapSidebar}>
-       <Logo/> 
+      <Logo alignImage="centered" />
       <MenuItem />
     </div>
   );

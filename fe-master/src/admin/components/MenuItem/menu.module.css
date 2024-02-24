@@ -1,0 +1,46 @@
+/* menu.module.css */
+.wrap {
+    margin-top: var(--spacing-xxl);
+    margin-left: var(--spacing-md);
+
+}
+
+.costum {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.costum li {
+    padding: 12px 32px 12px 12px;
+    transition: background-color 0.3s ease;
+    border-radius: var(--spacing-md);
+    -webkit-border-radius: var(--spacing-md);
+    -moz-border-radius: var(--spacing-md);
+    -ms-border-radius: var(--spacing-md);
+    -o-border-radius: var(--spacing-md);
+}
+
+.costum li:hover {
+    background-color: var(--primary-color);
+}
+
+.costum li a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xs);
+}
+
+.costum li img {
+    width: var(--spacing-lg);
+
+}
+
+.costum li h3 {
+    margin: 0;
+    font-size: var(--font-size-base);
+}

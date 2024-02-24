@@ -1,6 +1,20 @@
+import list from "./dataList";
+import { Link } from "react-router-dom";
+import Style from "./menu.module.css";
 
 export default function MenuItem() {
   return (
-    <div>MenuItem</div>
-  )
+    <div className={Style.wrap}>
+      <ul className={Style.costum}>
+        {list.map((item, index) => (
+          <li key={index}>
+            <Link to={item.navlink}>
+              <img src={item.icon} alt="icon" />
+              <h3>{item.nav}</h3>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
