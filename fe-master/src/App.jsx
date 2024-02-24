@@ -7,11 +7,13 @@ import Login from "./admin/pages/login/login";
 import KelolaPosisi from "./admin/pages/kelolaPosisi";
 import KelolaTim from "./admin/pages/kelolaTim";
 import Galeri from "./admin/pages/galeri";
+import { ActiveRouteProvider } from "./utils/ActiveRouteContex";
 
 function App() {
   return (
     <>
       <Router>
+      <ActiveRouteProvider>
         <Routes>
           {/* route admin */}
           <Route path="/" element={<Dashboard />} />
@@ -27,6 +29,7 @@ function App() {
           {/* rout user */}
 
         </Routes>
+        </ActiveRouteProvider>
       </Router>
     </>
   );

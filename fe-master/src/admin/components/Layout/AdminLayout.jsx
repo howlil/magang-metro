@@ -1,13 +1,21 @@
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
-import { Outlet } from "react-router-dom";
+import s from "./adminlayout.module.css";
 
-function AdminLayout() {
+function AdminLayout(props) {
+  const { children } = props;
   return (
     <>
-      <Sidebar />
-      <Navbar />
-      <Outlet />
+
+      <aside className={s.sidebar}>
+        <Sidebar />
+      </aside>
+      <div className={s.container}>
+        <nav className={s.navbar}>
+          <Navbar />
+        </nav>
+        <main className={s.main}>{children}</main>
+      </div>
     </>
   );
 }

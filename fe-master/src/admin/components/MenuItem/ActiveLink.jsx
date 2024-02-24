@@ -1,15 +1,25 @@
 import { Link } from "react-router-dom";
+import React from "react";
 import styles from "./menu.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useActiveRoute } from "../../../utils/ActiveRouteContex";
 
 export default function ActiveLink({ icon, nav, navlink }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const { setActiveRoute } = useActiveRoute();
 
   const isActive =
     (location.pathname === "/" && navlink === "/") ||
     location.pathname === navlink ||
     location.pathname.startsWith(`${navlink}/`);
+
+
+  React.useEffect(() => {
+    if (isActive) {
+      setActiveRoute({ icon, nav });
+    }
+  }, [isActive, icon, nav, setActiveRoute]);
 
   const onClick = (e) => {
     e.preventDefault();
