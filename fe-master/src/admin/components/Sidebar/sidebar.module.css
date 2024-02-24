@@ -1,0 +1,6 @@
+.wrapSidebar {
+    padding: var(--spacing-xxl);
+    background-color: var(--background-color2);
+    width: 18rem;
+    height: 100vh;
+}

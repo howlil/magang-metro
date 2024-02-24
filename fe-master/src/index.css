@@ -8,7 +8,7 @@
   --primary-color: #033F89;
   --secondary-color: #85A2C6;
   --success-color: #033F89;
-  --edit-color :  #FF870B;
+  --edit-color: #FF870B;
   --danger-color: #FF0000;
   --background-color: #fff;
   --background-color2: #F6F9FA;
@@ -21,6 +21,8 @@
   /* font size */
 
   /*
+   0,25rem = 4px 
+   0,5 rem = 8px
    1   rem = 16px 
    1.5 rem = 24px
    2   rem = 32px
@@ -33,11 +35,14 @@
 
   /* ukuran margin padding */
 
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
+  --spacing-xss: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
+  --spacing-xxl : 3rem;
+
 
   /*media query   */
   --breakpoint-sm: 576px;
@@ -47,8 +52,16 @@
 
   /* animation */
   --animation: all 0.3s ease-in-out;
+
+
 }
 
 * {
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+
+}
+
+body {
+  margin: 0px;
 }
