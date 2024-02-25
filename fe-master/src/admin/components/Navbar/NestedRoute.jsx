@@ -1,6 +1,6 @@
-import style from "./navbar.module.css";
 import arrow from "/public/arrow.svg";
 import { useActiveRoute } from "../../../utils/ActiveRouteContex";
+import { Link } from "react-router-dom";
 
 export default function NestedRoute() {
   const { activeRoute } = useActiveRoute();
@@ -9,7 +9,9 @@ export default function NestedRoute() {
     <>
       <img src={activeRoute.icon} alt={activeRoute.nav} />
       <img src={arrow} alt="arrow" />
-      <span>{activeRoute.nav}</span>
+      <Link to={activeRoute.navlink}>
+        <span>{activeRoute.nav}</span>
+      </Link>
     </>
   );
 }

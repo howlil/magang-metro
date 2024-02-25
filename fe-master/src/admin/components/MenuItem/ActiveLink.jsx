@@ -12,14 +12,15 @@ export default function ActiveLink({ icon, nav, navlink }) {
   const isActive =
     (location.pathname === "/" && navlink === "/") ||
     location.pathname === navlink ||
-    location.pathname.startsWith(`${navlink}/`);
+    location.pathname.startsWith(`${navlink}/`) 
 
-
+    
   React.useEffect(() => {
+    console.log("ActiveLink effect", { icon, nav, navlink });
     if (isActive) {
-      setActiveRoute({ icon, nav });
+      setActiveRoute({ icon, nav, navlink });
     }
-  }, [isActive, icon, nav, setActiveRoute]);
+  }, [isActive, icon, nav, navlink, setActiveRoute]);
 
   const onClick = (e) => {
     e.preventDefault();

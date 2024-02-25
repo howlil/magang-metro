@@ -7,7 +7,7 @@ export default function Button(props) {
   const path = location.pathname;
   const { label, onClick } = props;
 
-  const pathArr = ["/addPost", "/kategori", "/kelolaPosisi"];
+  const pathArr = ["/kelolaPostingan", "/kategori", "/kelolaPosisi"];
   const showIcon = pathArr.includes(path);
 
   return (

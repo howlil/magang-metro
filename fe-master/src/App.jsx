@@ -1,34 +1,47 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./admin/pages/dashboard";
 import NotFound from "./NotFound";
-import AddPost from "./admin/pages/addPost";
+import KelolaPostingan from "./admin/pages/kelolaPostingan";
 import Kategori from "./admin/pages/kategori";
 import Login from "./admin/pages/login/login";
 import KelolaPosisi from "./admin/pages/kelolaPosisi";
 import KelolaTim from "./admin/pages/kelolaTim";
 import Galeri from "./admin/pages/galeri";
 import { ActiveRouteProvider } from "./utils/ActiveRouteContex";
+import TambahPostingan from "./admin/pages/kelolaPostingan/tambahPostingan";
+import TambahAnggota from "./admin/pages/kelolaTim/tambahAnggota";
+import TambahKategori from "./admin/pages/kategori/tambahKategori";
 
 function App() {
   return (
     <>
       <Router>
-      <ActiveRouteProvider>
-        <Routes>
-          {/* route admin */}
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/addPost" element={<AddPost />} />
-          <Route path="/kategori" element={<Kategori />} />
-          <Route path="/galeri" element={<Galeri />} />
-          <Route path="/kelolaTim" element={<KelolaTim />} />
-          <Route path="/kelolaPosisi" element={<KelolaPosisi />} />
-          <Route path="/login" element={<Login />} />
+        <ActiveRouteProvider>
+          <Routes>
+            {/* route admin */}
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/kelolaPostingan" element={<KelolaPostingan />} />
+            <Route path="/kategori" element={<Kategori />} />
+            <Route path="/galeri" element={<Galeri />} />
+            <Route path="/kelolaTim" element={<KelolaTim />} />
+            <Route path="/kelolaPosisi" element={<KelolaPosisi />} />
+            <Route path="/login" element={<Login />} />
 
-          <Route path="*" element={<NotFound/>} />
+            {/* nester route admin */}
+            <Route
+              path="/kelolaPostingan/tambahPostingan"
+              element={<TambahPostingan />}
+            />
+            <Route
+              path="/kelolaTim/tambahAnggota"
+              element={<TambahAnggota />}
+            />
+            <Route path="/kategori/tambahKategori" element={<TambahKategori />} />
 
-          {/* rout user */}
+            <Route path="*" element={<NotFound />} />
 
-        </Routes>
+            {/* rout user */}
+          </Routes>
         </ActiveRouteProvider>
       </Router>
     </>

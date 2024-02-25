@@ -1,12 +1,10 @@
 import AdminLayout from "../../components/Layout/AdminLayout";
 
 
-export default function Galeri() {
+export default function TambahPosisi() {
   return (
     <>
-    <AdminLayout>
-      hdllo
-    </AdminLayout>
+    <AdminLayout></AdminLayout>
     </>
   )
 }

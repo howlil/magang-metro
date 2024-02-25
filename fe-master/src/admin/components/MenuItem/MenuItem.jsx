@@ -1,18 +1,18 @@
-import list from "./dataList";
+import list from "../../data/dataSidebar";
 import ActiveLink from "./ActiveLink";
-import style from './menu.module.css'
+import style from "./menu.module.css";
 
 export default function MenuItem() {
   return (
     <div className={style.wrap}>
-    {list.map((item, index) => (
+      {list.map((item, index) => (
         <ActiveLink
           key={index}
           icon={item.icon}
           nav={item.nav}
           navlink={item.navlink}
         />
-    ))}
+      ))}
     </div>
   );
 }
