@@ -1,0 +1,27 @@
+.wrap {
+    margin-top: var(--spacing-xxl);
+    margin-left: var(--spacing-md);
+}
+
+.costum {
+    list-style: none;
+    margin: 0;
+    padding: 0px;
+}
+
+.log {
+    text-decoration: none;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: 12px 20px;
+    transition: background-color 0.3s ease;
+    border-radius: var(--spacing-md);
+}
+
+.log h3 {
+    font-weight: 400;
+    font-size: var(--font-size-base);
+}
+

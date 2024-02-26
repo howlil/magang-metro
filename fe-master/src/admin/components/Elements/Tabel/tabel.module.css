@@ -1,0 +1,27 @@
+.layout {
+    margin-top: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead th {
+    background-color: var(--background-color2);
+    color: var(--primary-color);
+    font-weight: 600;
+    text-align: left;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+
+}
+
+.table tbody td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgb(212, 212, 212);
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: rgb(238, 238, 238);
+}

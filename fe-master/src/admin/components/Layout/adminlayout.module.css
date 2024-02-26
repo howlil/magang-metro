@@ -1,0 +1,30 @@
+.navbar {
+    width: calc(100% - 20rem);
+    height: 100px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding-top: var(--spacing-xl);
+    background-color: white;
+
+}
+
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+}
+
+.container {
+    margin-left: 20rem;
+    padding-top: 100px;
+}
+
+.main {
+    margin: 1.5rem 3rem;
+    height: 100%;
+}
