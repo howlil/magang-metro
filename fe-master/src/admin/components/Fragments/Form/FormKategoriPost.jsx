@@ -4,20 +4,21 @@ import Button from "../../../../components/Button/Button";
 
 export default function FormKategoriPost() {
   return (
-    <>
-      <InputForm
-        placeholder="Masukan Nama Kategori"
-        htmlFor="namaKategori"
-        nama="namaKategori"
-        type=" text"
-      >
-        Nama Kategori
-      </InputForm>
-      <InputForm htmlFor="slug" nama="slug" type=" text">
-        Slug
-      </InputForm>
-
-      <Button label="Simpan" onClick={null} />
-    </>
+    <div className={s.layout}>
+      <form>
+        <InputForm
+          label="Nama Kategori"
+          placeholder="Masukan Nama Kategori"
+          htmlFor="namaKategori"
+          nama="namaKategori"
+          type=" text"
+        />
+        <InputForm label="Slug" htmlFor="slug" nama="slug" type=" text" />
+        
+        <div className={s.btnly}>
+        <Button label="Simpan" styleBtn="btnformkategori" />
+        </div>
+      </form>
+    </div>
   );
 }

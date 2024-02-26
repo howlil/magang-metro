@@ -1,11 +1,11 @@
+import s from "./input.module.css";
 
-import s from './input.module.css'
-
-const Label = ({ children, htmlFor}) => {
-    return (
-      <label htmlFor={htmlFor} className={s.style}>
-        {children}
-      </label>
-    );
-  };
+const Label = ({ label, htmlFor }) => {
+  return (
+    <label htmlFor={htmlFor} className={s.label}>
+      {label}
+      <span className={s.bintang}>*</span>
+    </label>
+  );
+};
 export default Label;

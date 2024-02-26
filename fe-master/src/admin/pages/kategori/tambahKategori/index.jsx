@@ -4,11 +4,11 @@ import FormKategoriPost from "../../../components/Fragments/Form/FormKategoriPos
 
 export default function TambahKategori() {
   return (
-    <div>
-      <AdminLayout>
+    <AdminLayout>
+      <div className="s.layout">
         <Title title="Tambah Kategori" />
         <FormKategoriPost />
-      </AdminLayout>
-    </div>
+      </div>
+    </AdminLayout>
   );
 }
