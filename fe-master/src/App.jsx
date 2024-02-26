@@ -33,6 +33,10 @@ function App() {
               element={<TambahPostingan />}
             />
             <Route
+              path="/kategori/tambahKategori"
+              element={<TambahKategori />}
+            />
+            <Route
               path="/kelolaTim/tambahAnggota"
               element={<TambahAnggota />}
             />

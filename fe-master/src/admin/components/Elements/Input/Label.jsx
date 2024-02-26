@@ -1,7 +1,7 @@
 
 import s from './input.module.css'
 
-const Label = ({ children, htmlFor, textSize, textColor }) => {
+const Label = ({ children, htmlFor}) => {
     return (
       <label htmlFor={htmlFor} className={s.style}>
         {children}
