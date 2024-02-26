@@ -1,0 +1,31 @@
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    transition: var(--trantition);
+    -webkit-transition: var(--trantition);
+    -moz-transition: var(--trantition);
+    -ms-transition: var(--trantition);
+    -o-transition: var(--trantition);
+    display: flex;
+    align-items: center;
+    column-gap: 0.75rem;
+
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.btnformkategori {
+    padding: 1rem 5rem;
+    margin-top: 3rem;
+}
