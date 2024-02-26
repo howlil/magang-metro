@@ -7,7 +7,7 @@ export default function Title(props) {
   const { title, labelbtn, onClick } = props;
   const location = useLocation();
   const path = location.pathname;
-  const pathArr = ["/kelolaPostingan", "/kategori", "/kelolaPosisi"];
+  const pathArr = ["/kelolaPostingan", "/kategori", "/kelolaPosisi", "/kelolaTim"];
   const showbtn = pathArr.includes(path);
 
   return (
