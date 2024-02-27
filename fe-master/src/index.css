@@ -44,11 +44,7 @@
   --spacing-xxl: 3rem;
 
 
-  /*media query   */
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
+
 
   /* transisi */
   --trantition: all 0.3s ease-in-out;
@@ -59,7 +55,7 @@
 * {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
-  /* border: 1px solid; */
+  border: 1px solid;
 
 }
 

@@ -1,8 +1,8 @@
 
-export default function TextArea() {
+export default function TextArea({text}) {
   return (
-    <div>
-      
-    </div>
+   <textarea name="" id="" cols="30" rows="10">
+     {text}
+   </textarea>
   )
 }

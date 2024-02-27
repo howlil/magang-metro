@@ -4,3 +4,10 @@
     width: 20rem;
     height: 100%;
 }
+
+
+@media screen and (max-width : var(--breakpoint-sm)) {
+    .wrapSidebar {
+        display: none;
+    }
+}

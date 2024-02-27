@@ -6,7 +6,6 @@ function AdminLayout(props) {
   const { children } = props;
   return (
     <>
-
       <aside className={s.sidebar}>
         <Sidebar />
       </aside>
