@@ -6,7 +6,7 @@ const postingan = sequelize.define('postingan', {
         type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
-        defaultValue: DataTypes.UUID
+        defaultValue: DataTypes.UUIDV4
     },
     judul:{
         type: DataTypes.STRING,
@@ -42,5 +42,7 @@ const postingan = sequelize.define('postingan', {
     createdAt: 'created_at',
     updatedAt: 'updated_at'
 })
+
+
 
 module.exports = postingan
