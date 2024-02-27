@@ -1,9 +1,11 @@
 import AdminLayout from "../../components/Layout/AdminLayout";
 
-export default function KelolaPosisi() {
+
+const KelolaPosisi = () => {
   return (
     <>
-      <AdminLayout></AdminLayout>
+    <AdminLayout></AdminLayout>
     </>
   );
 }
+export default KelolaPosisi;
