@@ -3,7 +3,8 @@
     color: var(--text-color-primary);
 }
 
-.input {
+.input,
+select {
     font-size: var(--font-size-base);
     border-radius: var(--spacing-xs);
     -webkit-border-radius: var(--spacing-xs);
@@ -12,6 +13,11 @@
     -o-border-radius: var(--spacing-xs);
     padding: var(--spacing-md);
     width: 100%;
+}
+
+
+.kategori {
+    color: white;
 }
 
 ::placeholder {

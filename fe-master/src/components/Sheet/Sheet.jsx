@@ -1,16 +1,33 @@
+// Sheet.jsx
 import React, { useState } from "react";
-import s from "./sheet.module.css";
+import * as SheetPrimitive from "@radix-ui/react-dialog";
+import styles from "./sheet.module.css";
 
-export default function Sheet({ children }) {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <div className={`${s.sheet} ${isOpen ? s.open : ""}`}>
-      {React.Children.map(children, (child) => {
-        if (child.type.displayName === 'SheetTrigger' || child.type.displayName === 'SheetContent') {
-            return React.cloneElement(child, { setIsOpen });
-          }
-          return child;
-      })}
-    </div>
-  )
-}
+const Sheet = SheetPrimitive.Root;
+
+const SheetTrigger = ({ children }) => (
+  <SheetPrimitive.Trigger asChild>{children}</SheetPrimitive.Trigger>
+);
+
+const SheetContent = React.forwardRef(
+  ({ children, side = "right", ...props }, ref) => {
+    const positionClass = side === "right" ? styles.contentRight : "";
+    const openClass = side === "right" ? styles.openRight : "";
+
+    return (
+      <SheetPrimitive.Portal>
+        <div {...props} ref={ref} className={`${styles.overlay} ${openClass}`}>
+          <SheetPrimitive.Overlay className={styles.overlay} />
+          <SheetPrimitive.Content
+            className={`${styles.content} ${positionClass}`}
+          >
+            {children}
+          </SheetPrimitive.Content>
+        </div>
+      </SheetPrimitive.Portal>
+    );
+  }
+);
+SheetContent.displayName = "SheetContent";
+
+export { Sheet, SheetTrigger, SheetContent };

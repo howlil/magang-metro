@@ -1,13 +1,16 @@
+import s from "./input.module.css";
 
-export default function Select(props) {
-    const {onChange, value,option} = props
+export default function CustomSelect(props) {
+  const { onChange, value, options = [] } = props;
+
   return (
-    <Select value={value} onChange={onChange}>
-      {option.map((options)=>(
-        <options key={options.value}  value={options.value}>
-            {options.label}
-        </options>
+    <select  value={value} onChange={onChange}>
+      <option className={s.kategori} >Masukan Kategori</option>
+      {options.map((option) => (
+        <option className={s.option} key={option.value} value={option.value}>
+          {option.label}
+        </option>
       ))}
-    </Select>
-  )
+    </select>
+  );
 }

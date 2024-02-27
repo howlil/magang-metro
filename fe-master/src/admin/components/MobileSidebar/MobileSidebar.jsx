@@ -1,15 +1,24 @@
+import { useState } from 'react';
 import { Menu } from "lucide-react";
 import Sidebar from "../Sidebar/Sidebar";
-import SheetTrigger from "../../../components/Sheet/SheetTrigger";
-import Sheet from "../../../components/Sheet/Sheet";
-import SheetContent from "../../../components/Sheet/SheetContent";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "../../../components/Sheet/Sheet";
 
 export default function MobileSidebar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+
   return (
     <>
-      <Sheet>
-        <SheetTrigger>
-          <Menu />
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <SheetTrigger asChild>
+          <button onClick={toggle}>
+            <Menu color="#033F89" size={32} />
+          </button>
         </SheetTrigger>
         <SheetContent>
           <Sidebar />

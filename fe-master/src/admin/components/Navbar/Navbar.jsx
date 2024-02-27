@@ -1,6 +1,7 @@
 import NestedRoute from "./NestedRoute";
 import style from "./navbar.module.css";
 import { Menu } from "lucide-react";
+import MobileSidebar from "../MobileSidebar/MobileSidebar";
 
 export default function Navbar() {
   return (
@@ -9,7 +10,7 @@ export default function Navbar() {
         <NestedRoute />
       </div>
       <div className={style.mobile}>
-        <Menu color="#033F89" size={32} />
+        <MobileSidebar/>
       </div>
     </div>
   );

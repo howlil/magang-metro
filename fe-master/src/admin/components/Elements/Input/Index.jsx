@@ -4,7 +4,7 @@ import Label from "./Label";
 // import Select from "./Select";
 
 export default function InputForm(props) {
-  const { nama, type, placeholder, label, htmlFor, option, value, onChange } =
+  const { nama, type, placeholder, label, htmlFor } =
     props;
 
   return (

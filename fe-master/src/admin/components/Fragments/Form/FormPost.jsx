@@ -1,6 +1,7 @@
 import s from "./form.module.css";
 import InputForm from "../../Elements/Input/Index";
 import Button from "../../../../components/Button/Button";
+import SelectIndex from "../../Elements/Input/SelectIndex";
 
 export default function FormPost() {
   return (
@@ -15,13 +16,13 @@ export default function FormPost() {
         />
         <InputForm nama="slug" label="Slug" htmlFor="slug" type="text" />
 
-        {/* ganti dengan select */}
-        <InputForm
-          label="Kategori"
-          htmlFor="kategori"
-          placeholder="Masukan Kategori"
-          type="option"
-          nama="kategori"
+        <SelectIndex
+          label = "label"
+          htmlFor= "html"
+          value = "value"
+          onChange={null}
+          option ="null"
+
         />
         {/* ganti dengan text area */}
 
