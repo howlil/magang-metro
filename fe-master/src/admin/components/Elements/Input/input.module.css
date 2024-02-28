@@ -4,6 +4,7 @@
 }
 
 .input,
+.TextArea,
 select {
     font-size: var(--font-size-base);
     border-radius: var(--spacing-xs);
@@ -36,4 +37,13 @@ select {
 .bintang {
     color: red;
     font-weight: bold;
+}
+
+.TextArea ::placeholder {
+    padding: 1rem;
+}
+
+.TextArea {
+    height: 12rem;
+    resize: none;
 }
