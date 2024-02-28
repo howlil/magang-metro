@@ -4,7 +4,6 @@
   width: 1px;
   inset: 0;
   z-index: 50;
-  background-color: var(--background-color2);
   transition: opacity 0.3s ease-in-out;
 }
 

@@ -12,7 +12,7 @@ export default function Title(props) {
 
   return (
     <div className={s.flex}>
-      <h1>{title}</h1>
+      <h1  >{title}</h1>
       {showbtn &&  <Button onClick={onClick} label={labelbtn} />}
     </div>
   );

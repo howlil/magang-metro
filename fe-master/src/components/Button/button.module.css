@@ -4,7 +4,6 @@
     border: none;
     font-weight: 600;
     font-size: var(--font-size-base);
-    padding: 1rem;
     border-radius: 0.5rem;
     -webkit-border-radius: 0.5rem;
     -moz-border-radius: 0.5rem;
@@ -25,7 +24,43 @@
     background-color: var(--secondary-color);
 }
 
-.btnformkategori {
-    padding: 1rem 5rem;
-    margin-top: 3rem;
+
+
+
+@media screen and (max-width: 678px) {
+    .btnformkategori {
+        padding: 1rem 2rem;
+        margin-top: 1rem;
+        width: 100%;
+
+    }
+
+    .btn {
+        padding: 1rem;
+        font-size: 12px;
+        font-weight: 300;
+
+    }
+
+
+}
+
+@media screen and (min-width: 768px) {
+    .btn {
+        padding: 1rem;
+
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    .btn {
+        padding: 1rem;
+
+    }
+
+    .btnformkategori {
+        padding: 1rem 5rem;
+        margin-top: 3rem;
+    }
 }

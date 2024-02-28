@@ -33,12 +33,22 @@ a:hover {
     .arrowIcon {
         display: none;
     }
+
+    .btn {
+        border: none;
+        background: none;
+    }
 }
 
 @media screen and (min-width: 768px) {
     .nav {
         justify-content: space-between;
 
+    }
+
+    .btn {
+        border: none;
+        background: none;
     }
 
 }

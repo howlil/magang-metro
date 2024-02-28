@@ -1,5 +1,6 @@
 import s from "./input.module.css";
 
+
 export default function CustomSelect(props) {
   const { onChange, value, options = [] } = props;
 
