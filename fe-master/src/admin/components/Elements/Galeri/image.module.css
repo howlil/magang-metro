@@ -1,21 +1,22 @@
-.flex{
+.flex {
     display: flex;
     flex-wrap: wrap;
     column-gap: 1rem;
     row-gap: 1rem;
-    margin-top: 2rem;
+    /* margin-top: 2rem; on demand */
+
 }
 
-.layout{
-    width: 10rem;
-    height: 10rem;
+.layout {
+    width: 8rem;
+    height: 8rem;
     object-fit: cover;
     border-radius: 1rem;
 }
 
-.button{
-    width: 10rem;
-    height: 10rem;
+.button {
+    width: 8rem;
+    height: 8rem;
     border: dashed;
     border-color: var(--primary-color);
     border-radius: 1rem;
@@ -23,7 +24,7 @@
     cursor: pointer;
 }
 
-.button h1{
+.button h1 {
     font-size: var(--font-size-base);
     color: var(--primary-color);
 }
@@ -32,7 +33,7 @@
     background-color: var(--background-color2);
 }
 
-.close{
+.close {
     position: absolute;
     background-color: var(--complementary-color);
     border: none;
@@ -46,7 +47,7 @@
 
 }
 
-.container{
+.container {
     width: 10rem;
     height: 10rem;
     position: relative;

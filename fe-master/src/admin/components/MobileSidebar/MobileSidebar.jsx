@@ -21,7 +21,7 @@ export default function MobileSidebar() {
             <Menu color="#033F89" size={32} />
           </button>
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent >
           <Sidebar />
         </SheetContent>
       </Sheet>

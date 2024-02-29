@@ -3,11 +3,18 @@ import InputForm from "../../Elements/Input/Index";
 import Button from "../../../../components/Button/Button";
 import TextArea from "../../Elements/Input/TextArea";
 import SelectIndex from "../../Elements/Input/SelectIndex";
+import Image from "../../Elements/Galeri/Image";
+import Label from "../../Elements/Input/Label";
 
 export default function FormPost() {
   return (
     <div className={s.layout}>
       <form action="">
+        <Label label="Foto Postingan" />
+        <div className={s.img}>
+          <Image />
+        </div>
+
         <InputForm
           label="Judul"
           placeholder="Masukan Nama Kategori"
@@ -34,7 +41,7 @@ export default function FormPost() {
         />
 
         <div className={s.btnly}>
-          <Button label="Simpan" styleBtn="btnformkategori" />
+          <Button label="Simpan" styleBtn="btnform" />
         </div>
       </form>
     </div>

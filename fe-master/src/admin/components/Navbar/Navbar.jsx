@@ -1,6 +1,5 @@
 import NestedRoute from "./NestedRoute";
 import style from "./navbar.module.css";
-import { Menu } from "lucide-react";
 import MobileSidebar from "../MobileSidebar/MobileSidebar";
 
 export default function Navbar() {

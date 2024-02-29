@@ -16,7 +16,7 @@ export default function FormKategoriPost() {
         <InputForm label="Slug" htmlFor="slug" nama="slug" type=" text" />
         
         <div className={s.btnly}>
-        <Button label="Simpan" styleBtn="btnformkategori" />
+        <Button label="Simpan" styleBtn="btnform" />
         </div>
       </form>
     </div>

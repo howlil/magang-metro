@@ -1,5 +1,5 @@
 .wrap {
-    margin-top: var(--spacing-xxl);
+    /* margin-top: var(--spacing-xl); */
     margin-left: var(--spacing-md);
 }
 
@@ -24,4 +24,3 @@
     font-weight: 400;
     font-size: var(--font-size-base);
 }
-

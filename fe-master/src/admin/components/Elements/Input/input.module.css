@@ -1,18 +1,20 @@
 .label {
     font-size: var(--font-size-base);
     color: var(--text-color-primary);
+    font-weight: 400;
 }
 
 .input,
 .TextArea,
 select {
     font-size: var(--font-size-base);
+    border: 1px solid var(--complementary-color);
     border-radius: var(--spacing-xs);
     -webkit-border-radius: var(--spacing-xs);
     -moz-border-radius: var(--spacing-xs);
     -ms-border-radius: var(--spacing-xs);
     -o-border-radius: var(--spacing-xs);
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
     width: 100%;
 }
 

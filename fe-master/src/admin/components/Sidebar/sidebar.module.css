@@ -1,13 +1,16 @@
 .wrapSidebar {
     padding: var(--spacing-xl);
     background-color: var(--background-color2);
-    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100%;
 }
 
 
-@media screen and (max-width : var(--breakpoint-sm)) {
-    .wrapSidebar {
-        display: none;
-    }
-}
+/* 
+@media screen and (max-width: 678px) {}
+
+@media screen and (min-width: 768px) {}
+
+@media screen and (min-width: 1200px) {} */
