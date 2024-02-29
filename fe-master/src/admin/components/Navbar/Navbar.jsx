@@ -9,7 +9,7 @@ export default function Navbar() {
         <NestedRoute />
       </div>
       <div className={style.mobile}>
-        <MobileSidebar/>
+        <MobileSidebar />
       </div>
     </div>
   );
