@@ -5,11 +5,38 @@ import TextArea from "../../Elements/Input/TextArea";
 import SelectIndex from "../../Elements/Input/SelectIndex";
 import Image from "../../Elements/Galeri/Image";
 import Label from "../../Elements/Input/Label";
+import { tambahPost } from "../../../../api/postingan/tambahPost";
+import { useState } from "react";
 
 export default function FormPost() {
+  const [formData, setFormData] = useState({
+    judul: "",
+    slug: "",
+    body: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const hanndleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await tambahPost(formData);
+      console.log("sukses", res);
+      setFormData({ title: "", content: "" });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className={s.layout}>
-      <form action="">
+      <form onSubmit={hanndleSubmit}>
         <Label label="Foto Postingan" />
         <div className={s.img}>
           <Image />
@@ -21,6 +48,8 @@ export default function FormPost() {
           htmlFor="judul"
           type="text"
           nama="judul"
+          value={formData.judul}
+          onChange={handleChange}
         />
         <InputForm nama="slug" label="Slug" htmlFor="slug" type="text" />
 
@@ -41,7 +70,7 @@ export default function FormPost() {
         />
 
         <div className={s.btnly}>
-          <Button label="Simpan" styleBtn="btnform" />
+          <Button type="submit" label="Simpan" styleBtn="btnform" />
         </div>
       </form>
     </div>

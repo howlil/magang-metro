@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 export default function Button(props) {
   const location = useLocation();
   const path = location.pathname;
-  const { label, onClick, styleBtn } = props;
+  const { label, onClick, styleBtn ,type} = props;
 
   const pathArr = [
     "/kelolaPostingan",
@@ -18,6 +18,7 @@ export default function Button(props) {
   return (
     <div>
       <button
+      type={type}
         onClick={onClick}
         className={`${s.btn} ${showIcon ? s.btnIcon : s[styleBtn]}`}
       >
