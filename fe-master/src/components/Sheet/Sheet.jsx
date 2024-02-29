@@ -10,9 +10,9 @@ const SheetTrigger = ({ children }) => (
 );
 
 const SheetContent = forwardRef(
-  ({ children, side = "right", ...props }, ref) => {
-    const positionClass = side === "right" ? styles.contentRight : "";
-    const openClass = side === "right" ? styles.openRight : "";
+  ({ children, side = "left", ...props }, ref) => {
+    const positionClass = side === "left" ? "" : styles.contentRight; // Default to left, apply style for right
+    const openClass = side === "left" ? "" : styles.openRight; // This might need to be adjusted if you have specific styles for opening
 
     return (
       <SheetPrimitive.Portal>
@@ -20,12 +20,13 @@ const SheetContent = forwardRef(
           <SheetPrimitive.Content
             className={`${styles.content} ${positionClass}`}
           >
-            {children}
-            <div className={styles.contentHeader}>
+             <div className={styles.contentHeader}>
               <SheetPrimitive.Close
                 className={styles.closeButton}
               ></SheetPrimitive.Close>
             </div>
+            {children}
+      
           </SheetPrimitive.Content>
         </div>
       </SheetPrimitive.Portal>
