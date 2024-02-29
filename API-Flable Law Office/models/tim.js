@@ -55,4 +55,5 @@ const tim = sequelize.define('tim', {
     updatedAt: 'updated_at'
 })
 
+
 module.exports = tim

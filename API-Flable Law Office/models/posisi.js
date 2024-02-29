@@ -1,5 +1,6 @@
 const {DataTypes} = require('sequelize')
 const sequelize = require('../config/db')
+const tim = require('../models/tim')
 
 const posisi = sequelize.define('posisi', {
     id_posisi: {
@@ -26,4 +27,8 @@ const posisi = sequelize.define('posisi', {
     createdAt: 'created_at',
     updatedAt: 'updated_at'
 })
+
+posisi.hasMany(tim, {foreignKey: 'id_posisi', as: 'dataTim'})
+tim.belongsTo(posisi, {foreignKey: 'id_posisi', as: 'dataPosisi'})
+
 module.exports = posisi
