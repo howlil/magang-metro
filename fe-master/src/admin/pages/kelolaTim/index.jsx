@@ -6,7 +6,7 @@ import TabelHeader from "../../components/Elements/Tabel/TabelHeader";
 
 const KelolaTim = () => {
   const navigate = useNavigate();
-  const headers = ["No", "Nama", "Posisi", "Aksi"];
+  const headers = ["Nama", "Posisi"];
 
   return (
     <>

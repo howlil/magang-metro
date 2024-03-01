@@ -8,7 +8,7 @@ table {
     border-collapse: collapse;
 }
 
-.table thead th {
+.table thead .title {
     background-color: var(--background-color2);
     color: var(--primary-color);
     font-weight: 600;
@@ -53,4 +53,20 @@ td {
     display: flex;
     column-gap: 0.5rem;
 
+}
+
+.aksi,
+.nomor {
+    width: 120px;
+    text-align: center;
+    background-color: var(--background-color2);
+    color: var(--primary-color);
+    font-weight: 600;
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+}
+
+.no {
+    text-align: center;
 }

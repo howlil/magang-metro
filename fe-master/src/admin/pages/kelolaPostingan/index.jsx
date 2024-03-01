@@ -7,7 +7,7 @@ import TabelHeader from "../../components/Elements/Tabel/TabelHeader";
 
 const KelolaPostingan = () => {
   const navigate = useNavigate();
-  const headers = ["No", "Judul Postingan", "Kategori", "Aksi"];
+  const headers = ["Judul Postingan", "Kategori"];
 
   return (
     <>

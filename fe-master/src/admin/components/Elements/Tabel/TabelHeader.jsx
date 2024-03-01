@@ -6,10 +6,7 @@ import AlertNotif from "../Alert/AlertNotif";
 export default function Tabel({ headers }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const rows = [
-    { id: 1, name: "John Doe", age: 30 },
-    { id: 2, name: "Jane Doe", age: 25 },
-  ];
+  const rows = [{ id: 1, name: "John Doe", age: 30 }];
 
   const onView = (id) => console.log("Viewing", id);
   const onEdit = (id) => console.log("Editing", id);
@@ -19,30 +16,31 @@ export default function Tabel({ headers }) {
       message: `Deleting row with ID ${id}`,
       type: "error",
     });
+    setIsModalOpen(true);
   };
 
   return (
     <div className={s.layout}>
-      {alert.show && (
-        <AlertNotif
-          message={alert.message}
-          type={alert.type}
-          onClose={() => setAlert({ show: false, message: "", type: "" })}
-        />
-      )}
       <table className={s.table}>
         <thead>
           <tr>
+            <th className={s.nomor}>No</th>
             {headers.map((header, index) => (
-              <th key={index}>{header}</th>
+              <th className={s.title} key={index}>
+                {header}
+              </th>
             ))}
+            <th className={s.aksi}>Aksi</th>
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => (
-            <tr key={row.id}>
-              <td>{row.id}</td>
-              <td>{row.name}</td>
+          {rows.map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              <td className={s.no}>{rowIndex + 1}</td>
+              {headers.map((header, headerIndex) => {
+                const key = header.toLowerCase().replace(/ /g, "");
+                return <td key={headerIndex}>{row[key]}</td>;
+              })}
               <td>
                 <TabelAction
                   onView={() => onView(row.id)}
@@ -53,15 +51,15 @@ export default function Tabel({ headers }) {
             </tr>
           ))}
         </tbody>
-        <AlertNotif
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          onConfirm={() => {
-            handleDelete();
-            setIsModalOpen(false);
-          }}
-        />
       </table>
+      <AlertNotif
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={() => {
+          // handleDelete();
+          setIsModalOpen(false);
+        }}
+      />
     </div>
   );
 }

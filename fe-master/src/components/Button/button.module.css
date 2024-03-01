@@ -47,4 +47,8 @@
         padding: 1rem 5rem;
         margin-top: 3rem;
     }
+
+    .btn {
+        width: 100%;
+    }
 }

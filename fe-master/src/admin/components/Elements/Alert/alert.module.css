@@ -46,6 +46,19 @@
     -ms-border-radius: 0.5rem;
     -o-border-radius: 0.5rem;
     width: 100%;
+    transition: var(--trantition);
+    -webkit-transition: var(--trantition);
+    -moz-transition: var(--trantition);
+    -ms-transition: var(--trantition);
+    -o-transition: var(--trantition);
+}
+
+.modalFooter button:active {
+    transform: scale(0.96);
+    -webkit-transform: scale(0.96);
+    -moz-transform: scale(0.96);
+    -ms-transform: scale(0.96);
+    -o-transform: scale(0.96);
 }
 
 .true {

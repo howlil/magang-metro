@@ -6,21 +6,28 @@ import { login } from "../../../../api/admin/authService";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
+  const navigate = useNavigate();
+
   const [error, setError] = useState("");
   const [loginData, setLoginData] = useState({
     username: "",
     password: "",
   });
 
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setLoginData({ ...loginData, [name]: value });
+    setLoginData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(loginData);
+
     login(loginData.username, loginData.password)
       .then((data) => {
         console.log("Login berhasil:", data);
@@ -37,7 +44,6 @@ export default function LoginForm() {
       <InputForm
         label="Username"
         placeholder="Masukan Username"
-        htmlFor="username"
         type="text"
         name="username"
         value={loginData.username}
@@ -46,7 +52,6 @@ export default function LoginForm() {
       <InputForm
         label="Password"
         placeholder="Masukan Password"
-        htmlFor="password"
         type="password"
         name="password"
         value={loginData.password}

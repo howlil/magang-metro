@@ -6,7 +6,7 @@ import TabelHeader from "../../components/Elements/Tabel/TabelHeader";
 
 const Kategori = () => {
   const navigate = useNavigate();
-  const headers = ["No", "Kategori  ", "Aksi"];
+  const headers = ["Kategori  "];
   return (
     <>
       <Helmet>

@@ -6,7 +6,7 @@ import TabelHeader from "../../components/Elements/Tabel/TabelHeader";
 
 const KelolaPosisi = () => {
   const navigate = useNavigate();
-  const headers = ["No", "Posisi", "Aksi"];
+  const headers = [ "Posisi"];
 
   return (
     <>
