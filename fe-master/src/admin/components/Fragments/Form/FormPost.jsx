@@ -3,10 +3,10 @@ import InputForm from "../../Elements/Input/Index";
 import Button from "../../../../components/Button/Button";
 import TextArea from "../../Elements/Input/TextArea";
 import SelectIndex from "../../Elements/Input/SelectIndex";
-import Image from "../../Elements/Galeri/Image";
 import Label from "../../Elements/Input/Label";
 import { tambahPost } from "../../../../api/postingan/tambahPost";
 import { useState } from "react";
+import SingleImage from "../../Elements/Galeri/SingleImage";
 
 export default function FormPost() {
   
@@ -46,7 +46,11 @@ export default function FormPost() {
       <form onSubmit={hanndleSubmit}>
         <Label label="Foto Postingan" />
         <div className={s.img}>
+<<<<<<< HEAD
         <Image onChange={(image) => setFormData((prevState) => ({ ...prevState, image }))} />
+=======
+          <SingleImage />
+>>>>>>> 3441063a60a67b86646876be156e817f812d3a6d
         </div>
 
         <InputForm
@@ -62,6 +66,7 @@ export default function FormPost() {
 
         <SelectIndex
           label="label"
+          placeholder="Pilih Kategori"
           htmlFor="html"
           value="value"
           onChange={null}
