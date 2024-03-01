@@ -3,10 +3,11 @@ import s from "./kelolapost.module.css";
 import { Helmet } from "react-helmet";
 import Title from "../../components/Elements/Title/Title";
 import { useNavigate } from "react-router-dom";
-import Tabel from "../../components/Elements/Tabel/Tabel";
+import TabelHeader from "../../components/Elements/Tabel/TabelHeader";
 
 const KelolaPostingan = () => {
   const navigate = useNavigate();
+  const headers = ["No", "Judul Postingan", "Kategori", "Aksi"];
 
   return (
     <>
@@ -21,7 +22,7 @@ const KelolaPostingan = () => {
             navigate("/kelolaPostingan/tambahPostingan");
           }}
         />
-        <Tabel />
+        <TabelHeader headers={headers} />
       </AdminLayout>
     </>
   );

@@ -1,25 +1,27 @@
 import AdminLayout from "../../components/Layout/AdminLayout";
 import { Helmet } from "react-helmet";
 import Title from "../../components/Elements/Title/Title";
-import Tabel from "../../components/Elements/Tabel/Tabel";
 import { useNavigate } from "react-router-dom";
-
+import TabelHeader from "../../components/Elements/Tabel/TabelHeader";
 
 const KelolaTim = () => {
   const navigate = useNavigate();
+  const headers = ["No", "Nama", "Posisi", "Aksi"];
+
   return (
     <>
       <Helmet>
         <title>Kelola Tim | Fiable Law Office</title>
       </Helmet>
       <AdminLayout>
-        <Title 
-          title="Kelola Tim" 
+        <Title
+          title="Kelola Tim"
           labelbtn="Tambah Anggota"
           onClick={() => {
             navigate("/kelolaTim/tambahAnggota");
-          }} />
-        <Tabel colom1="Nama" colom2="Posisi"/>
+          }}
+        />
+        <TabelHeader headers={headers} />
       </AdminLayout>
     </>
   );

@@ -46,11 +46,7 @@ export default function FormPost() {
       <form onSubmit={hanndleSubmit}>
         <Label label="Foto Postingan" />
         <div className={s.img}>
-<<<<<<< HEAD
-        <Image onChange={(image) => setFormData((prevState) => ({ ...prevState, image }))} />
-=======
           <SingleImage />
->>>>>>> 3441063a60a67b86646876be156e817f812d3a6d
         </div>
 
         <InputForm
@@ -72,7 +68,6 @@ export default function FormPost() {
           onChange={null}
           option="null"
         />
-        {/* ganti dengan text area */}
 
         <TextArea
           label="Body"
