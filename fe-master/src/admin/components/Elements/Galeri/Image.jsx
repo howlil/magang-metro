@@ -24,6 +24,14 @@ const Image = () => {
 
   return (
     <div className={s.flex}>
+      {images.map((image, index) => (
+          <div key={index} className={s.container}>
+            <button className={s.close} onClick={() => handleRemoveImage(index)}>
+              <img width="7rem" height="7rem" src={silang} alt='silang'/>
+            </button>
+            <img src={image} className={s.layout} alt={`Image ${index + 1}`} />      
+          </div>
+      ))}
       <input
         id="fileInput"
         type="file"
@@ -38,14 +46,7 @@ const Image = () => {
         </div>
         <h1>Klik untuk <br /> tambah foto</h1>
       </button>
-      {images.map((image, index) => (
-          <div key={index} className={s.container}>
-            <button className={s.close} onClick={() => handleRemoveImage(index)}>
-              <img width="7rem" height="7rem" src={silang} alt='silang'/>
-            </button>
-            <img src={image} className={s.layout} alt={`Image ${index + 1}`} />      
-          </div>
-      ))}
+      
         
     </div>
   );

@@ -5,6 +5,7 @@
 
 }
 
+
 .nav {
     width: 100%;
     display: flex;
@@ -20,6 +21,8 @@ a:hover {
     color: var(--secondary-color);
 }
 
+
+
 @media screen and (max-width: 678px) {
     .nav {
         justify-content: space-between;
@@ -33,19 +36,35 @@ a:hover {
     .arrowIcon {
         display: none;
     }
+
+    .btn {
+        border: none;
+        background: none;
+        width: 32px;
+    }
 }
 
 @media screen and (min-width: 768px) {
-    .nav {
-        justify-content: space-between;
+    .navbar { 
+        margin-left: 18rem;
+    }
+            margin-left: 18rem;
 
+
+    .btn {
+        border: none;
+        background: none;
+    }
+
+    .mobile {
+        display: none;
     }
 
 }
 
 @media screen and (min-width: 1200px) {
     .navbar {
-        margin-left: 21rem;
+        margin-left: 18rem;
     }
 
     .mobile {

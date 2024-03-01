@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { Menu } from "lucide-react";
+import s from "../Navbar/navbar.module.css";
 import Sidebar from "../Sidebar/Sidebar";
 import {
   Sheet,
@@ -16,11 +17,11 @@ export default function MobileSidebar() {
     <>
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
-          <button onClick={toggle}>
+          <button className={s.btn} onClick={toggle}>
             <Menu color="#033F89" size={32} />
           </button>
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent  >
           <Sidebar />
         </SheetContent>
       </Sheet>
