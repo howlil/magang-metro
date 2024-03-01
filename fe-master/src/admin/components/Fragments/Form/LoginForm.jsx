@@ -1,13 +1,17 @@
+// LoginForm.jsx
 import InputForm from "../../Elements/Input/Index";
 import Button from "../../../../components/Button/Button";
-import axios from "axios";
 import { useState } from "react";
+import { login } from "../../../../api/Admin/authService";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const [loginData, setLoginData] = useState({
     username: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,16 +20,13 @@ export default function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const API_URL = `${import.meta.env.VITE_API_URL}/loginAdmin`;
-
     try {
-      const response = await axios.post(
-        API_URL,
-        new URLSearchParams(loginData)
-      );
-      console.log("Login Successful:", response.data);
+      const data = await login(loginData.username, loginData.password);
+      console.log("Login berhasil:", data);
+      localStorage.setItem('isLoggedIn', true);
+      navigate("/");
     } catch (error) {
-      console.error("Login Failed:", error);
+      console.error("Login gagal:", error);
     }
   };
 
@@ -36,7 +37,7 @@ export default function LoginForm() {
         placeholder="Masukan Username"
         htmlFor="username"
         type="text"
-        nama="username"
+        name="username"
         value={loginData.username}
         onChange={handleChange}
       />
@@ -45,7 +46,7 @@ export default function LoginForm() {
         placeholder="Masukan Password"
         htmlFor="password"
         type="password"
-        nama="password"
+        name="password"
         value={loginData.password}
         onChange={handleChange}
       />

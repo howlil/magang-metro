@@ -1,7 +1,7 @@
 import s from "./input.module.css";
 
 function Input(props) {
-  const { type, placeholder, name } = props;
+  const { value,onChange,type, placeholder, name } = props;
   return (
     <input
       required
@@ -9,6 +9,8 @@ function Input(props) {
       name={name}
       type={type}
       placeholder={placeholder}
+      value={value}
+      onChange={onChange}
     />
   );
 }

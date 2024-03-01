@@ -4,13 +4,18 @@ import Label from "./Label";
 // import Select from "./Select";
 
 export default function InputForm(props) {
-  const { nama, type, placeholder, label, htmlFor } =
-    props;
+  const { name, type, placeholder, label, htmlFor, value, onChange } = props;
 
   return (
     <div className={s.layout}>
       <Label htmlFor={htmlFor} label={label} />
-      <Input nama={nama} type={type} placeholder={placeholder} />
+      <Input
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 }
