@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Feb 2024 pada 17.42
+-- Waktu pembuatan: 01 Mar 2024 pada 05.06
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -35,6 +35,13 @@ CREATE TABLE `admin` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `username`, `password`, `created_at`, `updated_at`) VALUES
+('a3639d86-26a6-4a5a-9c97-22886aa050a2', 'adminFiable', '$2b$10$sm0pTToN.vaETUl7iW1d/.gkK/s.0kbddEI87Macm8WYIaS32OO.a', '2024-02-27 01:05:55', '2024-02-27 01:05:55');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +54,13 @@ CREATE TABLE `galeri` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `galeri`
+--
+
+INSERT INTO `galeri` (`id_galeri`, `foto_galeri`, `created_at`, `updated_at`) VALUES
+('7564b865-3550-4d1c-aa7e-b6ed0b1936a5', 'error.png', '2024-02-27 14:17:47', '2024-02-27 14:17:47');
 
 -- --------------------------------------------------------
 
@@ -62,6 +76,13 @@ CREATE TABLE `kategori` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `slug`, `created_at`, `updated_at`) VALUES
+('bf06e6c7-6c8f-424c-bf8f-d90892e5219c', 'habis di edit', 'edit woi', '2024-02-27 13:09:56', '2024-02-27 13:18:02');
+
 -- --------------------------------------------------------
 
 --
@@ -74,6 +95,13 @@ CREATE TABLE `posisi` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `posisi`
+--
+
+INSERT INTO `posisi` (`id_posisi`, `nama_posisi`, `created_at`, `updated_at`) VALUES
+('90859915-d566-11ee-a952-e0d4643cc6a6', 'sdafsdfa', '2024-02-27 11:51:38', '2024-02-27 11:51:38');
 
 -- --------------------------------------------------------
 
@@ -111,6 +139,34 @@ CREATE TABLE `tim` (
   `craeted_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tim`
+--
+
+INSERT INTO `tim` (`id_team`, `nama`, `spesialis`, `id_posisi`, `deskripsi`, `foto_tim`, `portofolio`, `instagram`, `linkedln`, `craeted_at`, `updated_at`) VALUES
+('0b4a7040-d57e-11ee-a952-e0d4643cc6a6', 'dfsdfdsf', 'sdfsdfds', '90859915-d566-11ee-a952-e0d4643cc6a6', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdf', '2024-02-27 14:39:42', '2024-02-27 14:39:42');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `token`
+--
+
+CREATE TABLE `token` (
+  `id_token` int(11) NOT NULL,
+  `token` varchar(256) NOT NULL,
+  `id_admin` char(36) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `expires_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `token`
+--
+
+INSERT INTO `token` (`id_token`, `token`, `id_admin`, `created_at`, `expires_at`) VALUES
+(2, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluRmlhYmxlIiwiaWRfYWRtaW4iOiJhMzYzOWQ4Ni0yNmE2LTRhNWEtOWM5Ny0yMjg4NmFhMDUwYTIiLCJpYXQiOjE3MDkwMzIwMzAsImV4cCI6MTcwOTYzNjgzMH0.KtzzbGc3-sK3adMiAELBKgnLzcEoERJvOibVmswHQxs', 'a3639d86-26a6-4a5a-9c97-22886aa050a2', '2024-02-27 11:06:55', '2024-03-05');
 
 --
 -- Indexes for dumped tables
@@ -153,6 +209,22 @@ ALTER TABLE `postingan`
 ALTER TABLE `tim`
   ADD PRIMARY KEY (`id_team`),
   ADD KEY `id_posisi` (`id_posisi`);
+
+--
+-- Indeks untuk tabel `token`
+--
+ALTER TABLE `token`
+  ADD PRIMARY KEY (`id_token`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `token`
+--
+ALTER TABLE `token`
+  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
