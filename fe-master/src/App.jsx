@@ -11,6 +11,7 @@ import { ActiveRouteProvider } from "./utils/ActiveRouteContex";
 import TambahPostingan from "./admin/pages/kelolaPostingan/tambahPostingan";
 import TambahAnggota from "./admin/pages/kelolaTim/tambahAnggota";
 import TambahKategori from "./admin/pages/kategori/tambahKategori";
+import TambahPosisi from "./admin/pages/kelolaPosisi/tambahPosisi";
 
 function App() {
   return (
@@ -41,6 +42,10 @@ function App() {
               element={<TambahAnggota />}
             />
             <Route path="/kategori/tambahKategori" element={<TambahKategori />} />
+            <Route
+              path="/kelolaPosisi/tambahPosisi"
+              element={<TambahPosisi />}
+            />
 
             <Route path="*" element={<NotFound />} />
 

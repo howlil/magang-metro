@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     column-gap: 1rem;
     row-gap: 1rem;
-    /* margin-top: 2rem; on demand */
+    margin-top: 2rem; /*on demand */
 
 }
 
@@ -12,6 +12,11 @@
     height: 8rem;
     object-fit: cover;
     border-radius: 1rem;
+}
+
+.add{
+    width: 2rem;
+    height: 2rem;
 }
 
 .button {
@@ -25,7 +30,7 @@
 }
 
 .button h1 {
-    font-size: var(--font-size-base);
+    font-size: 0.75rem;
     color: var(--primary-color);
 }
 
@@ -43,12 +48,30 @@
     cursor: pointer;
     top: -0.5rem;
     right: -0.5rem;
-    vertical-align: middle;
+    /* vertical-align: middle; */
 
 }
 
 .container {
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     position: relative;
+}
+
+.silang{
+    width: 0.75rem;
+    height: 0.75rem;
+    align-items: center;
+}
+
+.preview{
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.preview:hover {
+    filter: brightness(70%);
 }
