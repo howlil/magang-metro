@@ -2,7 +2,7 @@
 import React from "react";
 import s from "./tabel.module.css";
 
-export default function Tabel() {
+export default function Tabel(props) {
   return (
     <div className={s.layout}>
       <table className={s.table}>

@@ -2,10 +2,11 @@
 import InputForm from "../../Elements/Input/Index";
 import Button from "../../../../components/Button/Button";
 import { useState } from "react";
-import { login } from "../../../../api/Admin/authService";
+import { login } from "../../../../api/admin/authService";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
+  const [error, setError] = useState("");
   const [loginData, setLoginData] = useState({
     username: "",
     password: "",
@@ -18,16 +19,17 @@ export default function LoginForm() {
     setLoginData({ ...loginData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const data = await login(loginData.username, loginData.password);
-      console.log("Login berhasil:", data);
-      localStorage.setItem('isLoggedIn', true);
-      navigate("/");
-    } catch (error) {
-      console.error("Login gagal:", error);
-    }
+    login(loginData.username, loginData.password)
+      .then((data) => {
+        console.log("Login berhasil:", data);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Login gagal:", error);
+        setError("Login gagal. Silakan cek username dan password Anda.");
+      });
   };
 
   return (
@@ -50,6 +52,7 @@ export default function LoginForm() {
         value={loginData.password}
         onChange={handleChange}
       />
+      {error && <div style={{ color: "red" }}>{error}</div>}
       <Button type="submit" label="Login" />
     </form>
   );

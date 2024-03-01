@@ -9,10 +9,12 @@ import { tambahPost } from "../../../../api/postingan/tambahPost";
 import { useState } from "react";
 
 export default function FormPost() {
+  
   const [formData, setFormData] = useState({
     judul: "",
     slug: "",
     body: "",
+    image: "", 
   });
 
   const handleChange = (e) => {
@@ -28,7 +30,12 @@ export default function FormPost() {
     try {
       const res = await tambahPost(formData);
       console.log("sukses", res);
-      setFormData({ title: "", content: "" });
+      setFormData({
+        judul: "",
+        slug: "",
+        body: "",
+        image: "",
+      });
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +46,7 @@ export default function FormPost() {
       <form onSubmit={hanndleSubmit}>
         <Label label="Foto Postingan" />
         <div className={s.img}>
-          <Image />
+        <Image onChange={(image) => setFormData((prevState) => ({ ...prevState, image }))} />
         </div>
 
         <InputForm
