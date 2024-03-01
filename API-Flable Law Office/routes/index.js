@@ -4,6 +4,7 @@ const postingan =require('./admin/postingan')
 const kategori = require('./admin/kategori')
 const galeri = require('./admin/galeri')
 const tim = require('./admin/tim')
+const posisi = require('./admin/posisi')
 const server = {}
 
 server.admin = admin
@@ -12,5 +13,6 @@ server.postingan = postingan
 server.kategori = kategori
 server.galeri = galeri
 server.tim = tim
+server.posisi = posisi
 
 module.exports = server

@@ -69,24 +69,6 @@ const editKategori = async (req,res) => {
     }
 }
 
-//detail kategori
-const detailKategori = async (req,res) => {
-    try {
-        const {id_kategori} = req.params
-        const findData = await modelKategori.findByPk(id_kategori, {
-            attributes: ['nama_kategori', 'slug']
-        })
-        if (!findData) {
-            return res.status(400).json({success: false, message: 'Data kategori tidak ditemukan'})
-        }
-        return res.status(200).json({success: true, message: 'Data kategori ditemukan', data: findData})        
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({success: false, message: 'Kesalahan server'})
-    }
-    
-}
-
 //hapus kategori
 const hapusKategori = async (req,res) => {
     try {
@@ -104,4 +86,4 @@ const hapusKategori = async (req,res) => {
     }
 }
 
-module.exports = {tampilKategori, tambahKategori, editKategori, detailKategori, hapusKategori}
+module.exports = {tampilKategori, tambahKategori, editKategori, hapusKategori}
