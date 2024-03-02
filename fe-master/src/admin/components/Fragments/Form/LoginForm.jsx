@@ -1,61 +1,45 @@
-// LoginForm.jsx
 import InputForm from "../../Elements/Input/Index";
 import Button from "../../../../components/Button/Button";
 import { useState } from "react";
-import { login } from "../../../../api/admin/authService";
-import { useNavigate } from "react-router-dom";
+import tambahAdmin from "../../../../api/admin/tambahAdmin";
 
 export default function LoginForm() {
-  const navigate = useNavigate();
-
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loginData, setLoginData] = useState({
-    username: "",
-    password: "",
-  });
 
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setLoginData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(loginData);
+    setError("");
 
-    login(loginData.username, loginData.password)
-      .then((data) => {
-        console.log("Login berhasil:", data);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error("Login gagal:", error);
-        setError("Login gagal. Silakan cek username dan password Anda.");
-      });
+    try {
+      const result = await tambahAdmin(name, password);
+      console.log(result);
+    } catch (error) {
+      console.error("Fetch error:", error);
+      setError(`Fetch error: ${error.message}`);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <InputForm
         label="Username"
+        htmlFor="username"
         placeholder="Masukan Username"
         type="text"
         name="username"
-        value={loginData.username}
-        onChange={handleChange}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
       <InputForm
         label="Password"
+        htmlFor="password"
         placeholder="Masukan Password"
         type="password"
         name="password"
-        value={loginData.password}
-        onChange={handleChange}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
       {error && <div style={{ color: "red" }}>{error}</div>}
       <Button type="submit" label="Login" />
