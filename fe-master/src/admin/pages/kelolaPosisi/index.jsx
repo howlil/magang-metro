@@ -2,11 +2,10 @@ import AdminLayout from "../../components/Layout/AdminLayout";
 import { Helmet } from "react-helmet";
 import Title from "../../components/Elements/Title/Title";
 import { useNavigate } from "react-router-dom";
-import TabelHeader from "../../components/Elements/Tabel/TabelHeader";
+import TabelPosisi from "../../components/Fragments/Table/TabelPosisi";
 
 const KelolaPosisi = () => {
   const navigate = useNavigate();
-  const headers = [ "Posisi"];
 
   return (
     <>
@@ -21,7 +20,7 @@ const KelolaPosisi = () => {
             navigate("/kelolaPosisi/tambahPosisi");
           }}
         />
-        <TabelHeader headers={headers} />
+        <TabelPosisi />
       </AdminLayout>
     </>
   );

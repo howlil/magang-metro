@@ -1,26 +1,27 @@
-import axios from "axios";
-
-export const tambahKategori = async (kategoriData) => {
+const tambahKategori = async (namaKategori, slug) => {
+  const myHeaders = new Headers();
   const token = localStorage.getItem("authToken");
-  try {
-    const response = await axios.post("/api/tambahKategori", kategoriData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data;
-  } catch (error) {
-    if (error.response) {
-      const { status, data } = error.response;
-      return Promise.reject({
-        kodeError: status,
-        pesanError: data.message || "Terjadi kesalahan pada server",
-      });
-    } else {
-      return Promise.reject({
-        kodeError: "Jaringan",
-        pesanError: "Terjadi kesalahan pada jaringan",
-      });
-    }
-  }
+
+  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+  myHeaders.append("Authorization", `Bearer ${token}`);
+
+  const urlencoded = new URLSearchParams();
+  urlencoded.append("nama_kategori", namaKategori);
+  urlencoded.append("slug", slug);
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: urlencoded,
+    redirect: "follow",
+  };
+
+  fetch(
+    "https://28jqlrhg-5000.asse.devtunnels.ms/tambahKategori",
+    requestOptions
+  )
+    .then((response) => response.text())
+    .then((result) => console.log(result));
 };
+
+export default tambahKategori;

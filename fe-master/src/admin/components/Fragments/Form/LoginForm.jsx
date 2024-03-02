@@ -2,11 +2,13 @@ import InputForm from "../../Elements/Input/Index";
 import Button from "../../../../components/Button/Button";
 import { useState } from "react";
 import tambahAdmin from "../../../../api/admin/tambahAdmin";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,8 +17,8 @@ export default function LoginForm() {
     try {
       const result = await tambahAdmin(name, password);
       console.log(result);
+      navigate("/");
     } catch (error) {
-      console.error("Fetch error:", error);
       setError(`Fetch error: ${error.message}`);
     }
   };

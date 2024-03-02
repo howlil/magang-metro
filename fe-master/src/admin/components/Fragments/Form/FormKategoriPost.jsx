@@ -1,37 +1,18 @@
 import s from "./form.module.css";
 import InputForm from "../../Elements/Input/Index";
 import Button from "../../../../components/Button/Button";
-import { tambahKategori } from "../../../../api/kategori/tambahKategori";
+import tambahKategori from "../../../../api/kategori/tambahKategori";
 import { useState } from "react";
 
 export default function FormKategoriPost() {
-  const [kategoriData, setKategoriData] = useState({
-    namaKategori: "",
-    slug: "",
-  });
+  const [kategori, setKategori] = useState("");
+  const [slug, setSlug] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setKategoriData({ ...kategoriData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    tambahKategori(kategoriData)
-      .then(response => {
-        console.log("Sukses menambah kategori:", response.data);
-        setKategoriData({ namaKategori: "", slug: "" }); 
-      })
-      .catch(error => {
-        const { kodeError, pesanError } = error;
-        if (kodeError === "Jaringan") {
-          console.error("Terjadi error jaringan!");
-        } else {
-          console.error(`Kode error: ${kodeError}`);
-          console.error(`Pesan error: ${pesanError}`);
-        }
-        alert("gagal")
-      });
+
+    const res = await tambahKategori(kategori, slug);
+    console.log(res);
   };
 
   return (
@@ -43,8 +24,8 @@ export default function FormKategoriPost() {
           htmlFor="namaKategori"
           name="namaKategori"
           type="text"
-          value={kategoriData.namaKategori}
-          onChange={handleChange}
+          value={kategori}
+          onChange={(e) => setKategori(e.target.value)}
         />
         <InputForm
           label="Slug"
@@ -52,8 +33,8 @@ export default function FormKategoriPost() {
           htmlFor="slug"
           name="slug"
           type="text"
-          value={kategoriData.slug}
-          onChange={handleChange}
+          value={slug}
+          onChange={(e) => setSlug(e.target.value)}
         />
 
         <div className={s.btnly}>

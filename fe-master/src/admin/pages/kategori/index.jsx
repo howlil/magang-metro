@@ -2,11 +2,10 @@ import AdminLayout from "../../components/Layout/AdminLayout";
 import { Helmet } from "react-helmet";
 import Title from "../../components/Elements/Title/Title";
 import { useNavigate } from "react-router-dom";
-import TabelHeader from "../../components/Elements/Tabel/TabelHeader";
+import TabelKategori from "../../components/Fragments/Table/TabelKategori";
 
 const Kategori = () => {
   const navigate = useNavigate();
-  const headers = ["Kategori  "];
   return (
     <>
       <Helmet>
@@ -20,7 +19,7 @@ const Kategori = () => {
             navigate("/kategori/tambahKategori");
           }}
         />
-        <TabelHeader headers={headers} />
+        <TabelKategori />
       </AdminLayout>
     </>
   );
