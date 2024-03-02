@@ -67,9 +67,9 @@ const fileFilterPortofilio = function (req,file, cb) {
 }
 
 const uploadFotoTim = multer({
-    storage: storageFotoGaleri,
+    storage: storageFotoTim,
     fileFilter: fileFilterTim
-}).single('file_galeri');
+}).single('file_tim');
 
 const uploadPortofolio = multer({
     storage: storagePortofolio,
@@ -80,12 +80,41 @@ const uploadPortofolio = multer({
 //tambah tim
 const tambahTim = async (req,res) => {
     try {
-        const foto_tim = req.file
-        const {nama, spesialis, id_posisi, deskripsi, instagram, linkedln} = req.body
-        const portofolio = req.file
-        if (!foto_tim || !nama || !spesialis || !id_posisi || !deskripsi || !instagram || !linkedln || !portofolio) {
-            return res.status(400).json({success: false, message: 'Lengkapi data tim anda'})
-        }
+        uploadFotoTim(req,res, async function (err) {
+            if (err) {
+                console.log(err)
+                return res.status(400).json({success: false, message: 'Foto tim tidak berhasil ditambahkan'})
+            }
+
+            uploadPortofolio(req,res,async function (err) {
+                if (err) {
+                    console.log(err)
+                    return res.status(400).json({success: false, message: 'Portofolio tidak berhasil ditambahkan'})
+                }
+
+                const foto_tim = req.file_tim
+                const portofolio = req.file_portofolio
+                const {nama, spesialis, id_posisi, deskripsi, instagram, linkedln} = req.body
+                if (!foto_tim || !nama || !spesialis || !id_posisi || !deskripsi || !instagram || !linkedln || !portofolio) {
+                    return res.status(400).json({success: false, message: 'Lengkapi data tim anda'})
+                }
+
+                await modelTim.create({
+                    nama: nama,
+                    spesialis: spesialis,
+                    id_posisi: id_posisi,
+                    deskripsi: deskripsi,
+                    foto_tim: foto_tim.originalname,
+                    portofolio: portofolio.originalname,
+                    instagram: instagram,
+                    linkedln: linkedln
+                })
+                return res.status(200).json({success: true, meesage: 'Data tim berhasil ditambahkan'})
+
+            })
+        })
+
+        
      
     } catch (error) {
         console.log(error)

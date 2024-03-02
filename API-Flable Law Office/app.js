@@ -25,6 +25,7 @@ app.use('/', server.kategori)
 app.use('/', server.galeri)
 app.use('/', server.tim)
 app.use('/', server.posisi)
+app.use('/', server.landingPage)
 app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
     res.status(400).json({
