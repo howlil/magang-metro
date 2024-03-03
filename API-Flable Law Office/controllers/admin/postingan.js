@@ -15,7 +15,7 @@ const tampilPostingan = async (req,res) => {
                     attributes: ['nama_kategori']
                 }
             ],
-            attributes: ['id_postingan', 'judul']
+            attributes: ['id_postingan', 'judul','slug']
         })
         if (allPostingan.length > 0) {
             return res.status(200).json({success:true, message: 'Data postingan ditemukan', data: allPostingan})
