@@ -4,113 +4,70 @@ import Button from "../../../../components/Button/Button";
 import TextArea from "../../Elements/Input/TextArea";
 import SelectIndex from "../../Elements/Input/SelectIndex";
 import Label from "../../Elements/Input/Label";
-import { tambahPost } from "../../../../api/postingan/tambahPost";
 import { useEffect, useState } from "react";
 import SingleImage from "../../Elements/Galeri/SingleImage";
-// import { tampilKategori } from "../../../../api/kategori/tampilKategori";
+import tambahPostingan from "../../../../api/postingan/tambahPost";
+import tampilKategori from "../../../../api/kategori/tampilKategori";
 
 export default function FormPost() {
-  // const [formData, setFormData] = useState({
-  //   judul: "",
-  //   slug: "",
-  //   body: "",
-  //   image: "",
-  //   kategori: "", // Menambahkan kategori ke dalam state formData
-  // });
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [kategori, setKategori] = useState([]);
-  // const [error, setError] = useState("");
+  const [judul, setJudul] = useState("");
+  const [slug, setSlug] = useState("");
+  const [kategori, setKategori] = useState([]);
+  const [ambilKat, setAmbilKat] = useState("");
+  const [body, setBody] = useState([]);
+  const [file, setFile] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       setIsLoading(true);
-  //       const data = await tampilKategori();
-  //       console.log(data);
-  //       if (data.success) {
-  //         setKategori(data.data);
-  //       } else {
-  //         setError("Data kategori tidak ditemukan");
-  //       }
-  //     } catch (error) {
-  //       setError("Terjadi kesalahan saat mengambil data");
-  //       console.error(error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
+  useEffect(() => {
+    tampilKategori()
+      .then((data) => {
+        setKategori(data.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
-  //   fetchData();
-  // }, []);
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const res = await tambahPost(formData);
-  //     console.log("sukses", res);
-  //     alert("Postingan berhasil ditambahkan!");
-  //     setFormData({
-  //       judul: "",
-  //       slug: "",
-  //       body: "",
-  //       image: "",
-  //       kategori: "",
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //     alert("Terjadi kesalahan saat menambahkan postingan.");
-  //   }
-  // };
-
-  // if (isLoading) return <div>Loading...</div>;
-  // if (error) return <div>Error: {error}</div>;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await tambahPostingan(judul, slug, ambilKat, body, file);
+    console.log(response);
+  };
 
   return (
     <div className={s.layout}>
-      <form onSubmit={null}>
+      <form onSubmit={handleSubmit}>
         <Label label="Foto Postingan" />
         <div className={s.img}>
-          <SingleImage />
+          <SingleImage onFileSelect={(selectFile)=>setFile(selectFile)} />
         </div>
 
         <InputForm
           label="Judul"
-          placeholder="Masukan Judul Postingan" // Koreksi placeholder
+          placeholder="Masukan Judul Postingan"
           htmlFor="judul"
           type="text"
           name="judul"
-          // value={formData.judul}
-          // onChange={handleChange}
+          value={judul}
+          onChange={(e) => setJudul(e.target.value)}
         />
         <InputForm
           name="slug"
           label="Slug"
           htmlFor="slug"
           type="text"
-          // value={formData.slug}
-          // onChange={handleChange}
+          value={slug}
+          onChange={(e) => setSlug(e.target.value)}
         />
 
         <SelectIndex
           label="Kategori"
           placeholder="Pilih Kategori"
           htmlFor="kategori"
-          name="kategori" // Menentukan name untuk SelectIndex
-          // value={formData.kategori}
-          // onChange={handleChange}
-          // option={kategori.map((kat) => ({
-          //   value: kat.id_kategori,
-          //   label: kat.nama_kategori,
-          // }))}
+          name="kategori"
+          value={ambilKat}
+          onChange={(e) => setAmbilKat(e.target.value)}
+          options={kategori.map((kat) => ({
+            value: kat.id_kategori,
+            label: kat.nama_kategori,
+          }))}
         />
 
         <TextArea
@@ -118,7 +75,8 @@ export default function FormPost() {
           htmlFor="body"
           name="body"
           placeholder="Masukan isi postingan disini"
-          // onChange={handleChange} // Menambahkan onChange handler
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
         />
 
         <div className={s.btnly}>

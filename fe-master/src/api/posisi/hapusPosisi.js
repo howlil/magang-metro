@@ -1,27 +1,28 @@
-const tampilPostingan = async () => {
+const hapusPosisi = async (id_posisi) => {
     const myHeaders = new Headers();
     const token = localStorage.getItem("authToken");
     myHeaders.append("Authorization", `Bearer ${token}`);
   
     const requestOptions = {
-      method: "GET",
+      method: "DELETE",
       headers: myHeaders,
       redirect: "follow",
     };
   
-    let req;
+    let del;
     try {
       const response = await fetch(
-        "https://28jqlrhg-5000.asse.devtunnels.ms/tampilPostingan",
+        `https://28jqlrhg-5000.asse.devtunnels.ms/hapusPosisi/${id_posisi}`,
         requestOptions
       );
-      req = await response.json();
-      console.log(req);
+      del = await response.json();
+      console.log(del.id_posisi);
     } catch (error) {
       console.error(error);
     }
-    
-    return req;
+  
+    return del;
   };
   
-  export default tampilPostingan;
+  export default hapusPosisi;
+  

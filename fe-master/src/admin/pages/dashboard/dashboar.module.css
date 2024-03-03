@@ -1,0 +1,13 @@
+.layout {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media screen and (max-width:678px) {
+    .layout {
+        grid-template-columns: 1fr;
+        row-gap: 1rem;
+    }
+}

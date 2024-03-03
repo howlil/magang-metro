@@ -1,0 +1,22 @@
+.layout h1 {
+    font-size: 1.25rem;
+
+}
+
+.konten {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}

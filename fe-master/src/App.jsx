@@ -12,6 +12,7 @@ import TambahPostingan from "./admin/pages/kelolaPostingan/tambahPostingan";
 import TambahAnggota from "./admin/pages/kelolaTim/tambahAnggota";
 import TambahKategori from "./admin/pages/kategori/tambahKategori";
 import TambahPosisi from "./admin/pages/kelolaPosisi/tambahPosisi";
+import DetailPostingan from "./admin/pages/kelolaPostingan/detailPostingan";
 
 function App() {
   return (
@@ -34,18 +35,32 @@ function App() {
               element={<TambahPostingan />}
             />
             <Route
+              path="/kelolaPostingan/detailPostingan"
+              element={<DetailPostingan />}
+            />
+            <Route
               path="/kategori/tambahKategori"
               element={<TambahKategori />}
             />
-           <Route path="/kategori/editKategori/:id_kategori" element={<TambahKategori />} />
+            <Route
+              path="/kategori/editKategori/:id_kategori"
+              element={<TambahKategori />}
+            />
 
             <Route
               path="/kelolaTim/tambahAnggota"
               element={<TambahAnggota />}
             />
-            <Route path="/kategori/tambahKategori" element={<TambahKategori />} />
+            <Route
+              path="/kategori/tambahKategori"
+              element={<TambahKategori />}
+            />
             <Route
               path="/kelolaPosisi/tambahPosisi"
+              element={<TambahPosisi />}
+            />
+            <Route
+              path="/kelolaPosisi/editPosisi/:id_posisi"
               element={<TambahPosisi />}
             />
 

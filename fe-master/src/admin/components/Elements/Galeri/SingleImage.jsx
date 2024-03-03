@@ -1,36 +1,46 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 import s from "./image.module.css";
 import add from "/public/addimg.svg";
 
-const SingleImage = () => {
+const SingleImage = ({onFileSelect}) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    const imageUrl = URL.createObjectURL(file);
-    setSelectedImage(imageUrl);
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setSelectedImage(imageUrl);
+      onFileSelect(file);
+    }
   };
 
   const handleAddImage = () => {
-    document.getElementById('fileInput').click();
+    document.getElementById("fileInput").click();
   };
 
   const handlePreviewClick = () => {
-    document.getElementById('fileInput').click();
+    document.getElementById("fileInput").click();
   };
 
   return (
     <div className={s.flex}>
       <div className={s.preview}>
         {selectedImage && (
-          <img className={s.layout} src={selectedImage} alt='selectedimage' onClick={handlePreviewClick}/>
+          <img
+            className={s.layout}
+            src={selectedImage}
+            alt="selectedimage"
+            onClick={handlePreviewClick}
+          />
         )}
-        
+
         {!selectedImage && (
           <>
             <button onClick={handleAddImage} className={s.button}>
-                <img className={s.add} src={add} alt='addimage'/>
-                <h1>Klik untuk <br /> tambah foto</h1>
+              <img className={s.add} src={add} alt="addimage" />
+              <h1>
+                Klik untuk <br /> tambah foto
+              </h1>
             </button>
           </>
         )}
@@ -39,7 +49,7 @@ const SingleImage = () => {
         id="fileInput"
         type="file"
         accept="image/*"
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
         onChange={handleImageChange}
       />
     </div>

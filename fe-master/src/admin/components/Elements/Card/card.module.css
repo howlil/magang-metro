@@ -9,5 +9,6 @@
     -moz-border-radius: 0.75rem;
     -ms-border-radius: 0.75rem;
     -o-border-radius: 0.75rem;
-    width: 20rem;
+    max-width: 100%;
+  
 }
