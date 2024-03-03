@@ -10,30 +10,34 @@ const cors = require("cors");
 var app = express();
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
-
-app.use(cors());
-app.use(cors({
-  origin: 'http://localhost:5174'
-}));
-app.use(logger("dev"));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/fotoTim', express.static('public/images/tim'))
+app.use('/fotoGaleri', express.static('public/images/galeri'))
+app.use('/fotoPostingan', express.static('public/images/postingan'))
+app.use('/filePortofolio', express.static('public/portofolio'))
+app.use(cors({
+  origin: 'http://localhost:5000'
+})) 
 
-app.use("/", server.admin , cors());
-app.use("/", server.dashboard , cors());
-app.use("/", server.postingan, cors());
-app.use("/", server.kategori, cors());
-app.use("/", server.galeri, cors());
-app.use("/", server.tim, cors());
+app.use('/', server.admin)
+app.use('/', server.dashboard)
+app.use('/', server.postingan)
+app.use('/', server.kategori)
+app.use('/', server.galeri)
+app.use('/', server.tim)
+app.use('/', server.posisi)
+app.use('/', server.landingPage)
 app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
     res.status(400).json({
       success: false,
-      message: err.message,
+      message: err.message
     });
   } else {
     next(err);
