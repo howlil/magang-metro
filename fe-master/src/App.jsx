@@ -37,6 +37,8 @@ function App() {
               path="/kategori/tambahKategori"
               element={<TambahKategori />}
             />
+           <Route path="/kategori/editKategori/:id_kategori" element={<TambahKategori />} />
+
             <Route
               path="/kelolaTim/tambahAnggota"
               element={<TambahAnggota />}
