@@ -11,16 +11,25 @@ const tambahAdmin = async (req,res) => {
         if (!username || !password) {
             return res.status(400).json({success: false, message: 'Legkapi inputan data'})
         }
-        const salt = bcrypt.genSaltSync(10)
-        const hashedPass = bcrypt.hashSync(password, salt)
-        const addAdmin = await modelAdmin.create({
-            username: username,
-            password: hashedPass
+        const findAdmin = await modelAdmin.findOne({
+            where: {
+                username: username
+            }
         })
-        if (!addAdmin) {
-            return res.status(400).json({success:false, message: 'Admin tidak berhasil ditambahkan'})
+        if (findAdmin) {
+            return res.status(400).json({succes: false, message: 'Username admin sudah pernah ditambahkan'})
+        } else {
+            const salt = bcrypt.genSaltSync(10)
+            const hashedPass = bcrypt.hashSync(password, salt)
+            const addAdmin = await modelAdmin.create({
+                username: username,
+                password: hashedPass
+            })
+            if (!addAdmin) {
+                return res.status(400).json({success:false, message: 'Admin tidak berhasil ditambahkan'})
+            }
+            return res.status(200).json({success:true, message: 'Admin berhasil ditambahkan'})  
         }
-        return res.status(200).json({success:true, message: 'Admin berhasil ditambahkan'})      
     } catch (error) {
         console.log(error)
         return res.status(500).json({success: false, message: 'Kesalahan server'})

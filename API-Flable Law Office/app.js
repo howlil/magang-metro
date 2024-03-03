@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const server = require('./routes/index')
 const multer = require('multer')
+const cors = require('cors')
+
 
 var app = express();
 
@@ -17,6 +19,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/fotoTim', express.static('public/images/tim'))
+app.use('/fotoGaleri', express.static('public/images/galeri'))
+app.use('/fotoPostingan', express.static('public/images/postingan'))
+app.use('/filePortofolio', express.static('public/portofolio'))
+app.use(cors({
+  origin: 'http://localhost:5000'
+})) 
+
 
 app.use('/', server.admin)
 app.use('/', server.dashboard)

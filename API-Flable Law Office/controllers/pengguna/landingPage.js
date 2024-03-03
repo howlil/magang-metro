@@ -1,7 +1,9 @@
 const response = require('express')
 const modelTim = require('../../models/tim')
 const modelArtikel = require('../../models/postingan')
+const modelAdmin = require('../../models/admin')
 const nodemailer = require('nodemailer')
+require('dotenv').config()
 
 
 //tampilan tim
@@ -20,7 +22,14 @@ const tampilTim = async (req,res) => {
 //tampil artikel 
 const tampilArtikel = async (req,res) => {
     const dataArtikel = await modelArtikel.findAll({
-        attributes: ['foto_postingan', 'judul', 'body', 'id_postingan']
+        attributes: ['foto_postingan', 'judul', 'body', 'id_postingan'],
+        include: [
+            {
+                model: modelAdmin,
+                as:'dataAdmin',
+                attributes: ['username']
+            }
+        ]
     })
     if (dataArtikel.length > 0) {
         return res.status(200).json({success: true, message: 'Data artikel ditemukan', data: dataArtikel})
@@ -40,11 +49,14 @@ const detailArtikel = async (req,res) => {
 }
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: 'gmail', 
   auth: {
-    user: 'ypuremail@gmail', // Ganti dengan alamat email pengirim
-    pass: 'yourpassword@gmail' // Ganti dengan kata sandi email pengirim
-  }
+    user: process.env.email_owner, 
+    pass: process.env.password_owner 
+  },
+  tls: {
+    rejectUnauthorized: false
+}
 });
 //konsultasi gratis -> masuk ke email aku
 const konsultasiGratis = async (req,res) => {
@@ -54,9 +66,9 @@ const konsultasiGratis = async (req,res) => {
     }
 
     const mailOptions = {
-        from: `${email}`, // Ganti dengan alamat email pengirim
-        to: 'nadiniannisabyant26@gmail.com', // Ganti dengan alamat email penerima
-        subject: 'New Consultation Request',
+        from: email,
+        to: process.env.email_owner, 
+        subject: 'Permintaan Konsultasi',
         text: `
           Name: ${nama}
           Email: ${email}
@@ -68,11 +80,11 @@ const konsultasiGratis = async (req,res) => {
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           console.log(error);
-          res.send('Error');
+          res.status(400).json({success: false, message: 'Permintaan konsultasi anda tidak berhasil dikirim'})
         } else {
           console.log('Email sent: ' + info.response);
           totalKonsultasi++
-          res.send('Success');
+          res.status(200).json({success: true, message: 'Permintaan konsultasi anda berhasil dikirim'})
         }
       });
     

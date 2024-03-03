@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Mar 2024 pada 05.06
+-- Waktu pembuatan: 03 Mar 2024 pada 15.18
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -81,6 +81,7 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `slug`, `created_at`, `updated_at`) VALUES
+('18c34980-acfe-4f31-8b83-3326e15f48d5', 'ini nama kategori', 'ini lsug aktoegri', '2024-03-01 13:43:48', '2024-03-01 13:43:48'),
 ('bf06e6c7-6c8f-424c-bf8f-d90892e5219c', 'habis di edit', 'edit woi', '2024-02-27 13:09:56', '2024-02-27 13:18:02');
 
 -- --------------------------------------------------------
@@ -101,7 +102,7 @@ CREATE TABLE `posisi` (
 --
 
 INSERT INTO `posisi` (`id_posisi`, `nama_posisi`, `created_at`, `updated_at`) VALUES
-('90859915-d566-11ee-a952-e0d4643cc6a6', 'sdafsdfa', '2024-02-27 11:51:38', '2024-02-27 11:51:38');
+('4dc2c971-fca6-4f71-9bc3-85152163f260', 'posisi di edit bro', '2024-03-01 17:01:08', '2024-03-01 17:06:46');
 
 -- --------------------------------------------------------
 
@@ -116,9 +117,17 @@ CREATE TABLE `postingan` (
   `id_kategori` char(36) NOT NULL,
   `foto_postingan` varchar(256) NOT NULL,
   `body` longtext NOT NULL,
+  `id_admin` char(36) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `postingan`
+--
+
+INSERT INTO `postingan` (`id_postingan`, `judul`, `slug`, `id_kategori`, `foto_postingan`, `body`, `id_admin`, `created_at`, `updated_at`) VALUES
+('b662deee-3d1f-4ea2-87b2-ca3c6a361235', 'ini judul habis di edit', 'slug habis di edit', 'bf06e6c7-6c8f-424c-bf8f-d90892e5219c', 'Nadini Annisa Byant.jpeg', 'body habis di edit', 'a3639d86-26a6-4a5a-9c97-22886aa050a2', '2024-03-03 12:23:49', '2024-03-03 12:25:36');
 
 -- --------------------------------------------------------
 
@@ -136,7 +145,7 @@ CREATE TABLE `tim` (
   `portofolio` varchar(256) NOT NULL,
   `instagram` varchar(100) NOT NULL,
   `linkedln` varchar(100) NOT NULL,
-  `craeted_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -144,8 +153,8 @@ CREATE TABLE `tim` (
 -- Dumping data untuk tabel `tim`
 --
 
-INSERT INTO `tim` (`id_team`, `nama`, `spesialis`, `id_posisi`, `deskripsi`, `foto_tim`, `portofolio`, `instagram`, `linkedln`, `craeted_at`, `updated_at`) VALUES
-('0b4a7040-d57e-11ee-a952-e0d4643cc6a6', 'dfsdfdsf', 'sdfsdfds', '90859915-d566-11ee-a952-e0d4643cc6a6', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdf', '2024-02-27 14:39:42', '2024-02-27 14:39:42');
+INSERT INTO `tim` (`id_team`, `nama`, `spesialis`, `id_posisi`, `deskripsi`, `foto_tim`, `portofolio`, `instagram`, `linkedln`, `created_at`, `updated_at`) VALUES
+('6da62d70-f79f-478f-a84b-48593b222cc3', 'nadini', 'kedokteran', '4dc2c971-fca6-4f71-9bc3-85152163f260', 'ini deskripsi', 'bukti notifikasi.jpg', '58-Article Text-199-1-10-20200503.pdf', 'ini baruu', 'dinibynt', '2024-03-03 11:41:06', '2024-03-03 11:52:45');
 
 -- --------------------------------------------------------
 
@@ -166,7 +175,8 @@ CREATE TABLE `token` (
 --
 
 INSERT INTO `token` (`id_token`, `token`, `id_admin`, `created_at`, `expires_at`) VALUES
-(2, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluRmlhYmxlIiwiaWRfYWRtaW4iOiJhMzYzOWQ4Ni0yNmE2LTRhNWEtOWM5Ny0yMjg4NmFhMDUwYTIiLCJpYXQiOjE3MDkwMzIwMzAsImV4cCI6MTcwOTYzNjgzMH0.KtzzbGc3-sK3adMiAELBKgnLzcEoERJvOibVmswHQxs', 'a3639d86-26a6-4a5a-9c97-22886aa050a2', '2024-02-27 11:06:55', '2024-03-05');
+(2, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluRmlhYmxlIiwiaWRfYWRtaW4iOiJhMzYzOWQ4Ni0yNmE2LTRhNWEtOWM5Ny0yMjg4NmFhMDUwYTIiLCJpYXQiOjE3MDkwMzIwMzAsImV4cCI6MTcwOTYzNjgzMH0.KtzzbGc3-sK3adMiAELBKgnLzcEoERJvOibVmswHQxs', 'a3639d86-26a6-4a5a-9c97-22886aa050a2', '2024-02-27 11:06:55', '2024-03-05'),
+(3, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluRmlhYmxlIiwiaWRfYWRtaW4iOiJhMzYzOWQ4Ni0yNmE2LTRhNWEtOWM5Ny0yMjg4NmFhMDUwYTIiLCJpYXQiOjE3MDkzMDA1OTMsImV4cCI6MTcwOTkwNTM5M30.iTmVDMvW4SqfkMrWWoFju8evh5awbzRDucyy6ZIEgG8', 'a3639d86-26a6-4a5a-9c97-22886aa050a2', '2024-03-01 13:42:54', '2024-03-08');
 
 --
 -- Indexes for dumped tables
@@ -201,7 +211,8 @@ ALTER TABLE `posisi`
 --
 ALTER TABLE `postingan`
   ADD PRIMARY KEY (`id_postingan`),
-  ADD KEY `id_kategori` (`id_kategori`);
+  ADD KEY `id_kategori` (`id_kategori`),
+  ADD KEY `id_admin` (`id_admin`);
 
 --
 -- Indeks untuk tabel `tim`
@@ -224,7 +235,7 @@ ALTER TABLE `token`
 -- AUTO_INCREMENT untuk tabel `token`
 --
 ALTER TABLE `token`
-  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -234,7 +245,8 @@ ALTER TABLE `token`
 -- Ketidakleluasaan untuk tabel `postingan`
 --
 ALTER TABLE `postingan`
-  ADD CONSTRAINT `postingan_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `postingan_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `postingan_ibfk_2` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tim`

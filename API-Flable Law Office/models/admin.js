@@ -1,5 +1,6 @@
 const {DataTypes} = require('sequelize')
 const sequelize = require('../config/db')
+const postingan = require('./postingan')
 
 const admin = sequelize.define('admin', {
     id_admin: {
@@ -30,4 +31,8 @@ const admin = sequelize.define('admin', {
     createdAt: 'created_at',
     updatedAt: 'updated_at'
 })
+
+admin.hasMany(postingan, {foreignKey: 'id_admin', as: 'dataPostingan'})
+postingan.belongsTo(admin, {foreignKey: 'id_admin', as: 'dataAdmin'})
+
 module.exports = admin
