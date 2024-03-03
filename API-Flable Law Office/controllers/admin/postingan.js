@@ -74,7 +74,8 @@ const tambahPostingan = async (req,res) => {
                 slug: slug,
                 id_kategori: kategori,
                 foto_postingan: foto.originalname,
-                body: body
+                body: body,
+                id_admin: req.admin.id_admin
             })
             return res.status(200).json({success:true, message: 'Postingan berhasil ditambahkan'})
         }
@@ -102,7 +103,8 @@ const editPostingan = async (req,res) => {
                 slug: slug || findData.slug,
                 id_kategori: kategori || findData.kategori,
                 body: body || findData.body,
-                foto_postingan: foto.originalname
+                foto_postingan: foto.originalname,
+                id_admin: req.admin.id_admin
             }, {
                 where:{id_postingan: id_postingan}
             })
