@@ -26,10 +26,19 @@ const tambahPosisi = async (req,res) => {
         if (!nama_posisi) {
             return res.status(400).json({success: false, message: 'Silahkan isi nama posisi terlebih dahulu'})
         }
-        await modelPosisi.create({
-            nama_posisi: nama_posisi
+        const findPosisi = await modelPosisi.findOne({
+            where: {
+                nama_posisi: nama_posisi
+            }
         })
-        return res.status(200).json({success: true, message:'Data posisi berhasil ditambahkan'})        
+        if (!findPosisi) {
+            await modelPosisi.create({
+                nama_posisi: nama_posisi
+            })
+            return res.status(200).json({success: true, message:'Data posisi berhasil ditambahkan'})    
+        }
+        return res.status(400).json({success: false, message: 'Data posisi sudah pernah ditambahkan'})
+             
     } catch (error) {
         console.log(error)
         return res.status(500).json({success: false, message: 'Kesalahan server'})
