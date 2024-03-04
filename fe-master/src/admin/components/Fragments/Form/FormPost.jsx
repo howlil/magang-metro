@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import SingleImage from "../../Elements/Galeri/SingleImage";
 import tambahPostingan from "../../../../api/postingan/tambahPost";
 import tampilKategori from "../../../../api/kategori/tampilKategori";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function FormPost() {
   const [judul, setJudul] = useState("");
@@ -16,7 +17,11 @@ export default function FormPost() {
   const [ambilKat, setAmbilKat] = useState("");
   const [body, setBody] = useState([]);
   const [file, setFile] = useState(null);
+  const navigate = useNavigate();
+  const { id_postingan } = useParams();
+  const isEditing = !!id_postingan;
 
+  // menampilkan kategori
   useEffect(() => {
     tampilKategori()
       .then((data) => {
@@ -27,8 +32,21 @@ export default function FormPost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await tambahPostingan(judul, slug, ambilKat, body, file);
+    let response;
+    if (isEditing) {
+      response = await tambahPostingan(
+        judul,
+        slug,
+        ambilKat,
+        body,
+        file,
+        id_postingan
+      );
+    } else {
+      response = await tambahPostingan(judul, slug, ambilKat, body, file);
+    }
     console.log(response);
+    // navigate("/kelolaPostingan");
   };
 
   return (
@@ -36,12 +54,12 @@ export default function FormPost() {
       <form onSubmit={handleSubmit}>
         <Label label="Foto Postingan" />
         <div className={s.img}>
-          <SingleImage onFileSelect={(selectFile)=>setFile(selectFile)} />
+          <SingleImage onFileSelect={(selectFile) => setFile(selectFile)} />
         </div>
 
         <InputForm
           label="Judul"
-          placeholder="Masukan Judul Postingan"
+          placeholder={isEditing ? `${judul}` : "Masukan Judul Postingan"}
           htmlFor="judul"
           type="text"
           name="judul"
@@ -51,6 +69,7 @@ export default function FormPost() {
         <InputForm
           name="slug"
           label="Slug"
+          placeholder={isEditing ? `${slug}` : "Masukan Slug"}
           htmlFor="slug"
           type="text"
           value={slug}
@@ -59,7 +78,7 @@ export default function FormPost() {
 
         <SelectIndex
           label="Kategori"
-          placeholder="Pilih Kategori"
+          placeholder={isEditing ? `${judul}` : "Masukan  Kategori"}
           htmlFor="kategori"
           name="kategori"
           value={ambilKat}
@@ -74,7 +93,7 @@ export default function FormPost() {
           label="Body"
           htmlFor="body"
           name="body"
-          placeholder="Masukan isi postingan disini"
+          placeholder={isEditing ? `${body}` : "Masukan Body disini"}
           value={body}
           onChange={(e) => setBody(e.target.value)}
         />

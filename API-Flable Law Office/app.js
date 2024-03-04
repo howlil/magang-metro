@@ -22,7 +22,7 @@ app.use('/fotoGaleri', express.static('public/images/galeri'))
 app.use('/fotoPostingan', express.static('public/images/postingan'))
 app.use('/filePortofolio', express.static('public/portofolio'))
 app.use(cors({
-  origin: 'http://localhost:5000'
+  origin: 'http://localhost:5174'
 })) 
 
 app.use('/', server.admin)

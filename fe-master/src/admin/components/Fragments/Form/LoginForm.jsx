@@ -1,7 +1,7 @@
 import InputForm from "../../Elements/Input/Index";
 import Button from "../../../../components/Button/Button";
 import { useState } from "react";
-import tambahAdmin from "../../../../api/admin/tambahAdmin";
+import loginAdmin from "../../../../api/admin/loginAdmin";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
@@ -15,7 +15,7 @@ export default function LoginForm() {
     setError("");
 
     try {
-      const result = await tambahAdmin(name, password);
+      const result = await loginAdmin(name, password);
       console.log(result);
       navigate("/");
     } catch (error) {
