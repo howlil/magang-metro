@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Mar 2024 pada 15.18
+-- Waktu pembuatan: 04 Mar 2024 pada 17.20
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -82,7 +82,8 @@ CREATE TABLE `kategori` (
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `slug`, `created_at`, `updated_at`) VALUES
 ('18c34980-acfe-4f31-8b83-3326e15f48d5', 'ini nama kategori', 'ini lsug aktoegri', '2024-03-01 13:43:48', '2024-03-01 13:43:48'),
-('bf06e6c7-6c8f-424c-bf8f-d90892e5219c', 'habis di edit', 'edit woi', '2024-02-27 13:09:56', '2024-02-27 13:18:02');
+('bf06e6c7-6c8f-424c-bf8f-d90892e5219c', 'habis di edit', 'edit woi', '2024-02-27 13:09:56', '2024-02-27 13:18:02'),
+('ffdecc58-5ae6-49ca-8ef3-0919614cc644', 'ini nama kategori baru', 'ini lsug aktoegri', '2024-03-04 15:38:43', '2024-03-04 15:38:43');
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,7 @@ CREATE TABLE `postingan` (
 --
 
 INSERT INTO `postingan` (`id_postingan`, `judul`, `slug`, `id_kategori`, `foto_postingan`, `body`, `id_admin`, `created_at`, `updated_at`) VALUES
-('b662deee-3d1f-4ea2-87b2-ca3c6a361235', 'ini judul habis di edit', 'slug habis di edit', 'bf06e6c7-6c8f-424c-bf8f-d90892e5219c', 'Nadini Annisa Byant.jpeg', 'body habis di edit', 'a3639d86-26a6-4a5a-9c97-22886aa050a2', '2024-03-03 12:23:49', '2024-03-03 12:25:36');
+('eb86719d-c7b5-4d0a-b8f3-02224c3bc761', 'ini judul', 'sdfsdfsdf', 'bf06e6c7-6c8f-424c-bf8f-d90892e5219c', 'Nadini Annisa Byant.jpeg', 'in iadalah body', 'a3639d86-26a6-4a5a-9c97-22886aa050a2', '2024-03-04 12:12:11', '2024-03-04 12:12:11');
 
 -- --------------------------------------------------------
 
@@ -176,7 +177,8 @@ CREATE TABLE `token` (
 
 INSERT INTO `token` (`id_token`, `token`, `id_admin`, `created_at`, `expires_at`) VALUES
 (2, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluRmlhYmxlIiwiaWRfYWRtaW4iOiJhMzYzOWQ4Ni0yNmE2LTRhNWEtOWM5Ny0yMjg4NmFhMDUwYTIiLCJpYXQiOjE3MDkwMzIwMzAsImV4cCI6MTcwOTYzNjgzMH0.KtzzbGc3-sK3adMiAELBKgnLzcEoERJvOibVmswHQxs', 'a3639d86-26a6-4a5a-9c97-22886aa050a2', '2024-02-27 11:06:55', '2024-03-05'),
-(3, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluRmlhYmxlIiwiaWRfYWRtaW4iOiJhMzYzOWQ4Ni0yNmE2LTRhNWEtOWM5Ny0yMjg4NmFhMDUwYTIiLCJpYXQiOjE3MDkzMDA1OTMsImV4cCI6MTcwOTkwNTM5M30.iTmVDMvW4SqfkMrWWoFju8evh5awbzRDucyy6ZIEgG8', 'a3639d86-26a6-4a5a-9c97-22886aa050a2', '2024-03-01 13:42:54', '2024-03-08');
+(3, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluRmlhYmxlIiwiaWRfYWRtaW4iOiJhMzYzOWQ4Ni0yNmE2LTRhNWEtOWM5Ny0yMjg4NmFhMDUwYTIiLCJpYXQiOjE3MDkzMDA1OTMsImV4cCI6MTcwOTkwNTM5M30.iTmVDMvW4SqfkMrWWoFju8evh5awbzRDucyy6ZIEgG8', 'a3639d86-26a6-4a5a-9c97-22886aa050a2', '2024-03-01 13:42:54', '2024-03-08'),
+(4, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluRmlhYmxlIiwiaWRfYWRtaW4iOiJhMzYzOWQ4Ni0yNmE2LTRhNWEtOWM5Ny0yMjg4NmFhMDUwYTIiLCJpYXQiOjE3MDk1MzcxNjEsImV4cCI6MTcxMDE0MTk2MX0.0lpXs6_GHKVDSsz3tHt79NQvzC5HaWr5GTChBymfcnA', 'a3639d86-26a6-4a5a-9c97-22886aa050a2', '2024-03-04 07:20:47', '2024-03-11');
 
 --
 -- Indexes for dumped tables
@@ -235,7 +237,7 @@ ALTER TABLE `token`
 -- AUTO_INCREMENT untuk tabel `token`
 --
 ALTER TABLE `token`
-  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
