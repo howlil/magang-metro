@@ -30,14 +30,20 @@ function App() {
             <Route path="/login" element={<Login />} />
 
             {/* nester route admin */}
+            {/* postingan */}
             <Route
               path="/kelolaPostingan/tambahPostingan"
               element={<TambahPostingan />}
             />
             <Route
-              path="/kelolaPostingan/detailPostingan"
+              path="/kelolaPostingan/editPostingan/:id_postingan"
+              element={<TambahPostingan />}
+            />
+            <Route
+              path="/kelolaPostingan/detailPostingan/:id_postingan"
               element={<DetailPostingan />}
             />
+            {/* kategori */}
             <Route
               path="/kategori/tambahKategori"
               element={<TambahKategori />}
@@ -46,15 +52,20 @@ function App() {
               path="/kategori/editKategori/:id_kategori"
               element={<TambahKategori />}
             />
-
+            {/* tim */}
             <Route
-              path="/kelolaTim/tambahAnggota"
+              path="/kelolaTim/tambahTim"
               element={<TambahAnggota />}
             />
             <Route
-              path="/kategori/tambahKategori"
-              element={<TambahKategori />}
+              path="/kelolaTim/editTim/:id_team"
+              element={<TambahAnggota />}
             />
+            <Route
+              path="/kelolaTim/detailTim/:id_team"
+              element={<TambahAnggota />}
+            />
+            {/* posisi */}
             <Route
               path="/kelolaPosisi/tambahPosisi"
               element={<TambahPosisi />}

@@ -1,4 +1,4 @@
-const tambahPosisi = async (nama_posisi, slug) => {
+const tambahPosisi = async (nama_posisi) => {
     const myHeaders = new Headers();
     const token = localStorage.getItem("authToken");
   
@@ -6,8 +6,7 @@ const tambahPosisi = async (nama_posisi, slug) => {
     myHeaders.append("Authorization", `Bearer ${token}`);
   
     const urlencoded = new URLSearchParams();
-    urlencoded.append("nama_posis", nama_posisi);
-    urlencoded.append("slug", slug);
+    urlencoded.append("nama_posisi", nama_posisi);
   
     const requestOptions = {
       method: "POST",

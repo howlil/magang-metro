@@ -9,8 +9,10 @@ import SingleImage from "../../Elements/Galeri/SingleImage";
 import tambahPostingan from "../../../../api/postingan/tambahPost";
 import tampilKategori from "../../../../api/kategori/tampilKategori";
 import { useNavigate, useParams } from "react-router-dom";
+import detailPost from "../../../../api/postingan/detailPost";
 
 export default function FormPost() {
+  const [initialImageUrl, setInitialImageUrl] = useState("");
   const [judul, setJudul] = useState("");
   const [slug, setSlug] = useState("");
   const [kategori, setKategori] = useState([]);
@@ -20,6 +22,21 @@ export default function FormPost() {
   const navigate = useNavigate();
   const { id_postingan } = useParams();
   const isEditing = !!id_postingan;
+
+  useEffect(() => {
+    if (isEditing) {
+      detailPost(id_postingan).then((data) => {
+        if (data.success) {
+          setJudul(data.data.judul);
+          setSlug(data.data.slug);
+          setInitialImageUrl(data.data.foto_postingan);
+          console.log(data.data.foto_postingan);
+          setAmbilKat(data.data.dataKategori.nama_kategori);
+          setBody(data.data.body);
+        }
+      });
+    }
+  }, [id_postingan, isEditing]);
 
   // menampilkan kategori
   useEffect(() => {
@@ -46,7 +63,7 @@ export default function FormPost() {
       response = await tambahPostingan(judul, slug, ambilKat, body, file);
     }
     console.log(response);
-    // navigate("/kelolaPostingan");
+    navigate("/kelolaPostingan");
   };
 
   return (
@@ -54,7 +71,10 @@ export default function FormPost() {
       <form onSubmit={handleSubmit}>
         <Label label="Foto Postingan" />
         <div className={s.img}>
-          <SingleImage onFileSelect={(selectFile) => setFile(selectFile)} />
+          <SingleImage
+            onFileSelect={(selectedFile) => setFile(selectedFile)}
+            initialImageUrl={initialImageUrl}
+          />
         </div>
 
         <InputForm
@@ -78,7 +98,7 @@ export default function FormPost() {
 
         <SelectIndex
           label="Kategori"
-          placeholder={isEditing ? `${judul}` : "Masukan  Kategori"}
+          placeholder={isEditing ? `${ambilKat}` : "Masukan  Kategori"}
           htmlFor="kategori"
           name="kategori"
           value={ambilKat}

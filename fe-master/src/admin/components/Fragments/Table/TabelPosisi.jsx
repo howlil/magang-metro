@@ -6,6 +6,7 @@ import TabelAction from './TabelAction'
 import tampilPosisi from "../../../../api/posisi/tampilPosisi"
 import hapusPosisi from "../../../../api/posisi/hapusPosisi"
 
+
 export default function TabelPosisi() {
   const[getPosisi,setPosisi] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -55,7 +56,7 @@ export default function TabelPosisi() {
               <td>
                 <TabelAction
                   onEdit={() =>
-                    navigate(`/kategori/editPosisi/${getPosisi.id_posisi}`)
+                    navigate(`/kelolaPosisi/editPosisi/${getPosisi.id_posisi}`)
                   }
                   onDelete={() => showDeleteConfirmation(getPosisi.id_posisi)}
                 />

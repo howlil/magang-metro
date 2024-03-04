@@ -62,7 +62,7 @@ export default function TabelPostingan() {
               <td>
                 <TabelAction 
                 onView={()=>{
-                  navigate("/kelolaPostingan/detailPostingan")
+                  navigate(`/kelolaPostingan/detailPostingan/${post.id_postingan}`)
                 }} 
                onEdit={() =>
                 navigate(`/kelolaPostingan/editPostingan/${post.id_postingan}`)
