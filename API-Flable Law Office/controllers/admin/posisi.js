@@ -79,4 +79,19 @@ const hapusPosisi = async (req,res) => {
     return res.status(200).json({success: true, message: 'Data posisi berhasil dihapus'})
 }
 
-module.exports = {tampilPosisi, tambahPosisi, editPosisi, hapusPosisi}
+//detail posisi
+const detailPosisi = async (req,res) => {
+    try {
+        const {id_posisi} = req.params
+        const findPosisi = await modelPosisi.findByPk(id_posisi)
+        if (!findPosisi) {
+            return res.status(400).json({success: false, message: 'Data posisi tidak ditemukan'})
+        }         
+        return res.status(200).json({success: true, message: 'Data posisi ditemukan', data: findPosisi})
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({success: false, message: 'Kesalahan server'})
+    }
+}
+
+module.exports = {tampilPosisi, tambahPosisi, editPosisi, hapusPosisi, detailPosisi}
