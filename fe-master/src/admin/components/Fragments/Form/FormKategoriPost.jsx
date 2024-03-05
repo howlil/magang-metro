@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import s from "./form.module.css";
 import InputForm from "../../Elements/Input/Index";
 import Button from "../../../../components/Button/Button";
 import tambahKategori from "../../../../api/kategori/tambahKategori";
 import editKategori from "../../../../api/kategori/editKategori";
 import detailKategori from "../../../../api/kategori/detailKategori";
+import CircularProgress from "@mui/material/CircularProgress";
+import Toast from "../../Elements/Alert/Toast"; 
 
 export default function FormKategoriPost() {
   const [kategori, setKategori] = useState("");
   const [slug, setSlug] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [notif, setNotif] = useState({ message: "", type: "" });
   const navigate = useNavigate();
   const { id_kategori } = useParams();
   const isEditing = !!id_kategori;
 
-  // memanggil data berdasarkan id
   useEffect(() => {
     if (isEditing) {
       detailKategori(id_kategori)
@@ -30,47 +33,77 @@ export default function FormKategoriPost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let res;
-    if (isEditing) {
-       res = await editKategori(kategori, slug,id_kategori);
- 
-    } else {
-       res = await tambahKategori(kategori, slug);
+    setLoading(true);
 
+    try {
+      let response;
+      if (isEditing) {
+        response = await editKategori(id_kategori, kategori, slug);
+      } else {
+        response = await tambahKategori(kategori, slug);
+      }
+
+      if (response.success) {
+        setNotif({
+          message: response.message || "Successfully saved!",
+          type: "success",
+        });
+        navigate("/kelolaPostingan");
+      } else {
+        setNotif({
+          message: response.message || "Failed to save data!",
+          type: "error",
+        });
+      }
+    } catch (error) {
+      setNotif({ message: error.toString(), type: "error" });
+    } finally {
+      setLoading(false);
     }
-    console.log(res);
-    navigate("/kategori");
   };
 
   return (
     <div className={s.layout}>
-      <form onSubmit={handleSubmit}>
-        <InputForm
-          label="Nama Kategori"
-          placeholder={isEditing ? `${kategori}` : "Masukan Nama Kategori"}
-          htmlFor="namaKategori"
-          name="namaKategori"
-          type="text"
-          value={kategori}
-          onChange={(e) => setKategori(e.target.value)}
-        />
-        <InputForm
-          label="Slug"
-          placeholder={isEditing ? `${slug}` : "Masukan Slug"}
-          htmlFor="slug"
-          name="slug"
-          type="text"
-          value={slug}
-          onChange={(e) => setSlug(e.target.value)}
-        />
-        <div className={s.btnly}>
-          <Button
-            label={isEditing ? "Simpan" : "Tambah"}
-            styleBtn="btnform"
-            type="submit"
-          />
+      {loading ? (
+        <div className={s.loadingContainer}>
+          <CircularProgress />
         </div>
-      </form>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <InputForm
+            label="Nama Kategori"
+            placeholder="Masukan Nama Kategori"
+            htmlFor="namaKategori"
+            name="namaKategori"
+            type="text"
+            value={kategori}
+            onChange={(e) => setKategori(e.target.value)}
+          />
+          <InputForm
+            label="Slug"
+            placeholder="Masukan Slug"
+            htmlFor="slug"
+            name="slug"
+            type="text"
+            value={slug}
+            onChange={(e) => setSlug(e.target.value)}
+          />
+          <div className={s.btnly}>
+            <Button
+              label={isEditing ? "Simpan" : "Tambah"}
+              styleBtn="btnform"
+              type="submit"
+            />
+          </div>
+        </form>
+      )}
+      {notif.message && (
+        <Toast
+          message={notif.message}
+          type={notif.type}
+          onClose={() => setNotif({ message: "", type: "" })}
+        />
+      )}
     </div>
   );
 }

@@ -11,6 +11,8 @@ import tampilPosisi from "../../../../api/posisi/tampilPosisi";
 import editTim from "../../../../api/tim/editTim";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import Toast from "../../Elements/Alert/Toast";
 
 export default function FormAnggota() {
   const [initialImageUrl, setInitialImageUrl] = useState("");
@@ -22,6 +24,8 @@ export default function FormAnggota() {
   const [linkedin, setLinkedin] = useState("");
   const [file, setFile] = useState(null);
   const [pdfFile, setPdfFile] = useState(null);
+  const [loading, setLoading] = useState(false); // State untuk loading
+  const [notif, setNotif] = useState({ message: "", type: "" }); // State untuk notifikasi
   const navigate = useNavigate();
   const { id_team } = useParams();
   const isEditing = !!id_team;
@@ -35,7 +39,7 @@ export default function FormAnggota() {
           setAmbilPosisi(data.dataPosisi.nama_posisi);
           setInstagram(data.instagram);
           setInitialImageUrl(data.foto_tim);
-          setPdfFile(data.file_porto)
+          setPdfFile(data.file_porto);
           setLinkedin(data.linkedin);
         }
       });
@@ -52,125 +56,161 @@ export default function FormAnggota() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let response;
-    if (isEditing) {
-      response = await editTim(
-        nama,
-        bidang,
-        ambilPosisi,
-        instagram,
-        linkedin,
-        file,
-        pdfFile,
-        id_team
-      );
-    } else {
-      response = await tambahTim();
+    setLoading(true);
+
+    try {
+      let response;
+      if (isEditing) {
+        response = await editTim(
+          nama,
+          bidang,
+          ambilPosisi,
+          instagram,
+          linkedin,
+          file,
+          pdfFile,
+          id_team
+        );
+      } else {
+        response = await tambahTim(
+          nama,
+          bidang,
+          ambilPosisi,
+          instagram,
+          linkedin,
+          file,
+          pdfFile
+        );
+      }
+
+      // Contoh response handling
+      if (response.success) {
+        setNotif({ message: "Berhasil menyimpan data", type: "success" });
+        navigate("/kelolaTim");
+      } else {
+        throw new Error(response.message || "Gagal menyimpan data");
+      }
+    } catch (error) {
+      setNotif({
+        message: error.message || "Terjadi kesalahan",
+        type: "error",
+      });
+    } finally {
+      setLoading(false); 
     }
-    console.log(response);
-    // navigate("/kelolaTim");
   };
   return (
     <div className={s.layout}>
-      <form onSubmit={handleSubmit}>
-        <Label label="Foto Tim" />
-        <div className={s.img}>
-          <SingleImage
-            onFileSelect={(selectedFile) => setFile(selectedFile)}
-            initialImageUrl={initialImageUrl}
+      {loading ? (
+        <CircularProgress style={{ display: "block", margin: "0 auto" }} />
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <Label label="Foto Tim" />
+          <div className={s.img}>
+            <SingleImage
+              onFileSelect={(selectedFile) => setFile(selectedFile)}
+              initialImageUrl={initialImageUrl}
+            />
+          </div>
+
+          <InputForm
+            label="Nama"
+            placeholder={isEditing ? `${nama}` : "Masukan Nama"}
+            htmlFor="nama"
+            type="text"
+            name="nama"
+            value={nama}
+            onChange={(e) => setNama(e.target.value)}
           />
-        </div>
 
-        <InputForm
-          label="Nama"
-          placeholder={isEditing ? `${nama}` : "Masukan Nama"}
-          htmlFor="nama"
-          type="text"
-          name="nama"
-          value={nama}
-          onChange={(e) => setNama(e.target.value)}
-        />
+          <InputForm
+            nama="spesialisasi"
+            placeholder={isEditing ? `${bidang}` : "Masukan Spesialisasi"}
+            label="Spesialisasi"
+            htmlFor="spesialisasi"
+            type="text"
+            value={bidang}
+            onChange={(e) => setBidang(e.target.value)}
+          />
 
-        <InputForm
-          nama="spesialisasi"
-          placeholder={isEditing ? `${bidang}` : "Masukan Spesialisasi"}
-          label="Spesialisasi"
-          htmlFor="spesialisasi"
-          type="text"
-          value={bidang}
-          onChange={(e) => setBidang(e.target.value)}
-        />
-
-        <SelectIndex
-          label="Posisi"
-          placeholder={
-            isEditing
-              ? posisi
+          <SelectIndex
+            label="Posisi"
+            placeholder={
+              isEditing
+                ? posisi
+                  ? `${ambilPosisi}`
+                  : "Plih Posisi"
+                : posisi
                 ? `${ambilPosisi}`
-                : "Plih Posisi"
-              : posisi
-              ? `${ambilPosisi}`
-              : "Tambahkan Posisi dulu"
-          }
-          htmlFor="posisi"
-          value={ambilPosisi}
-          onChange={(e) => setAmbilPosisi(e.target.value)}
-          options={
-            posisi
-              ? posisi.map((p) => ({
-                  value: p.id_posisi,
-                  label: p.nama_posisi,
-                }))
-              : [
-                  {
-                    value: "",
-                    placeholder: "Tambahkan Posisi dulu",
-                    isDisabled: true,
-                  },
-                ]
-          }
-        />
-
-        <InputForm
-          nama="instagram"
-          placeholder={
-            isEditing
-              ? `${instagram}`
-              : " Masukan URL profile instagram anggota"
-          }
-          label="Instagram"
-          htmlFor="instagram"
-          type="text"
-          value={instagram}
-          onChange={(e) => setInstagram(e.target.value)}
-        />
-
-        <InputForm
-          nama="linkedin"
-          placeholder={
-            isEditing ? `${linkedin}` : " Masukan URL linkedin anggota"
-          }
-          label="LinkedIn"
-          htmlFor="linkedin"
-          type="text"
-          value={linkedin}
-          onChange={(e) => setLinkedin(e.target.value)}
-        />
-        <CostumFile
-          label="Upload Portofolio (.Pdf)"
-          htmlFor="porto"
-          btn="Browse"
-          setPdfFile={setPdfFile}
-        />
-
-        <div className={s.btnly}>
-          <Button
-            type="submit"
-            label={isEditing ? "Simpan" : "Tambah"}
-            styleBtn="btnform"
+                : "Tambahkan Posisi dulu"
+            }
+            htmlFor="posisi"
+            value={ambilPosisi}
+            onChange={(e) => setAmbilPosisi(e.target.value)}
+            options={
+              posisi
+                ? posisi.map((p) => ({
+                    value: p.id_posisi,
+                    label: p.nama_posisi,
+                  }))
+                : [
+                    {
+                      value: "",
+                      placeholder: "Tambahkan Posisi dulu",
+                      isDisabled: true,
+                    },
+                  ]
+            }
           />
-        </div>
-      </form>
+
+          <InputForm
+            nama="instagram"
+            placeholder={
+              isEditing
+                ? `${instagram}`
+                : " Masukan URL profile instagram anggota"
+            }
+            label="Instagram"
+            htmlFor="instagram"
+            type="text"
+            value={instagram}
+            onChange={(e) => setInstagram(e.target.value)}
+          />
+
+          <InputForm
+            nama="linkedin"
+            placeholder={
+              isEditing ? `${linkedin}` : " Masukan URL linkedin anggota"
+            }
+            label="LinkedIn"
+            htmlFor="linkedin"
+            type="text"
+            value={linkedin}
+            onChange={(e) => setLinkedin(e.target.value)}
+          />
+          <CostumFile
+            label="Upload Portofolio (.Pdf)"
+            htmlFor="porto"
+            btn="Browse"
+            setPdfFile={setPdfFile}
+          />
+
+          <div className={s.btnly}>
+            <Button
+              type="submit"
+              label={isEditing ? "Simpan" : "Tambah"}
+              styleBtn="btnform"
+            />
+          </div>
+        </form>
+      )}
+      {notif.message && (
+        <Toast
+          message={notif.message}
+          type={notif.type}
+          onClose={() => setNotif({ message: "", type: "" })}
+        />
+      )}
     </div>
   );
 }
