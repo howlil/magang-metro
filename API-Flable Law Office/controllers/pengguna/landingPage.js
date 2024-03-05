@@ -2,6 +2,7 @@ const response = require('express')
 const modelTim = require('../../models/tim')
 const modelArtikel = require('../../models/postingan')
 const modelAdmin = require('../../models/admin')
+const modelGaleri = require('../../models/galeri')
 const nodemailer = require('nodemailer')
 require('dotenv').config()
 
@@ -96,4 +97,20 @@ const tampilTotalKonsul = async (req,res) => {
     return res.status(200).json({success: true, message: 'Total konsultasi berhasil didapatkan', total: totalKonsultasi})
 }
 
-module.exports = {tampilTim, tampilArtikel, detailArtikel, konsultasiGratis, tampilTotalKonsul}
+//tampil galeri
+const tampilGaleri = async (req,res) => {
+    try {
+        const dataGaleri = await modelGaleri.findAll({
+            attributes: ['foto_galeri']
+        })
+        if (dataGaleri) {
+            return res.status(200).json({success: true, message: 'Data galeri ditemukan', data: dataGaleri})
+        } else {
+            return res.status(400).json({success: false, message: 'Data galeri tidak tersedia'})
+        }
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({success: false, message: 'Kesalahan server'})
+    }
+}
+module.exports = {tampilTim, tampilArtikel, detailArtikel, konsultasiGratis, tampilTotalKonsul, tampilGaleri}
