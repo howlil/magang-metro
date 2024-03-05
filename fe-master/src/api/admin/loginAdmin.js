@@ -19,11 +19,11 @@ const loginAdmin = async (username, password) => {
       requestOptions
     );
 
-    if (!response.ok) {
-      throw new Error(
-        `Network response was not ok, status: ${response.status}`
-      );
-    }
+    // if (!response.ok) {
+    //   throw new Error(
+    //     `Network response was not ok, status: ${response.status}`
+    //   );
+    // }
     const result = await response.json();
     const token = result.token;
 
@@ -32,7 +32,7 @@ const loginAdmin = async (username, password) => {
     }
     return result;
   } catch (error) {
-    console.error("Fetch error:", error);
+    console.log("Fetch error:", error);
     throw error;
   }
 };

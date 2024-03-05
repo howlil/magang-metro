@@ -5,11 +5,11 @@ import AlertNotif from "../../Elements/Alert/AlertNotif";
 import TabelAction from "./TabelAction";
 import { useNavigate } from "react-router-dom";
 import hapusPost from "../../../../api/postingan/hapusPost";
-import Skeleton from "@mui/material/Skeleton"; // Import Skeleton
+import Skeleton from "@mui/material/Skeleton"; 
 
 export default function TabelPostingan() {
   const [getPost, setPost] = useState([]);
-  const [loading, setLoading] = useState(true); // State untuk loading
+  const [loading, setLoading] = useState(true); 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [postToDelete, setPostToDelete] = useState(null);
 
@@ -55,7 +55,7 @@ export default function TabelPostingan() {
             style={{ marginBottom: 4 }}
           />
         ))
-      ) : getPost.length > 0 ? (
+      ) : getPost ? (
         <table className={s.table}>
           <thead>
             <tr>
@@ -95,6 +95,8 @@ export default function TabelPostingan() {
       ) : (
         <div>Belum Ada Data</div>
       )}
+      
+
       <AlertNotif
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

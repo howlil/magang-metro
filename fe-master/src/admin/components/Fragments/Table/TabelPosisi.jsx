@@ -11,6 +11,7 @@ export default function TabelPosisi() {
   const [getPosisi, setPosisi] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [posisiToDelete, setPosisToDelete] = useState(null);
+  const [loading, setLoading] = useState(true); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,9 +19,13 @@ export default function TabelPosisi() {
       try {
         const data = await tampilPosisi();
         setPosisi(data.data);
+        setLoading(false);
+
       } catch (error) {
         console.log(error);
         setPosisi([]);
+        setLoading(false);
+
       }
     };
     fetchData();
@@ -42,9 +47,9 @@ export default function TabelPosisi() {
 
   return (
     <div className={s.layout}>
-      {getPosisi === null ? (
+      {loading ? (
         <div>
-          {Array.from(new Array(5)).map((_, index) => (
+          {Array.from(new Array(4)).map((_, index) => (
             <Skeleton
               key={index}
               variant="rectangular"
@@ -54,7 +59,7 @@ export default function TabelPosisi() {
             />
           ))}
         </div>
-      ) : getPosisi.length > 0 ? (
+      ) : getPosisi? (
         <table className={s.table}>
           <thead>
             <tr>

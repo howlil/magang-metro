@@ -48,7 +48,7 @@ export default function FormPost() {
     tampilKategori()
       .then((data) => {
         setKategori(data.data);
-        console.log(data);
+        console.table(data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -60,6 +60,7 @@ export default function FormPost() {
 
     try {
       let response;
+
       if (isEditing) {
         response = await editPost(
           judul,
@@ -95,16 +96,8 @@ export default function FormPost() {
   return (
     <div className={s.layout}>
       {loading ? (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
-          <CircularProgress />
-        </div>
+        <CircularProgress style={{ display: "block", margin: "0 auto" }} />
+
       ) : (
         <form onSubmit={handleSubmit}>
           <Label label="Foto Postingan" />

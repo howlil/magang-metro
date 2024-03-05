@@ -11,6 +11,8 @@ export default function TabelKategori() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [getKategori, setKategori] = useState(null);
   const [kategoriToDelete, setKategoriToDelete] = useState(null);
+  const [loading, setLoading] = useState(true); 
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,8 +20,11 @@ export default function TabelKategori() {
       try {
         const data = await tampilKategori();
         setKategori(data.data);
+        setLoading(false)
       } catch (error) {
         console.log(error);
+        setLoading(false)
+
       }
     };
     getData();
@@ -41,7 +46,19 @@ export default function TabelKategori() {
 
   return (
     <div className={s.layout}>
-      {getKategori ? (
+      {loading ? (
+        <div>
+          {Array.from(new Array(5)).map((_, index) => (
+            <Skeleton
+              key={index}
+              variant="rectangular"
+              width="100%"
+              height={40}
+              style={{ marginBottom: 4 }}
+            />
+          ))}
+        </div>
+      ): getKategori ? (
         <table className={s.table}>
           <thead>
             <tr>
@@ -68,17 +85,7 @@ export default function TabelKategori() {
           </tbody>
         </table>
       ) : (
-        <div>
-          {Array.from(new Array(5)).map((_, index) => (
-            <Skeleton
-              key={index}
-              variant="rectangular"
-              width="100%"
-              height={40}
-              style={{ marginBottom: 4 }}
-            />
-          ))}
-        </div>
+        <div>Belum Ada Data</div>
       )}
       <AlertNotif
         isOpen={isModalOpen}

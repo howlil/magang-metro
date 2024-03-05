@@ -16,12 +16,18 @@ const tambahKategori = async (namaKategori, slug) => {
     redirect: "follow",
   };
 
-  fetch(
-    "https://28jqlrhg-5000.asse.devtunnels.ms/tambahKategori",
-    requestOptions
-  )
-    .then((response) => response.text())
-    .then((result) => console.log(result));
+  let request;
+  try {
+    const response = await fetch(
+      "https://28jqlrhg-5000.asse.devtunnels.ms/tambahKategori",
+      requestOptions
+    )
+      request = await response.json()
+  } catch (error) {
+    console.log(error);
+  }
+  return request
+   
 };
 
 export default tambahKategori;
