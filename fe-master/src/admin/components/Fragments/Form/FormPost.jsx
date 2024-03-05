@@ -98,17 +98,30 @@ export default function FormPost() {
 
         <SelectIndex
           label="Kategori"
-          placeholder={isEditing ? `${ambilKat}` : "Masukan  Kategori"}
+          placeholder={
+            isEditing
+              ? (kategori  ? `${ambilKat}` : "Masukan kategori")
+              : (kategori ? `${ambilKat}` : "Tambahkan kategori dulu")
+          }
           htmlFor="kategori"
           name="kategori"
           value={ambilKat}
           onChange={(e) => setAmbilKat(e.target.value)}
-          options={kategori.map((kat) => ({
-            value: kat.id_kategori,
-            label: kat.nama_kategori,
-          }))}
+          options={
+            kategori
+              ? kategori.map((kat) => ({
+                  value: kat.id_kategori,
+                  label: kat.nama_kategori,
+                }))
+              : [
+                  {
+                    value: "",
+                    placeholder: "Tambahkan kategori dulu",
+                    isDisabled: true,
+                  },
+                ]
+          }
         />
-
         <TextArea
           label="Body"
           htmlFor="body"
