@@ -9,6 +9,7 @@ import SingleImage from "../../Elements/Galeri/SingleImage";
 import tambahPostingan from "../../../../api/postingan/tambahPost";
 import tampilKategori from "../../../../api/kategori/tampilKategori";
 import { useNavigate, useParams } from "react-router-dom";
+import editPost from "../../../../api/postingan/editPost";
 import detailPost from "../../../../api/postingan/detailPost";
 
 export default function FormPost() {
@@ -23,6 +24,7 @@ export default function FormPost() {
   const { id_postingan } = useParams();
   const isEditing = !!id_postingan;
 
+  
   useEffect(() => {
     if (isEditing) {
       detailPost(id_postingan).then((data) => {
@@ -51,7 +53,7 @@ export default function FormPost() {
     e.preventDefault();
     let response;
     if (isEditing) {
-      response = await tambahPostingan(
+      response = await editPost(
         judul,
         slug,
         ambilKat,
@@ -65,6 +67,7 @@ export default function FormPost() {
     console.log(response);
     navigate("/kelolaPostingan");
   };
+  
 
   return (
     <div className={s.layout}>
@@ -100,8 +103,12 @@ export default function FormPost() {
           label="Kategori"
           placeholder={
             isEditing
-              ? (kategori  ? `${ambilKat}` : "Masukan kategori")
-              : (kategori ? `${ambilKat}` : "Tambahkan kategori dulu")
+              ? kategori
+                ? `${ambilKat}`
+                : "Masukan kategori"
+              : kategori
+              ? `${ambilKat}`
+              : "Tambahkan kategori dulu"
           }
           htmlFor="kategori"
           name="kategori"

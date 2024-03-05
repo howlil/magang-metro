@@ -25,7 +25,7 @@ export default function TabelPosisi() {
       }).catch(error=>console.log(error))
     }
     fetchData()
-  })
+  },[])
 
   
   const handleDeleter = async (id) => {

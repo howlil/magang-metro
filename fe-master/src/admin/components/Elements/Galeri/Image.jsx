@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from "./image.module.css";
 import silang from "/public/silang.svg";
 import add from "/public/addimg.svg";
+import hapusGaleri from "../../../../api/galeri/hapusGaleri"
+import tambahGaleri from "../../../../api/galeri/tambahGaleri"
+import tampilGaleri from "../../../../api/galeri/tampilGaleri"
 
 const Image = () => {
   const [images, setImages] = useState([]);
+
+  
 
   const handleImageChange = (e) => {
     const files = e.target.files;

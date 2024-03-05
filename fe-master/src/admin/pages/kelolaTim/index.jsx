@@ -17,7 +17,7 @@ const KelolaTim = () => {
           title="Kelola Tim"
           labelbtn="Tambah Anggota"
           onClick={() => {
-            navigate("/kelolaTim/tambahAnggota");
+            navigate("/kelolaTim/tambahTim");
           }}
         />
         <TabelTim />
