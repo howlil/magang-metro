@@ -26,7 +26,6 @@ export default function FormKategoriPost() {
           if (data.success) {
             setKategori(data.data.nama_kategori);
             setSlug(data.data.slug);
-            console.log(id_kategori);
           }
         })
         .catch((error) => console.log(error));
@@ -36,12 +35,12 @@ export default function FormKategoriPost() {
   // handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoading(true)
 
     let response;
     try {
       if (isEditing) {
-        response = await editKategori(id_kategori, kategori, slug);
+        response = await editKategori(kategori, slug, id_kategori);
         console.log(response.message);
       } else {
         response = await tambahKategori(kategori, slug);

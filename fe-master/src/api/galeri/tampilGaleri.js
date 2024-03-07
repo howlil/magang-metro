@@ -16,11 +16,13 @@ const tampilPosisi = async () => {
       requestOptions
     );
     req = await response.json();
+    return req;
+
   } catch (error) {
     console.error(error);
+    return []
   }
 
-  return req;
 };
 
 export default tampilPosisi;

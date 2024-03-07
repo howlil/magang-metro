@@ -1,18 +1,18 @@
 import AdminLayout from "../../../components/Layout/AdminLayout";
 import Title from "../../../components/Elements/Title/Title";
 import FormPost from "../../../components/Fragments/Form//FormPost";
-import { useLocation } from "react-router-dom"; 
-
+import { useLocation } from "react-router-dom";
 
 export default function TambahPostingan() {
-  const location = useLocation(); 
-  const pathname = location.pathname; 
+  const location = useLocation();
+  const pathname = location.pathname;
+
 
   let title;
   if (pathname.includes("/kelolaPostingan/editPostingan")) {
-    title = "Edit Potingan"; 
+    title = "Edit Potingan";
   } else if (pathname.includes("/kelolaPostingan/tambahPostingan")) {
-    title = "Tambah Postingan"; 
+    title = "Tambah Postingan";
   } else {
     title = "Postingan";
   }

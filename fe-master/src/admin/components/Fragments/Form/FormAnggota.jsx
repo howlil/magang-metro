@@ -13,6 +13,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Toast from "../../Elements/Alert/Toast";
+import TextArea from "../../Elements/Input/TextArea";
 
 export default function FormAnggota() {
   const [initialImageUrl, setInitialImageUrl] = useState("");
@@ -20,12 +21,14 @@ export default function FormAnggota() {
   const [bidang, setBidang] = useState("");
   const [posisi, setPosisi] = useState([]);
   const [ambilPosisi, setAmbilPosisi] = useState("");
+  const [idPosisi, setIdPosisi] = useState("");
   const [instagram, setInstagram] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [file, setFile] = useState(null);
   const [pdfFile, setPdfFile] = useState(null);
-  const [loading, setLoading] = useState(false); // State untuk loading
-  const [notif, setNotif] = useState({ message: "", type: "" }); // State untuk notifikasi
+  const [loading, setLoading] = useState(false);
+  const [notif, setNotif] = useState("");
+  const [deskripsi, setDeskripsi] = useState("");
   const navigate = useNavigate();
   const { id_team } = useParams();
   const isEditing = !!id_team;
@@ -33,14 +36,18 @@ export default function FormAnggota() {
   useEffect(() => {
     if (isEditing) {
       detailTim(id_team).then((data) => {
+        console.log("====================================");
+        console.table(data);
+        console.log("====================================");
         if (data.success) {
-          setNama(data.nama);
-          setBidang(data.spesialis);
-          setAmbilPosisi(data.dataPosisi.nama_posisi);
-          setInstagram(data.instagram);
-          setInitialImageUrl(data.foto_tim);
-          setPdfFile(data.file_porto);
-          setLinkedin(data.linkedin);
+          setNama(data.data.nama);
+          setBidang(data.data.spesialis);
+          setAmbilPosisi(data.data.dataPosisi.nama_posisi);
+          setInstagram(data.data.data.instagram);
+          setInitialImageUrl(data.data.foto_tim);
+          setPdfFile(data.data.portofolio);
+          setLinkedin(data.data.linkedln);
+          setDeskripsi(data.data.deskripsi);
         }
       });
     }
@@ -50,6 +57,9 @@ export default function FormAnggota() {
     tampilPosisi()
       .then((data) => {
         setPosisi(data.data);
+        console.log("====================================");
+        console.log(data.data);
+        console.log("====================================");
       })
       .catch((error) => console.log(error));
   }, []);
@@ -62,41 +72,39 @@ export default function FormAnggota() {
       let response;
       if (isEditing) {
         response = await editTim(
-          nama,
-          bidang,
-          ambilPosisi,
-          instagram,
-          linkedin,
           file,
           pdfFile,
+          nama,
+          bidang,
+          idPosisi,
+          deskripsi,
+          instagram,
+          linkedin,
           id_team
         );
       } else {
         response = await tambahTim(
+          file,
+          pdfFile,
           nama,
           bidang,
-          ambilPosisi,
+          idPosisi,
+          deskripsi,
           instagram,
-          linkedin,
-          file,
-          pdfFile
+          linkedin
         );
       }
 
-      // Contoh response handling
       if (response.success) {
-        setNotif({ message: "Berhasil menyimpan data", type: "success" });
+        setNotif(response.message);
         navigate("/kelolaTim");
       } else {
-        throw new Error(response.message || "Gagal menyimpan data");
+        setNotif(response.message);
       }
     } catch (error) {
-      setNotif({
-        message: error.message || "Terjadi kesalahan",
-        type: "error",
-      });
+      setNotif(response.message);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
   return (
@@ -145,12 +153,20 @@ export default function FormAnggota() {
                 : "Tambahkan Posisi dulu"
             }
             htmlFor="posisi"
-            value={ambilPosisi}
-            onChange={(e) => setAmbilPosisi(e.target.value)}
+            value={idPosisi}
+            onChange={(e) => {
+              const selectPosisi = posisi.find(
+                (x) => x.id_posisi.toString() === e.target.value
+              );
+              if (selectPosisi) {
+                setIdPosisi(selectPosisi.id_posisi);
+                setAmbilPosisi(selectPosisi.nama_kategori);
+              }
+            }}
             options={
               posisi
                 ? posisi.map((p) => ({
-                    value: p.id_posisi,
+                    value: p.id_posisi.toString(),
                     label: p.nama_posisi,
                   }))
                 : [
@@ -161,6 +177,16 @@ export default function FormAnggota() {
                     },
                   ]
             }
+          />
+          <TextArea
+            label="Deskripsi Tim"
+            htmlFor="deskirpsi"
+            name="deskripsi"
+            placeholder={
+              isEditing ? `${deskripsi}` : "Masukan Deskripsi disini"
+            }
+            value={deskripsi}
+            onChange={(e) => setDeskripsi(e.target.value)}
           />
 
           <InputForm

@@ -1,20 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import s from "./image.module.css";
 import silang from "/public/silang.svg";
 import add from "/public/addimg.svg";
-import hapusGaleri from "../../../../api/galeri/hapusGaleri"
-import tambahGaleri from "../../../../api/galeri/tambahGaleri"
-import tampilGaleri from "../../../../api/galeri/tampilGaleri"
+import hapusGaleri from "../../../../api/galeri/hapusGaleri";
+import tambahGaleri from "../../../../api/galeri/tambahGaleri";
+import tampilGaleri from "../../../../api/galeri/tampilGaleri";
 
 const Image = () => {
   const [images, setImages] = useState([]);
 
-  
+  useEffect(() => {
+    const fetchdata = async () => {
+      await tampilGaleri().then((data) => {
+        setImages(data.data);
+      });
+    };
+    fetchdata();
+  }, []);
 
   const handleImageChange = (e) => {
     const files = e.target.files;
-    const newImages = Array.from(files).map(file => URL.createObjectURL(file));
-    setImages(prevImages => [...prevImages, ...newImages]);
+    const newImages = Array.from(files).map((file) =>
+      URL.createObjectURL(file)
+    );
+    setImages((prevImages) => [...prevImages, ...newImages]);
   };
 
   const handleRemoveImage = (index) => {
@@ -24,31 +33,37 @@ const Image = () => {
   };
 
   const handleAddImage = () => {
-    document.getElementById('fileInput').click();
+    document.getElementById("fileInput").click();
   };
 
   return (
     <div className={s.flex}>
       <button onClick={handleAddImage} className={s.button}>
         <div>
-          <img className={s.add} src={add} alt='addimage'/>
+          <img className={s.add} src={add} alt="addimage" />
         </div>
-        <h1>Klik untuk <br /> tambah foto</h1>
+        <h1>
+          Klik untuk <br /> tambah foto
+        </h1>
       </button>
-      {images.map((image, index) => (
-          <div key={index} className={s.container}>
-            <button className={s.close} onClick={() => handleRemoveImage(index)}>
-              <img className={s.silang} src={silang} alt='silang'/>
-            </button>
-            <img src={image} className={s.layout} alt={`Image ${index + 1}`} />      
-          </div>
+      {images.map((image) => (
+        <div key={image.id_galeri} className={s.container}>
+          <button className={s.close} onClick={() => handleRemoveImage(image.id_galeri)}>
+            <img className={s.silang} src={silang} alt="silang" />
+          </button>
+          <img
+            src={`https://28jqlrhg-5000.asse.devtunnels.ms/fotoGaleri/${image.foto_galeri}`}
+            className={s.layout}
+            alt={`Image ${image.id_galeri + 1}`}
+          />
+        </div>
       ))}
       <input
         id="fileInput"
         type="file"
-        accept="image/*"
+        accept="images/*"
         multiple
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
         onChange={handleImageChange}
       />
     </div>

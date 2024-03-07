@@ -12,15 +12,13 @@ export default function TambahAnggota() {
     title = "Edit Tim";
   } else if (pathname.includes("/kelolaTim/tambahTim")) {
     title = "Tambah Tim";
-  } else {
-    title = "Tim";
   }
 
   return (
     <div>
       <AdminLayout>
         <div className="s.layout">
-          <Title title="Tambah Anggota" />
+          <Title title={title} />
           <FormAnggota />
         </div>
       </AdminLayout>

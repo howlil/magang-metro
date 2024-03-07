@@ -13,7 +13,6 @@ export default function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMsg("");
     let result;
     try {
       result = await loginAdmin(name, password);

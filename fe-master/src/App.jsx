@@ -14,6 +14,7 @@ import TambahKategori from "./admin/pages/kategori/tambahKategori";
 import TambahPosisi from "./admin/pages/kelolaPosisi/tambahPosisi";
 import DetailPostingan from "./admin/pages/kelolaPostingan/detailPostingan";
 import { ProtectedRoute } from "./utils/ProtectedRouteContex"; // Pastikan Anda telah membuat komponen ini
+import DetailTim from "./admin/pages/kelolaTim/detailTim";
 
 function App() {
   return (
@@ -136,7 +137,7 @@ function App() {
               path="/kelolaTim/detailTim/:id_team"
               element={
                 <ProtectedRoute>
-                  <TambahAnggota />
+                  <DetailTim />
                 </ProtectedRoute>
               }
             />

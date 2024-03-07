@@ -4,10 +4,11 @@ import add from "/public/addimg.svg";
 
 const SingleImage = ({ onFileSelect, initialImageUrl }) => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [apiImg, setApiImg] = useState(null);
 
   useEffect(() => {
     if (initialImageUrl) {
-      setSelectedImage(initialImageUrl);
+      setApiImg(initialImageUrl);
     }
   }, [initialImageUrl]);
 
@@ -20,7 +21,10 @@ const SingleImage = ({ onFileSelect, initialImageUrl }) => {
           setSelectedImage(imageUrl);
           onFileSelect(file);
         } catch (error) {
-          console.error("Error creating object URL for the selected file:", error);
+          console.error(
+            "Error creating object URL for the selected file:",
+            error
+          );
         }
       }
     } else {
@@ -38,9 +42,13 @@ const SingleImage = ({ onFileSelect, initialImageUrl }) => {
         {selectedImage && (
           <img
             className={s.layout}
-            src={selectedImage}
+            src={
+              selectedImage
+                ? selectedImage
+                : ` https://28jqlrhg-5000.asse.devtunnels.ms/fotoPostingan/${apiImg} `
+            }
             alt="selected image"
-            onClick={handleAddImage} // Reusing handleAddImage for consistency
+            onClick={handleAddImage}
           />
         )}
 

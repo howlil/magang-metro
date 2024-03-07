@@ -144,7 +144,7 @@ export default function FormPost() {
             onChange={(e) => {
               const selectedKategori = kategori.find(
                 (kat) => kat.id_kategori.toString() === e.target.value
-              );
+              )
               if (selectedKategori) {
                 setIdKategori(selectedKategori.id_kategori);
                 setAmbilKat(selectedKategori.nama_kategori);

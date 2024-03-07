@@ -7,8 +7,7 @@ const tambahKategori = async ( file) => {
 
   const formdata = new FormData();
   formdata.append(
-    "file",
-    file
+    "file",file
   );
 
   const requestOptions = {
@@ -18,12 +17,20 @@ const tambahKategori = async ( file) => {
     redirect: "follow",
   };
 
-  fetch(
-    "https://28jqlrhg-5000.asse.devtunnels.ms/tambahGaleri",
-    requestOptions
-  )
-    .then((response) => response.text())
-    .then((result) => console.log(result));
+    let res
+    try {
+      const req = await fetch(  "https://28jqlrhg-5000.asse.devtunnels.ms/tambahGaleri",
+      requestOptions)
+
+      res = req.json()
+      console.log('====================================');
+      console.log(req);
+      console.log('====================================');
+    } catch (error) {
+      console.log(error);
+    }
+
+    return res
 };
 
 export default tambahKategori;
