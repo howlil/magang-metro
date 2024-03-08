@@ -143,7 +143,7 @@ export default function FormAnggota() {
                   ? `${ambilPosisi}`
                   : "Plih Posisi"
                 : posisi
-                ? `${ambilPosisi}`
+                ? "Plih Posisi"
                 : "Tambahkan Posisi dulu"
             }
             htmlFor="posisi"

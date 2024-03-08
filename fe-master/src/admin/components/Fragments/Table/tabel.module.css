@@ -1,7 +1,6 @@
-@media screen and (max-width:430px) {
+@media screen and (max-width:678px) {
     .layout {
         margin-top: 2rem;
-        overflow-y: scroll;
     }
 
     .action img {
@@ -45,7 +44,7 @@
         padding: 0.5rem 0;
         text-align: left;
         font-size: 12px;
-        border-bottom: 1px solid rgb(212, 212, 212);
+        border-bottom: 1px solid rgb(124, 124, 124);
     }
 
     .action button {
@@ -66,14 +65,17 @@
         -o-transform: scale(0.75);
     }
 
+    tbody tr {
+        border-bottom: 1px solid rgba(18, 18, 18, 0.086);
 
+    }
     .no {
         text-align: center;
     }
 
 }
 
-@media screen and (min-width:431px) {
+@media screen and (min-width:679px) {
     .layout {
         margin-top: 2rem;
 
@@ -95,11 +97,16 @@
 
     }
 
+    tbody tr {
+        border-bottom: 1px solid rgba(18, 18, 18, 0.086);
+
+    }
+
     .tbody tbody td,
     td {
         padding: 1rem 1.5rem;
         text-align: left;
-        border-bottom: 1px solid rgb(212, 212, 212);
+        border-bottom: 1px solid rgb(10, 9, 9);
     }
 
     .action button {

@@ -36,7 +36,7 @@ export default function FormPost() {
           setJudul(data.data.judul);
           setSlug(data.data.slug);
           setInitialImageUrl(data.data.foto_postingan);
-          setAmbilKat(data.data.dataKategori);
+          setAmbilKat(data.data.dataKategori.nama_kategori);
           setBody(data.data.body);
         }
       });
@@ -47,7 +47,7 @@ export default function FormPost() {
     tampilKategori()
       .then((data) => {
         setKategori(data.data);
-        console.table(data);
+        console.log(data.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -134,8 +134,8 @@ export default function FormPost() {
                   ? `${ambilKat}`
                   : "Masukan kategori"
                 : kategori
-                ? `${ambilKat}`
-                : "Tambahkan kategori dulu"
+                ? "Masukan kategori"
+                : ""
             }
             htmlFor="kategori"
             name="kategori"

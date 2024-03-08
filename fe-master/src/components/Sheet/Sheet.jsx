@@ -1,5 +1,5 @@
 // Sheet.jsx
-import React, { forwardRef } from "react";
+import  { forwardRef } from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import styles from "./sheet.module.css";
 
@@ -10,29 +10,34 @@ const SheetTrigger = ({ children }) => (
 );
 
 const SheetContent = forwardRef(
-  ({ children, side = "left", ...props }, ref) => {
+  ({ children, side = "left", isOpen, ...props }, ref) => {
     const positionClass = side === "left" ? "" : styles.contentRight; // Default to left, apply style for right
-    const openClass = side === "left" ? "" : styles.openRight; // This might need to be adjusted if you have specific styles for opening
+    const overlayShowClass = isOpen ? styles.show : '';
+    const contentOpenClass = isOpen ? 'open' : '';
 
     return (
       <SheetPrimitive.Portal>
-        <div {...props} ref={ref} className={`${styles.overlay} ${openClass}`}>
+        <div {...props} ref={ref} className={`${styles.overlay} ${overlayShowClass}`}>
           <SheetPrimitive.Content
-            className={`${styles.content} ${positionClass}`}
+            className={`${styles.content} ${positionClass} ${contentOpenClass}`}
           >
-             <div className={styles.contentHeader}>
+            <div className={styles.contentHeader}>
               <SheetPrimitive.Close
                 className={styles.closeButton}
-              ></SheetPrimitive.Close>
+              >
+                <span className={styles.stik}></span>
+                <span className={styles.stik}></span>
+              </SheetPrimitive.Close>
             </div>
             {children}
-      
           </SheetPrimitive.Content>
         </div>
       </SheetPrimitive.Portal>
     );
   }
 );
+
+
 
 SheetContent.displayName = "SheetContent";
 

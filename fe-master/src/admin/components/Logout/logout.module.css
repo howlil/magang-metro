@@ -1,3 +1,4 @@
+@media screen and (min-width:679px){
 .wrap {
     /* margin-top: var(--spacing-xl); */
     margin-left: var(--spacing-md);
@@ -23,4 +24,11 @@
 .log h3 {
     font-weight: 400;
     font-size: var(--font-size-base);
+}
+}
+
+@media screen and (max-width:678px){
+    .log h3 {
+       display : none;
+    }
 }

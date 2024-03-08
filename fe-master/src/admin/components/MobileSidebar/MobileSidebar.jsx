@@ -8,9 +8,10 @@ import {
   SheetTrigger,
 } from "../../../components/Sheet/Sheet";
 
+// Asumsikan semua import sama seperti sebelumnya
+
 export default function MobileSidebar() {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => setIsOpen(!isOpen);
 
   return (
@@ -21,7 +22,7 @@ export default function MobileSidebar() {
             <Menu color="#033F89" size={32} />
           </button>
         </SheetTrigger>
-        <SheetContent  >
+        <SheetContent isOpen={isOpen}>
           <Sidebar />
         </SheetContent>
       </Sheet>

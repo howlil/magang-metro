@@ -25,7 +25,7 @@ a:hover {
 
 
 
-@media screen and (max-width: 678px) {
+@media screen and (max-width: 766px) {
     .nav {
         justify-content: space-between;
 
@@ -35,14 +35,13 @@ a:hover {
         display: none;
     }
 
-    .arrowIcon {
-        display: none;
-    }
+    
 
     .btn {
         border: none;
         background: none;
         width: 32px;
+        margin-right: 4px;
     }
 }
 

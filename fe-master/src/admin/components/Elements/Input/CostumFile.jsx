@@ -43,9 +43,7 @@ export default function CostumFile(props) {
         <button onClick={handleClick} className={s.pdfbtns}>
           {btn}
         </button>
-        <span
-          className={`${konten && apiPdf ? s.labelPdf : s.text} ${s.textpdf}`}
-        >
+        <span className={`${konten ? s.labelPdf : apiPdf ?   s.labelPdf : s.text} ${s.textpdf}`}>
           {konten ? konten : apiPdf ? apiPdf : "Masukan Portfolio"}
         </span>
       </div>

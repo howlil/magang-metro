@@ -80,7 +80,6 @@ export default function DetailTims() {
             }
           />
 
-  
           {data && data.portofolio && (
             <button className={s.lihatpdf} onClick={() => setIsModalOpen(true)}>
               Lihat
@@ -99,7 +98,8 @@ export default function DetailTims() {
               className={s.closeButton}
               onClick={() => setIsModalOpen(false)}
             >
-              x
+              <span className={s.stik}></span>
+              <span className={s.stik}></span>
             </span>
             <iframe
               src={`https://28jqlrhg-5000.asse.devtunnels.ms/filePortofolio/${data.portofolio}`}

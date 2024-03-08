@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import s from "./image.module.css";
 import silang from "/public/silang.svg";
 import add from "/public/addimg.svg";
@@ -101,7 +101,7 @@ const Image = () => {
             ))}
           </>
         ) : images ? (
-          images.map((image) => (
+            images.map((image) => (
             <div key={image.id_galeri} className={s.container}>
               <button
                 className={s.close}
@@ -116,6 +116,7 @@ const Image = () => {
               />
             </div>
           ))
+          
         ) : (
           <p>Belum Ada data</p>
         )}
