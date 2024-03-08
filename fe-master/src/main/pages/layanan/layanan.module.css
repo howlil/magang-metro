@@ -36,6 +36,10 @@
     color: var(--primary-color);
 }
 
+.layanan p{
+    text-align: start;
+}
+
 .num td{
     margin-right: 3px;
     vertical-align: top;

@@ -47,7 +47,17 @@
 }
 
 .artikelCard{
+    width: 100%;
     padding: 1.5rem;
+}
+
+.artikelCard p{
+    text-align: start;
+    overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 @media screen and (max-width: 1200px){
