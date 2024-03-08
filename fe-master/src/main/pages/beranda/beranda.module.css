@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Butler');
+
+.btnPrimary{
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    font-weight: 400;
+    border: 0.1rem transparent solid;
+    padding: 1rem 2rem 1rem 2rem;
+    margin-right: 2rem;
+    border-radius: 1rem;
+}
+
+.btnPrimary:hover{
+    background-color: transparent;
+    color: var(--text-color-primary);
+    border: 0.1rem var(--primary-color) solid;
+}
+
+.btnSecondary{
+    background-color: transparent;
+    color: var(--text-color-primary);
+    font-weight: 400;
+    border: 0.1rem var(--primary-color) solid;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 1rem;
+}
+
+.btnSecondary:hover{
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.btnTertiary{
+    background-color: var(--edit-color);
+    color: var(--background-color);
+    font-weight: 400;
+    border: 0.1rem transparent solid;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 1rem;
+    text-decoration: none;
+}
+
+.btnTertiary:hover{
+    background-color: transparent;
+    color: var(--text-color-primary);
+    border: 0.1rem var(--edit-color) solid;
+}
+
+.hero {
+    background-image: url('public/background.svg'); 
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.headerBox h1{
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-family: 'butler';
+    margin-bottom: 1rem;
+}
+
+.headerBox h1 span{
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--edit-color);
+    font-family: 'butler';
+}
+
+.headerBox p{
+    width: 50%;
+    line-height: 2;  
+    margin-bottom: 2rem;  
+}
+
+@media screen and (max-width: 768px){
+    .headerBox{
+        padding: 2rem;
+    }
+    .headerBox p{
+        width: 70%;
+    }
+
+    .btnPrimary{
+        margin-bottom: 1rem;
+    }
+}
+
+
+

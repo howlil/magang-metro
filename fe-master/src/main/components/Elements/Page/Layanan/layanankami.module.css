@@ -1,0 +1,85 @@
+.layanan{
+    width: 100%;
+    text-align: center;
+}
+
+.layanan h1{
+    padding-top: 7rem;
+    padding-bottom: 2rem;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--text-color-primary);
+    font-family: 'butler';
+}
+
+.layananBack{
+    background-image: url('public/iconLayanan/layanan.svg'); 
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.layananBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.layananBtn .btnTertiary{
+    margin-bottom: 7rem;
+}
+
+.layananCard{
+    align-items: center;
+    text-align: center;
+    gap: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.layananCard img{
+    height: 3rem;
+}
+
+.layananCard h1{
+    display: flex;
+    color: var(--primary-color);
+    font-size: var(--font-size-large);
+    height: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.layananCard p{
+    min-width: 300px;
+    color: var(--text-color-primary);
+    font-size: var(--font-size-base);
+    height: 10rem;
+    align-items: start;
+}
+
+@media screen and (max-width: 768px){
+    .layananCard{
+        padding: 2rem;
+    }
+}
+
+.btnTertiary{
+    background-color: var(--edit-color);
+    color: var(--background-color);
+    font-weight: 400;
+    border: 0.1rem transparent solid;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 1rem;
+    text-decoration: none;
+}
+
+.btnTertiary:hover{
+    background-color: transparent;
+    color: var(--text-color-primary);
+    border: 0.1rem var(--edit-color) solid;
+}

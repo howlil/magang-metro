@@ -1,0 +1,19 @@
+.kontak{
+    background-image: url('public/layanan.svg'); 
+    height: 30rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kontak h1{
+    font-family: 'butler';
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 3rem;
+}
