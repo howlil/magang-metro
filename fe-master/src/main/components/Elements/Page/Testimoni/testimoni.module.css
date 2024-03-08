@@ -1,0 +1,30 @@
+.testimoniBack{
+    background-image: url('public/testimoni.svg'); 
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding-top: 5rem;
+}
+
+.testimoni{
+    width: 100%;
+    text-align: center;
+}
+
+.testimoni h1:nth-child(1){
+    padding-top: 7rem;
+    padding-bottom: 0.25rem;
+    font-size: var(--font-size-large);
+    font-weight: 600;
+    color: var(--edit-color);
+}
+
+.testimoni h1:nth-child(2){
+    font-size: 3rem;
+    font-weight: 600;
+    padding-bottom: 2rem;
+    color: var(--background-color);
+    font-family: 'butler';
+}

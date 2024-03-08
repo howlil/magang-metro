@@ -24,10 +24,16 @@ const Image = () => {
 
   return (
     <div className={s.flex}>
+      <button onClick={handleAddImage} className={s.button}>
+        <div>
+          <img className={s.add} src={add} alt='addimage'/>
+        </div>
+        <h1>Klik untuk <br /> tambah foto</h1>
+      </button>
       {images.map((image, index) => (
           <div key={index} className={s.container}>
             <button className={s.close} onClick={() => handleRemoveImage(index)}>
-              <img width="7rem" height="7rem" src={silang} alt='silang'/>
+              <img className={s.silang} src={silang} alt='silang'/>
             </button>
             <img src={image} className={s.layout} alt={`Image ${index + 1}`} />      
           </div>
@@ -40,14 +46,6 @@ const Image = () => {
         style={{ display: 'none' }}
         onChange={handleImageChange}
       />
-      <button onClick={handleAddImage} className={s.button}>
-        <div>
-          <img src={add} alt='addimage'/>
-        </div>
-        <h1>Klik untuk <br /> tambah foto</h1>
-      </button>
-      
-        
     </div>
   );
 };
