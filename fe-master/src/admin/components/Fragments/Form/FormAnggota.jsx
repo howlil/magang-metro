@@ -17,6 +17,7 @@ import SingleImageTim from "../../Elements/Galeri/SingleImageTim";
 
 export default function FormAnggota() {
   const [initialImageUrl, setInitialImageUrl] = useState(""); // menampung API img
+  const [getLinkPdf, setLinkPdf] = useState(""); // menampung API pdf
   const [nama, setNama] = useState("");
   const [bidang, setBidang] = useState("");
   const [posisi, setPosisi] = useState([]);
@@ -42,7 +43,7 @@ export default function FormAnggota() {
           setAmbilPosisi(data.data.dataPosisi.nama_posisi);
           setInstagram(data.data.instagram);
           setInitialImageUrl(data.data.foto_tim);
-          setPdfFile(data.data.portofolio);
+          setLinkPdf(data.data.portofolio);
           setLinkedin(data.data.linkedln);
           setDeskripsi(data.data.deskripsi);
         }
@@ -211,7 +212,8 @@ export default function FormAnggota() {
             label="Upload Portofolio (.Pdf)"
             htmlFor="porto"
             btn="Browse"
-            setPdfFile={setPdfFile}
+            onSelectPdf={(pickPdf)=>setPdfFile(pickPdf)}
+            linkPdf={getLinkPdf}
           />
 
           <div className={s.btnly}>

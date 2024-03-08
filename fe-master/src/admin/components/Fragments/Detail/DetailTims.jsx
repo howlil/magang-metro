@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import detailTim from "../../../../api/tim/detailTim";
 import s from "./detail.module.css";
@@ -20,7 +20,6 @@ export default function DetailTims() {
     };
     fetchData();
   }, [id_team]);
-
   return (
     <div className={s.layout}>
       <h1>Foto Anggota</h1>
@@ -80,35 +79,38 @@ export default function DetailTims() {
               data ? data.portofolio : <Skeleton variant="text" width="100%" />
             }
           />
+
+  
           {data && data.portofolio && (
-            <button  className={s.lihatpdf} onClick={() => setIsModalOpen(true)}>Lihat</button>
+            <button className={s.lihatpdf} onClick={() => setIsModalOpen(true)}>
+              Lihat
+            </button>
           )}
         </div>
       </div>
 
       {isModalOpen && (
-  <div className={s.previewModal} onClick={() => setIsModalOpen(false)}>
-    <div
-      className={s.previewContent}
-      onClick={(e) => e.stopPropagation()}
-    >
-      <span
-        className={s.closeButton}
-        onClick={() => setIsModalOpen(false)}
-      >
-        x
-      </span>
-      <iframe
-        src={`https://28jqlrhg-5000.asse.devtunnels.ms/filePortofolio/${data.portofolio}#toolbar=0`}
-        className={s.previewPdf}
-        width="100%"
-        height="100%"
-        allowFullScreen
-      ></iframe>
-    </div>
-  </div>
-)}
-
+        <div className={s.previewModal} onClick={() => setIsModalOpen(false)}>
+          <div
+            className={s.previewContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span
+              className={s.closeButton}
+              onClick={() => setIsModalOpen(false)}
+            >
+              x
+            </span>
+            <iframe
+              src={`https://28jqlrhg-5000.asse.devtunnels.ms/filePortofolio/${data.portofolio}`}
+              className={s.previewPdf}
+              width="100%"
+              height="100%"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,16 +1,24 @@
 import s from "./input.module.css";
 import Label from "./Label";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function CostumFile(props) {
-  const { label, htmlFor, btn, setPdfFile } = props;
+  const { label, htmlFor, btn, onSelectPdf, linkPdf } = props;
   const [konten, setKonten] = useState("");
+  const [apiPdf, setApiPdf] = useState("");
 
+  useEffect(() => {
+    if (linkPdf) {
+      setApiPdf(linkPdf);
+    }
+  }, [linkPdf]);
+
+  // logic untuk submit dan ada perubahan
   const handleChange = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files;
     if (file) {
-      setKonten(file.name);
-      setPdfFile(file);
+      setKonten(file[0].name);
+      onSelectPdf(file[0]);
     } else {
       setKonten("eror");
     }
@@ -35,8 +43,10 @@ export default function CostumFile(props) {
         <button onClick={handleClick} className={s.pdfbtns}>
           {btn}
         </button>
-        <span className={`${konten ? s.labelPdf : s.text} ${s.textpdf}`}>
-          {konten ? konten : "Masukan Portfolio"}
+        <span
+          className={`${konten && apiPdf ? s.labelPdf : s.text} ${s.textpdf}`}
+        >
+          {konten ? konten : apiPdf ? apiPdf : "Masukan Portfolio"}
         </span>
       </div>
     </div>
