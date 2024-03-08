@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import detailPost from "../../../../api/postingan/detailPost";
 import s from "./detail.module.css";
@@ -19,7 +19,6 @@ export default function Detail() {
     };
     fetchData();
   }, [id_postingan]);
-
   return (
     <div className={s.layout}>
       <h1>Foto Postingan</h1>

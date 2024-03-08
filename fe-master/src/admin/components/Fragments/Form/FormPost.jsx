@@ -43,7 +43,6 @@ export default function FormPost() {
     }
   }, [id_postingan, isEditing]);
 
-  // menampilkan kategori
   useEffect(() => {
     tampilKategori()
       .then((data) => {
@@ -150,10 +149,21 @@ export default function FormPost() {
                 setAmbilKat(selectedKategori.nama_kategori);
               }
             }}
-            options={kategori.map((kat) => ({
-              value: kat.id_kategori.toString(),
-              label: kat.nama_kategori,
-            }))}
+            options={
+              kategori
+              ?
+              kategori.map((kat) => ({
+               value: kat.id_kategori.toString(),
+               label: kat.nama_kategori,
+               }))
+            : [
+              {
+                value: "",
+                placeholder: "Tambahkan Kategori dulu",
+                isDisabled: true,
+              },
+            ]
+          }
           />
           <TextArea
             label="Body"
