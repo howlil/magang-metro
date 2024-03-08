@@ -1,0 +1,52 @@
+.tentang{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.tentangBox{
+    display: flex;
+    align-items: center;
+}
+
+.tentangBox h1{
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--text-color-primary);
+    font-family: 'butler';
+    margin-bottom: 1rem;
+    padding: 1.5rem 0 1.5rem 0;
+}
+
+.tentangBox p{
+    margin-bottom: 1rem;  
+    font-size: var(--font-size-base);
+}
+
+.tentangBox img{
+    width: 100%;
+    padding: 3rem;
+}
+
+@media screen and (max-width: 768px){
+    .tentangBox{
+        padding: 2rem;
+    }
+}
+
+.line{
+    font-size: var(--font-size-large);
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.line::before {
+    content: '';
+    display: inline-block;
+    width: 2rem; 
+    height: 0.2rem;
+    background-color: var(--primary-color); 
+    margin-right: 8px; 
+    vertical-align: middle;
+}
