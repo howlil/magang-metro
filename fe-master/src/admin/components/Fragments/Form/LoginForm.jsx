@@ -1,32 +1,30 @@
-// LoginForm.jsx
 import InputForm from "../../Elements/Input/Index";
 import Button from "../../../../components/Button/Button";
-import { useState } from "react";
-import { login } from "../../../../api/Admin/authService";
+import { useEffect, useState } from "react";
+import loginAdmin from "../../../../api/admin/loginAdmin";
 import { useNavigate } from "react-router-dom";
+import Toast from "../../Elements/Alert/Toast";
 
 export default function LoginForm() {
-  const [loginData, setLoginData] = useState({
-    username: "",
-    password: "",
-  });
-
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [msg, setMsg] = useState("");
   const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setLoginData({ ...loginData, [name]: value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let result;
     try {
-      const data = await login(loginData.username, loginData.password);
-      console.log("Login berhasil:", data);
-      localStorage.setItem('isLoggedIn', true);
-      navigate("/");
+      result = await loginAdmin(name, password);
+      console.log(result);
+      if (result.success) {
+        setMsg(result.message);
+        navigate("/");
+      } else {
+        setMsg(result.message);
+      }
     } catch (error) {
-      console.error("Login gagal:", error);
+      setMsg(result.message);
     }
   };
 
@@ -34,23 +32,24 @@ export default function LoginForm() {
     <form onSubmit={handleSubmit}>
       <InputForm
         label="Username"
-        placeholder="Masukan Username"
         htmlFor="username"
+        placeholder="Masukan Username"
         type="text"
         name="username"
-        value={loginData.username}
-        onChange={handleChange}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
       <InputForm
         label="Password"
-        placeholder="Masukan Password"
         htmlFor="password"
+        placeholder="Masukan Password"
         type="password"
         name="password"
-        value={loginData.password}
-        onChange={handleChange}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
       <Button type="submit" label="Login" />
+      {msg && <Toast message={msg} onClose={() => setMsg("")} />}
     </form>
   );
 }

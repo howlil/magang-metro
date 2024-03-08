@@ -1,5 +1,9 @@
 .testimoniBack{
+<<<<<<< HEAD
     background-image: url('public/testimoni.svg'); 
+=======
+    background-image: url('public/iconTestimoni/testimoni.svg'); 
+>>>>>>> 24ffa237e58bcceeeed2a3401dc43e3f7f1ecbd0
     min-height: 100vh;
     background-position: center;
     background-repeat: no-repeat;

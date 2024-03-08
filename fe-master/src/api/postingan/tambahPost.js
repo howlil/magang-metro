@@ -1,15 +1,36 @@
-import axios from "axios";
+const tambahPostingan = async (judul, slug, kategori, body, file) => {
+  const myHeaders = new Headers();
+  const token = localStorage.getItem("authToken");
+  myHeaders.append("Authorization", `Bearer ${token}`);
 
-const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL ,
-});
+  const formdata = new FormData();
+  formdata.append("judul", judul);
+  formdata.append("slug", slug);
+  formdata.append("kategori", kategori);
+  formdata.append("body", body);
+  formdata.append("file", file);
 
-export const tambahPost = async (postData) => {
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: formdata,
+    redirect: "follow",
+  };
+
+  let req;
   try {
-    const res = await API.post("/postingan", postData);
-    return res.data;
+    const response = await fetch(
+      "https://28jqlrhg-5000.asse.devtunnels.ms/tambahPostingan",
+      requestOptions
+    );
+    req = await response.json();
+    console.log(req);
   } catch (error) {
-    console.log(error);
-    throw error;
+    console.error(error);
   }
+
+
+  return req;
 };
+
+export default tambahPostingan;

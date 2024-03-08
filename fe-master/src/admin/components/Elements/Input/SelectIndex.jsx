@@ -3,12 +3,21 @@ import Label from "./Label";
 import Select from "./Select";
 
 export default function SelectIndex(props) {
-  const { placeholder, option, onChange, value, htmlFor,label } =  props
+  const { placeholder, name, options=[], onChange, value, htmlFor, label } = props;
 
   return (
     <div className={s.layout}>
-      <Label htmlFor={htmlFor} label={label} />
-      <Select onChange={onChange} value={value} placeholder={placeholder} option={option} />
+      <Label 
+      htmlFor={htmlFor} 
+      label={label}
+       />
+      <Select
+        name={name}
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+        options={options}
+      />
     </div>
   );
 }

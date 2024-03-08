@@ -1,5 +1,9 @@
 .layananBack{
+<<<<<<< HEAD
     background-image: url('public/layanan.svg'); 
+=======
+    background-image: url('public/iconLayanan/layanan.svg'); 
+>>>>>>> 24ffa237e58bcceeeed2a3401dc43e3f7f1ecbd0
     height: 30rem;
     background-position: center;
     background-repeat: no-repeat;

@@ -1,8 +1,8 @@
 import AdminLayout from "../../components/Layout/AdminLayout";
 import { Helmet } from "react-helmet";
 import Title from "../../components/Elements/Title/Title";
-import Tabel from "../../components/Elements/Tabel/Tabel";
 import { useNavigate } from "react-router-dom";
+import TabelKategori from "../../components/Fragments/Table/TabelKategori";
 
 const Kategori = () => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const Kategori = () => {
             navigate("/kategori/tambahKategori");
           }}
         />
-        <Tabel colom1="Judul Postingan" colom2="Kategori" />
+        <TabelKategori />
       </AdminLayout>
     </>
   );

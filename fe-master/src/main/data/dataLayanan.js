@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import layanan1 from "/public/layanan1.svg"
 import layanan2 from "/public/layanan2.svg"
 import layanan3 from "/public/layanan3.svg"
+=======
+import layanan1 from "/public/iconLayanan/layanan1.svg"
+import layanan2 from "/public/iconLayanan/layanan2.svg"
+import layanan3 from "/public/iconLayanan/layanan3.svg"
+>>>>>>> 24ffa237e58bcceeeed2a3401dc43e3f7f1ecbd0
 
 export const layananKami = [
   {

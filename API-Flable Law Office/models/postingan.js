@@ -28,6 +28,10 @@ const postingan = sequelize.define('postingan', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    id_admin:{
+        type: DataTypes.CHAR(36),
+        allowNull: false
+    },
     created_at:{
         type: DataTypes.DATE,
         allowNull: false

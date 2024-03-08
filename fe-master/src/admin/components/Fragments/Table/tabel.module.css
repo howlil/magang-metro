@@ -1,0 +1,80 @@
+.layout {
+    margin-top: 2rem;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead .title {
+    background-color: var(--background-color2);
+    color: var(--primary-color);
+    font-weight: 600;
+    text-align: left;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+
+}
+
+.tbody tbody td,
+td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid rgb(212, 212, 212);
+}
+
+/* 
+.table tbody tr:nth-child(even) {
+    background-color: var(--background-color2);
+} */
+
+.action button {
+    border: none;
+    background: none;
+    row-gap: 4px;
+    transition: var(--trantition);
+    -webkit-transition: var(--trantition);
+    -moz-transition: var(--trantition);
+    -ms-transition: var(--trantition);
+    -o-transition: var(--trantition);
+}
+
+.action button:active {
+    transform: scale(0.75);
+    -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    -ms-transform: scale(0.75);
+    -o-transform: scale(0.75);
+}
+
+.action {
+    display: flex;
+    column-gap: 0.5rem;
+
+}
+
+.aksi,
+.nomor {
+    width: 120px;
+    text-align: center;
+    background-color: var(--background-color2);
+    color: var(--primary-color);
+    font-weight: 600;
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+}
+
+th {
+    background-color: var(--background-color2);
+    text-align: left;
+    color: var(--primary-color);
+    padding-left: 1.25rem;
+
+}
+
+.no {
+    text-align: center;
+}

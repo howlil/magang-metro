@@ -3,7 +3,7 @@ import s from "./kelolapost.module.css";
 import { Helmet } from "react-helmet";
 import Title from "../../components/Elements/Title/Title";
 import { useNavigate } from "react-router-dom";
-import Tabel from "../../components/Elements/Tabel/Tabel";
+import TabelPostingan from "../../components/Fragments/Table/TabelPostingan";
 
 const KelolaPostingan = () => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const KelolaPostingan = () => {
             navigate("/kelolaPostingan/tambahPostingan");
           }}
         />
-        <Tabel />
+        <TabelPostingan />
       </AdminLayout>
     </>
   );

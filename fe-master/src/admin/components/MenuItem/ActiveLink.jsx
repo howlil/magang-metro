@@ -17,7 +17,6 @@ export default function ActiveLink({ icon, nav, navlink }) {
 
     
   React.useEffect(() => {
-    console.log("ActiveLink effect", { icon, nav, navlink });
     if (isActive) {
       setActiveRoute({ icon, nav, navlink });
     }

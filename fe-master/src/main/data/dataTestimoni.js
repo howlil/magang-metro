@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import Testi1 from "/public/testimoni1.jpg";
 import Testi2 from "/public/testimoni2.jpg";
 import Testi3 from "/public/testimoni3.jpg";
+=======
+import Testi1 from "/public/iconTestimoni/testimoni1.jpg";
+import Testi2 from "/public/iconTestimoni/testimoni2.jpg";
+import Testi3 from "/public/iconTestimoni/testimoni3.jpg";
+>>>>>>> 24ffa237e58bcceeeed2a3401dc43e3f7f1ecbd0
 
 export const testimoni = [
     {
