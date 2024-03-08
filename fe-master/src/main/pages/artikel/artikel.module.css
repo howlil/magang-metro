@@ -29,13 +29,21 @@
     font-weight: 600;
     cursor: pointer;
 }
+.card p{
+    text-align: start;
+    overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
 
 .cardInfo{
     padding: 1.5rem;
 }
 
 .artikelBack{
-    background-image: url('public/layanan.svg'); 
+    background-image: url('public/iconLayanan/layanan.svg'); 
     height: 30rem;
     background-position: center;
     background-repeat: no-repeat;
@@ -52,4 +60,36 @@
     color: var(--primary-color);
     font-weight: 700;
     font-size: 3rem;
+}
+
+.detail{
+    padding-top: 5rem;
+    
+}
+
+.container{
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.container h6{
+    font-size: var(--font-size-base);
+    color: grey;
+}
+
+.container h1{
+    color: var(--primary-color);
+    font-family: 'butler';
+    font-weight: 600;
+}
+
+.container p{
+    text-align: start;
+}
+
+.container img{
+    align-self: center;
+    margin: 5rem;
 }

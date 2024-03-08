@@ -19,6 +19,7 @@ import DetailTim from "./admin/pages/kelolaTim/detailTim";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Beranda from "./main/pages/beranda/Beranda";
 import Artikel from "./main/pages/artikel/Artikel";
+import ArtikelDetail from "./main/pages/artikel/ArtikelDetail";
 import Layanan from "./main/pages/layanan/Layanan";
 import Tentang from "./main/pages/tentang/Tentang";
 import Testimoni from "./main/pages/testimoni/Testimoni";
@@ -179,6 +180,9 @@ function App() {
               path="/artikel"
               element={<Artikel />}
             />
+            <Route
+              path="/detailArtikel/:id_postingan" 
+              element={<ArtikelDetail />} />
             <Route
               path="/layanan"
               element={<Layanan />}

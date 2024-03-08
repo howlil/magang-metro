@@ -16,6 +16,9 @@
     cursor: grab;
 }
 
+.swiperSlide{
+    text-align: start;
+}
 @media screen and (max-width: 1440px){
     .swipe{
         margin: 2rem;
