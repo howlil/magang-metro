@@ -16,7 +16,6 @@ const tampilPosisi = async () => {
         requestOptions
       );
       req = await response.json();
-      console.log(req.data);
     } catch (error) {
       console.error(error);
     }

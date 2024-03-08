@@ -40,7 +40,7 @@ const uploadFix = multer({
             }
         },
         filename: function(req, file, cb) {
-            cb(null, Date.now() + '_' + file.originalname)
+            cb(null, file.originalname)
         }
     }),
     fileFilter: function(req, file, cb) {
@@ -147,7 +147,7 @@ const editTim = async (req, res) => {
 const detailTim = async (req,res) => {
     const {id_team} = req.params
     const dataTeam = await modelTim.findByPk(id_team, {
-        attributes: ['foto_tim', 'nama', 'spesialis', 'instagram', 'linkedln', 'portofolio'],
+        attributes: ['foto_tim', 'nama', 'spesialis', 'instagram', 'linkedln', 'portofolio', 'deskripsi'],
         include: [
             {
                 model: modelPosisi,

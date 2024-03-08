@@ -1,25 +1,30 @@
 import InputForm from "../../Elements/Input/Index";
 import Button from "../../../../components/Button/Button";
-import { useState } from "react";
-import tambahAdmin from "../../../../api/admin/tambahAdmin";
+import { useEffect, useState } from "react";
+import loginAdmin from "../../../../api/admin/loginAdmin";
 import { useNavigate } from "react-router-dom";
+import Toast from "../../Elements/Alert/Toast";
 
 export default function LoginForm() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-
+    let result;
     try {
-      const result = await tambahAdmin(name, password);
+      result = await loginAdmin(name, password);
       console.log(result);
-      navigate("/");
+      if (result.success) {
+        setMsg(result.message);
+        navigate("/");
+      } else {
+        setMsg(result.message);
+      }
     } catch (error) {
-      setError(`Fetch error: ${error.message}`);
+      setMsg(result.message);
     }
   };
 
@@ -43,8 +48,8 @@ export default function LoginForm() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      {error && <div style={{ color: "red" }}>{error}</div>}
       <Button type="submit" label="Login" />
+      {msg && <Toast message={msg} onClose={() => setMsg("")} />}
     </form>
   );
 }

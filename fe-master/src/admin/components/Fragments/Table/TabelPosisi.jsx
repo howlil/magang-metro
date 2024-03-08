@@ -1,32 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import s from "./tabel.module.css"
-import AlertNotif from "../../../components/Elements/Alert/AlertNotif"
-import {useNavigate} from "react-router-dom"
-import TabelAction from './TabelAction'
-import tampilPosisi from "../../../../api/posisi/tampilPosisi"
-import hapusPosisi from "../../../../api/posisi/hapusPosisi"
+import React, { useEffect, useState } from "react";
+import s from "./tabel.module.css";
+import AlertNotif from "../../../components/Elements/Alert/AlertNotif";
+import { useNavigate } from "react-router-dom";
+import TabelAction from "./TabelAction";
+import tampilPosisi from "../../../../api/posisi/tampilPosisi";
+import hapusPosisi from "../../../../api/posisi/hapusPosisi";
+import Skeleton from "@mui/material/Skeleton";
 
 export default function TabelPosisi() {
-  const[getPosisi,setPosisi] = useState([])
+  const [getPosisi, setPosisi] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const[posisiToDelete,setPosisToDelete] = useState(null)
-  const navigate= useNavigate()
+  const [posisiToDelete, setPosisToDelete] = useState(null);
+  const [loading, setLoading] = useState(true); 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await tampilPosisi();
+        setPosisi(data.data);
+        setLoading(false);
+
+      } catch (error) {
+        console.log(error);
+        setPosisi([]);
+        setLoading(false);
+
+      }
+    };
+    fetchData();
+  }, []);
 
   const showDeleteConfirmation = (id) => {
     setPosisToDelete(id);
     setIsModalOpen(true);
   };
 
-  useEffect(()=>{
-    const fetchData = async () =>{
-        await tampilPosisi().then((data)=>{
-        setPosisi(data.data);
-      }).catch(error=>console.log(error))
-    }
-    fetchData()
-  })
-
-  
   const handleDeleter = async (id) => {
     try {
       await hapusPosisi(id);
@@ -38,43 +47,55 @@ export default function TabelPosisi() {
 
   return (
     <div className={s.layout}>
-    {getPosisi ? (
-      <table className={s.table}>
-        <thead>
-          <tr>
-            <th className={s.nomor}>No</th>
-            <th>Posisi</th>
-            <th className={s.aksi}>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          {getPosisi.map((getPosisi, i) => (
-            <tr key={getPosisi.id_posisi}>
-              <td className={s.no}>{i + 1}</td>
-              <td>{getPosisi.nama_posisi}</td>
-              <td>
-                <TabelAction
-                  onEdit={() =>
-                    navigate(`/kategori/editPosisi/${getPosisi.id_posisi}`)
-                  }
-                  onDelete={() => showDeleteConfirmation(getPosisi.id_posisi)}
-                />
-              </td>
-            </tr>
+      {loading ? (
+        <div>
+          {Array.from(new Array(4)).map((_, index) => (
+            <Skeleton
+              key={index}
+              variant="rectangular"
+              width="100%"
+              height={40}
+              style={{ marginBottom: 4 }}
+            />
           ))}
-        </tbody>
-      </table>
-    ) : (
-      <div>Belum Ada Data </div>
-    )}
-    <AlertNotif
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
-      onConfirm={() => {
-        handleDeleter(posisiToDelete);
-        setIsModalOpen(false);
-      }}
-    />
-  </div>
-  )
+        </div>
+      ) : getPosisi? (
+        <table className={s.table}>
+          <thead>
+            <tr>
+              <th className={s.nomor}>No</th>
+              <th>Posisi</th>
+              <th className={s.aksi}>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {getPosisi.map((posisi, i) => (
+              <tr key={posisi.id_posisi}>
+                <td className={s.no}>{i + 1}</td>
+                <td>{posisi.nama_posisi}</td>
+                <td>
+                  <TabelAction
+                    onEdit={() =>
+                      navigate(`/kelolaPosisi/editPosisi/${posisi.id_posisi}`)
+                    }
+                    onDelete={() => showDeleteConfirmation(posisi.id_posisi)}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <div>Belum Ada Data</div>
+      )}
+      <AlertNotif
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={() => {
+          handleDeleter(posisiToDelete);
+          setIsModalOpen(false);
+        }}
+      />
+    </div>
+  );
 }

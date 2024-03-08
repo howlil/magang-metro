@@ -1,75 +1,41 @@
-.costum {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
 
-.costum li {
-    transition: background-color 0.3s ease;
-    -webkit-transition: background-color 0.3s ease;
-    -moz-transition: background-color 0.3s ease;
-    -ms-transition: background-color 0.3s ease;
-    -o-transition: background-color 0.3s ease;
-    border-radius: var(--spacing-sm);
-    -webkit-border-radius: var(--spacing-sm);
-    -moz-border-radius: var(--spacing-sm);
-    -ms-border-radius: var(--spacing-sm);
-    -o-border-radius: var(--spacing-sm);
-}
-
-.costum li:hover {
-    background-color: var(--primary-color);
-}
-
-.costum li:hover h3 {
-    color: var(--background-color);
-}
-
-.costum li:hover .icon {
-    fill: var(--background-color);
-}
-
-.costum li a {
-    text-decoration: none;
-    color: var(--secondary-color);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-lg);
-}
-
-.costum li .icon {
-    width: var(--spacing-lg);
-}
-
-
-
-
-.link:hover,
-.active {
-    background-color: var(--primary-color);
-}
-
-.costum li .activeText {
-    color: var(--background-color);
-}
-
-
-@media (max-width: var(--mobile)) {
-    .wrap {
-        margin-top: var(--spacing-xxl);
-
+@media (max-width: 678px) {
+  
+    .costum li h3 {
+        display: none;
     }
 
-    .costum li a {
-        font-size: 12px;
-    }
 
-    /* .costum li a{
-        padding: 1.15rem;
-    } */
+    .costum li {
+        padding: 1rem;
+        transition: background-color 0.3s ease;
+        -webkit-transition: background-color 0.3s ease;
+        -moz-transition: background-color 0.3s ease;
+        -ms-transition: background-color 0.3s ease;
+        -o-transition: background-color 0.3s ease;
+        border-radius: var(--spacing-sm);
+        -webkit-border-radius: var(--spacing-sm);
+        -moz-border-radius: var(--spacing-sm);
+        -ms-border-radius: var(--spacing-sm);
+        -o-border-radius: var(--spacing-sm);
+    }
+  
+    .costum {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .costum li:hover {
+        background-color: var(--primary-color);
+    }
+    .link:hover,
+    .active {
+        background-color: var(--primary-color);
+    }
+    
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 679px) {
     .wrap {
         margin-top: var(--spacing-xl);
         margin-left: var(--spacing-md);
@@ -89,6 +55,52 @@
         -ms-transition: var(--trantition);
         -o-transition: var(--trantition);
     }
+   .link:hover,
+    .active {
+        background-color: var(--primary-color);
+    }
+
+    .costum li .activeText {
+        color: var(--background-color);
+    }
+    .costum li:hover {
+        background-color: var(--primary-color);
+    }
+    
+    .costum li:hover h3 {
+        color: var(--background-color);
+    }
+    .costum li .icon {
+        width: var(--spacing-lg);
+    }
+    .costum {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .costum li {
+        transition: background-color 0.3s ease;
+        -webkit-transition: background-color 0.3s ease;
+        -moz-transition: background-color 0.3s ease;
+        -ms-transition: background-color 0.3s ease;
+        -o-transition: background-color 0.3s ease;
+        border-radius: var(--spacing-sm);
+        -webkit-border-radius: var(--spacing-sm);
+        -moz-border-radius: var(--spacing-sm);
+        -ms-border-radius: var(--spacing-sm);
+        -o-border-radius: var(--spacing-sm);
+    }
+    
+    
+    
+    .costum li a {
+        text-decoration: none;
+        color: var(--secondary-color);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+    }
+
 }
 
-@media screen and (min-width: 1200px) {}

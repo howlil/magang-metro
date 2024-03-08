@@ -55,6 +55,8 @@ Thumbs.db
 .next
 .out
 
+fe-master/.vite/
+
 # nuxt.js build output
 .nuxt
 dist

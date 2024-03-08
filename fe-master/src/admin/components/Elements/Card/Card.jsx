@@ -1,17 +1,17 @@
 import s from "./card.module.css";
-import jlhpost  from "/public/dashboard//jlhpost.svg"
 
 import React from "react";
 
-export default function Card() {
+export default function Card(props) {
+  const {image,title,data} = props
   return (
     <div className={s.layout}>
       <div>
-        <img src={jlhpost} alt="" />
+        <img src={image} alt="" />
       </div>
       <div>
-        <h5>jumlah postingan</h5>
-        <h1>9</h1>
+        <h5>{title}</h5>
+        <h2>{data}</h2>
       </div>
     </div>
   );

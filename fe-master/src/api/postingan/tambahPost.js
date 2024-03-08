@@ -1,4 +1,4 @@
-const tambahPostingan = async (judul,slug,kategori,body,file) => {
+const tambahPostingan = async (judul, slug, kategori, body, file) => {
   const myHeaders = new Headers();
   const token = localStorage.getItem("authToken");
   myHeaders.append("Authorization", `Bearer ${token}`);
@@ -8,7 +8,7 @@ const tambahPostingan = async (judul,slug,kategori,body,file) => {
   formdata.append("slug", slug);
   formdata.append("kategori", kategori);
   formdata.append("body", body);
-  formdata.append( "file", file);
+  formdata.append("file", file);
 
   const requestOptions = {
     method: "POST",
@@ -24,10 +24,11 @@ const tambahPostingan = async (judul,slug,kategori,body,file) => {
       requestOptions
     );
     req = await response.json();
-    console.log(req.data);
+    console.log(req);
   } catch (error) {
     console.error(error);
   }
+
 
   return req;
 };
