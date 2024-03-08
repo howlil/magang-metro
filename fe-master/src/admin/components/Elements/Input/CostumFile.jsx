@@ -3,7 +3,7 @@ import Label from "./Label";
 import { useState } from "react";
 
 export default function CostumFile(props) {
-  const { label, htmlFor, btn,setPdfFile } = props;
+  const { label, htmlFor, btn, setPdfFile } = props;
   const [konten, setKonten] = useState("");
 
   const handleChange = (e) => {
@@ -22,7 +22,7 @@ export default function CostumFile(props) {
   return (
     <div className={s.layout}>
       <Label label={label} htmlFor={htmlFor} />
-      <div className={s.layoutPdf}>
+      <div className={s.layoutPdfs}>
         <input
           className={s.inputpdf}
           type="file"
@@ -32,12 +32,12 @@ export default function CostumFile(props) {
           id="pdf"
           required
         />
-        <button onClick={handleClick} className={s.pdfbtn}>
+        <button onClick={handleClick} className={s.pdfbtns}>
           {btn}
         </button>
-        <p className={`${konten ? s.labelPdf : s.text} ${s.textpdf}`}>
+        <span className={`${konten ? s.labelPdf : s.text} ${s.textpdf}`}>
           {konten ? konten : "Masukan Portfolio"}
-        </p>
+        </span>
       </div>
     </div>
   );
