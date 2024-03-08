@@ -1,14 +1,11 @@
-const tambahKategori = async ( file) => {
+const tambahGaleri = async (file) => {
   const myHeaders = new Headers();
   const token = localStorage.getItem("authToken");
 
-  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
   myHeaders.append("Authorization", `Bearer ${token}`);
 
   const formdata = new FormData();
-  formdata.append(
-    "file",file
-  );
+  formdata.append("file", file);
 
   const requestOptions = {
     method: "POST",
@@ -17,20 +14,20 @@ const tambahKategori = async ( file) => {
     redirect: "follow",
   };
 
-    let res
-    try {
-      const req = await fetch(  "https://28jqlrhg-5000.asse.devtunnels.ms/tambahGaleri",
-      requestOptions)
-
-      res = req.json()
-      console.log('====================================');
-      console.log(req);
-      console.log('====================================');
-    } catch (error) {
-      console.log(error);
+  try {
+    const response = await fetch(
+      "https://28jqlrhg-5000.asse.devtunnels.ms/tambahGaleri",
+      requestOptions
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-
-    return res
+    const res = await response.json();
+    console.log("Response:", res);
+    return res;
+  } catch (error) {
+    console.error("Error during fetch:", error);
+  }
 };
 
-export default tambahKategori;
+export default tambahGaleri;

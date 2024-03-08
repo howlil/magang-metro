@@ -95,6 +95,7 @@ export default function TabelKategori() {
           setIsModalOpen(false);
         }}
       />
+     
     </div>
   );
 }
