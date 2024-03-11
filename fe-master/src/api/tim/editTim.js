@@ -31,7 +31,7 @@ const editTim = async (
   };
   try {
     const response = await fetch(
-      `https://28jqlrhg-5000.asse.devtunnels.ms/editTim/${id_team}`,
+      `http://localhost:5000/editTim/${id_team}`,
       requestOptions
     );
     const result = await response.json();

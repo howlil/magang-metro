@@ -27,7 +27,7 @@ export default function Detail() {
         <div className={s.img}>
           <img
             className={s.gbr}
-            src={`https://28jqlrhg-5000.asse.devtunnels.ms/fotoPostingan/${data.foto_postingan}`}
+            src={`http://localhost:5000/fotoPostingan/${data.foto_postingan}`}
             alt={data.judul}
           />
         </div>

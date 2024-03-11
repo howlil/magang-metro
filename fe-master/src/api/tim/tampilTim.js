@@ -12,7 +12,7 @@ const tampilTim = async () => {
   let req;
   try {
     const response = await fetch(
-      "https://28jqlrhg-5000.asse.devtunnels.ms/tampilTim",
+      "http://localhost:5000/tampilTim",
       requestOptions
     );
     req = await response.json();

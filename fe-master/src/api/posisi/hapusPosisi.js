@@ -12,7 +12,7 @@ const hapusPosisi = async (id_posisi) => {
     let del;
     try {
       const response = await fetch(
-        `https://28jqlrhg-5000.asse.devtunnels.ms/hapusPosisi/${id_posisi}`,
+        `http://localhost:5000/hapusPosisi/${id_posisi}`,
         requestOptions
       );
       del = await response.json();

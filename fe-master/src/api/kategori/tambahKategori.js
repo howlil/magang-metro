@@ -19,7 +19,7 @@ const tambahKategori = async (namaKategori, slug) => {
   let request;
   try {
     const response = await fetch(
-      "https://28jqlrhg-5000.asse.devtunnels.ms/tambahKategori",
+      "http://localhost:5000/tambahKategori",
       requestOptions
     )
       request = await response.json()

@@ -45,7 +45,7 @@ const SingleImage = ({ onFileSelect, initialImageUrl }) => {
             src={
               selectedImage
                 ? selectedImage
-                : ` https://28jqlrhg-5000.asse.devtunnels.ms/fotoPostingan/${apiImg} `
+                : ` http://localhost:5000/fotoPostingan/${apiImg} `
             }
             alt="selected image"
             onClick={handleAddImage}

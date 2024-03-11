@@ -1,21 +1,25 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
 
-  .swiper {
-    width: 100%;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    height: calc((100% - 30px) / 2) !important;
-  
-    /* Center slide text vertically */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  
+.row {
+  display: flex;
+  scroll-snap-type: x mandatory;
+}
+
+.image {
+  min-width: 20rem;
+  height: 12rem;
+  object-fit: cover;
+  margin: 10px;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease; /* Transisi transform untuk efek visual */
+}
+
+.dragging {
+  transform: scale(0.98); /* Mengurangi skala gambar untuk memberikan efek visual */
+}

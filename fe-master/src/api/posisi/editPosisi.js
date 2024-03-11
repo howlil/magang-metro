@@ -14,7 +14,7 @@ const editPosisi = async (nama_posisi, id_posisi) => {
     };
     try {
       const response = await fetch(
-        `https://28jqlrhg-5000.asse.devtunnels.ms/editPosisi/${id_posisi}`,
+        `http://localhost:5000/editPosisi/${id_posisi}`,
         requestOptions
       );
       const result = await response.json();

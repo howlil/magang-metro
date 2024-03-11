@@ -12,7 +12,7 @@ const getGaleri = async () => {
     let req;
     try {
       const response = await fetch(
-        "https://28jqlrhg-5000.asse.devtunnels.ms/totalGaleri",
+        "http://localhost:5000/totalGaleri",
         requestOptions
       );
       req = await response.json();

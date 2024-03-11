@@ -12,7 +12,7 @@ const getPosisi = async () => {
     let req;
     try {
       const response = await fetch(
-        "https://28jqlrhg-5000.asse.devtunnels.ms/totalPosisi",
+        "http://localhost:5000/totalPosisi",
         requestOptions
       );
       req = await response.json();

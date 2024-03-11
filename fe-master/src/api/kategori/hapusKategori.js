@@ -12,7 +12,7 @@ const hapusKategori = async (id_kategori) => {
   let del;
   try {
     const response = await fetch(
-      `https://28jqlrhg-5000.asse.devtunnels.ms/hapusKategori/${id_kategori}`,
+      `http://localhost:5000/hapusKategori/${id_kategori}`,
       requestOptions
     );
     del = await response.json();

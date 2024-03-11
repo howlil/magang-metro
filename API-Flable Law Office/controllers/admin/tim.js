@@ -40,7 +40,7 @@ const uploadFix = multer({
             }
         },
         filename: function(req, file, cb) {
-            cb(null, Date.now() + '_' + file.originalname)
+            cb(null, file.originalname)
         }
     }),
     fileFilter: function(req, file, cb) {

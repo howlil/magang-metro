@@ -46,3 +46,8 @@
     align-items: center;
     justify-content: center;
 }
+
+.berhasil{
+    text-align: center;
+    color: var(--edit-color);
+}

@@ -5,6 +5,7 @@ import TentangKami from "../../components/Elements/Page/Tentang/TentangKami"
 import LayananKami from "../../components/Elements/Page/Layanan/LayananKami"
 import ArtikelKami from "../../components/Elements/Page/Artikel/ArtikelKami"
 import Konsultasi from "../../components/Elements/Page/Konsultasi/Konsultasi"
+import GaleriKami from "../../components/Elements/Page/Galeri/GaleriKami"
 
 
 
@@ -36,6 +37,7 @@ const Beranda = () => {
         <Testi></Testi>
         <LayananKami></LayananKami>
         <ArtikelKami></ArtikelKami>
+        <GaleriKami></GaleriKami>
         <Konsultasi></Konsultasi>
         <FooterComponent></FooterComponent>
         

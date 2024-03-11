@@ -20,7 +20,6 @@ const Layanan = () => {
         <img src="/public/iconLayanan/layanan2.svg" alt="" />
         <h1>Corporat, Commercial & Compliance</h1>
         <p>Fiable Law Office memiliki tim legal consultant berlisensi pengacara yang menghadirkan keahlian dalam berbagai aspek hukum korporat, perdagangan, dan kepatuhan. Layanan kami meliputi:</p>
-        
         <table className={style.num}>
           <tbody>
             <tr>

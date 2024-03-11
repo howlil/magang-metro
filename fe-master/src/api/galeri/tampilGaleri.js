@@ -12,7 +12,7 @@ const tampilPosisi = async () => {
   let req;
   try {
     const response = await fetch(
-      "https://28jqlrhg-5000.asse.devtunnels.ms/tampilGaleri",
+      "http://localhost:5000/tampilGaleri",
       requestOptions
     );
     req = await response.json();
