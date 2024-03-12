@@ -36,7 +36,7 @@ export default function TabelTim() {
   const handleDeleter = async (id) => {
     try {
       await hapusTim(id);
-      setPost(getTim.filter((tims) => tims.id_team !== id));
+      setTim(getTim.filter((tims) => tims.id_team !== id));
     } catch (error) {
       console.error(error);
     }

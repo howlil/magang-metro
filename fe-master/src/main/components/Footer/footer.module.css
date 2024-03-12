@@ -39,7 +39,7 @@
 .location img,
 .mail img,
 .phone img {
-    vertical-align: middle; /* Untuk mengatur posisi vertikal gambar */
+    vertical-align: middle; 
 }
 
 .location p,

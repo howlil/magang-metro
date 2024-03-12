@@ -6,6 +6,7 @@ import LayananKami from "../../components/Elements/Page/Layanan/LayananKami"
 import ArtikelKami from "../../components/Elements/Page/Artikel/ArtikelKami"
 import Konsultasi from "../../components/Elements/Page/Konsultasi/Konsultasi"
 import GaleriKami from "../../components/Elements/Page/Galeri/GaleriKami"
+import TimKami from "../../components/Elements/Page/Tim/TimKami"
 
 
 
@@ -34,8 +35,9 @@ const Beranda = () => {
           </Container>
         </header>
         <TentangKami></TentangKami>
-        <Testi></Testi>
         <LayananKami></LayananKami>
+        <TimKami></TimKami>
+        <Testi></Testi>
         <ArtikelKami></ArtikelKami>
         <GaleriKami></GaleriKami>
         <Konsultasi></Konsultasi>

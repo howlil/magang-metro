@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import tampilTim from "../../../../../api/pengguna/tampilTim";
 import React, { useEffect, useState } from 'react';
 
-const SwiperTim = () => {
+const TimKami = () => {
     const [timData, setTimData] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     const [showPDFModal, setShowPDFModal] = useState(false);
@@ -43,6 +43,9 @@ const SwiperTim = () => {
 
     return (
         <>
+            <div className={style.timBox}>
+                <h1>Tim Kami</h1>
+            </div>
             {errorMessage && <p className={style.error}>{errorMessage}</p>}
             {timData.length > 0 && (
                 <Swiper
@@ -103,4 +106,4 @@ const SwiperTim = () => {
     );
 };
 
-export default SwiperTim;
+export default TimKami;

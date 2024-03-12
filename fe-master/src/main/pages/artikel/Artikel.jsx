@@ -1,5 +1,6 @@
 import { Card } from "react-bootstrap";
 import NavbarComponent from "../../components/Navbar/NavbarComponent";
+import FooterComponent from "../../components/Footer/FooterComponent";
 import style from "./artikel.module.css";
 import React, { useEffect, useState } from 'react';
 import tampilArtikel from "../../../api/pengguna/tampilArtikel";
@@ -47,6 +48,7 @@ const Artikel = () => {
                     </Card>
                 ))}
             </div>
+            <FooterComponent></FooterComponent>
         </>
     );
 }

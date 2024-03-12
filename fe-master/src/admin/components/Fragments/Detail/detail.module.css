@@ -80,28 +80,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.534);
     z-index: 10;
 }
 
 .previewPdf {
+    margin-top: 62rem;
     width: 50rem;
     height: 100rem;
     border: none;
     overflow-y: scroll;
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
 }
 
 
 .closeButton {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 2px;
+    right: 13.9rem;
     cursor: pointer;
-    background-color: #a71111;
+    background-color: salmon;
     color: rgb(243, 238, 238);
     border: none;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,4 +132,21 @@
     text-decoration: underline;
     font-size: 1rem;
     color: var(--primary-color);
+}
+
+.stik {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 2px;
+    height: 24px;
+    background-color: white;
+}
+
+.stik:first-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.stik:last-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
 }

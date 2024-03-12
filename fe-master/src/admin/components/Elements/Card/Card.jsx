@@ -11,7 +11,7 @@ export default function Card(props) {
       </div>
       <div>
         <h5>{title}</h5>
-        <h1>{data}</h1>
+        <h2>{data}</h2>
       </div>
     </div>
   );

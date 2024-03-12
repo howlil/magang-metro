@@ -10,7 +10,7 @@ export default function NestedRoute() {
     <>
       <img className={s.icon}  src={activeRoute.icon} alt={activeRoute.nav} />
       <img  className={s.arrowIcon}  src={arrow} alt="arrow" />
-      <Link to={activeRoute.navlink}>
+      <Link className={s.navstyle} to={activeRoute.navlink}>
         <span>{activeRoute.nav}</span>
       </Link>
     </>

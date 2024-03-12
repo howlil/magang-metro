@@ -3,16 +3,16 @@ import s from "./image.module.css";
 import add from "/public/addimg.svg";
 import { useParams } from "react-router-dom";
 
-
-const SingleImage = ({ onFileSelect, initialImageUrl }) => {
+const SingleImage = (props) => {
+  const { onFileSelect, initialImageUrl } = props;
   const [selectedImage, setSelectedImage] = useState(null);
-  const [apiImg, setApiImg] = useState(null);
-  const { id_postingan } = useParams();
-  const isEditing = !!id_postingan;
+  const [apiImg, setApiImg] = useState("");
+  const { id_team } = useParams();
+  const isEditing = !!id_team;
 
   useEffect(() => {
     if (initialImageUrl) {
-      setApiImg(initialImageUrl);
+      setApiImg(initialImageUrl); // Langsung set initialImageUrl ke state apiImg
     }
   }, [initialImageUrl]);
 
@@ -41,7 +41,7 @@ const SingleImage = ({ onFileSelect, initialImageUrl }) => {
 
   return (
     <>
-     <div className={s.flex}>
+      <div className={s.flex}>
         <div className={s.preview}>
           {selectedImage ? (
             <img
@@ -54,7 +54,7 @@ const SingleImage = ({ onFileSelect, initialImageUrl }) => {
             <img
               className={s.layout}
               alt={apiImg}
-              src={`http://localhost:5000/fotoPostingan/${apiImg}`}
+              src={`http://localhost:5000/fotoTim/${apiImg}`}
               onClick={handleAddImage}
             />
           ) : (

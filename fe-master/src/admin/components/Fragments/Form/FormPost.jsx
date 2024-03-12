@@ -36,19 +36,18 @@ export default function FormPost() {
           setJudul(data.data.judul);
           setSlug(data.data.slug);
           setInitialImageUrl(data.data.foto_postingan);
-          setAmbilKat(data.data.dataKategori);
+          setAmbilKat(data.data.dataKategori.nama_kategori);
           setBody(data.data.body);
         }
       });
     }
   }, [id_postingan, isEditing]);
 
-  // menampilkan kategori
   useEffect(() => {
     tampilKategori()
       .then((data) => {
         setKategori(data.data);
-        console.table(data);
+        console.log(data.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -135,8 +134,8 @@ export default function FormPost() {
                   ? `${ambilKat}`
                   : "Masukan kategori"
                 : kategori
-                ? `${ambilKat}`
-                : "Tambahkan kategori dulu"
+                ? "Masukan kategori"
+                : ""
             }
             htmlFor="kategori"
             name="kategori"
@@ -150,10 +149,21 @@ export default function FormPost() {
                 setAmbilKat(selectedKategori.nama_kategori);
               }
             }}
-            options={kategori.map((kat) => ({
-              value: kat.id_kategori.toString(),
-              label: kat.nama_kategori,
-            }))}
+            options={
+              kategori
+              ?
+              kategori.map((kat) => ({
+               value: kat.id_kategori.toString(),
+               label: kat.nama_kategori,
+               }))
+            : [
+              {
+                value: "",
+                placeholder: "Tambahkan Kategori dulu",
+                isDisabled: true,
+              },
+            ]
+          }
           />
           <TextArea
             label="Body"

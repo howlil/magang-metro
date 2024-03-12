@@ -12,3 +12,7 @@
     max-width: 100%;
   
 }
+.layout h5 , .layout h2{
+   margin :0;
+   padding: 0;
+}

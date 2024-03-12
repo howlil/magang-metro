@@ -51,46 +51,20 @@ select {
 }
 
 
+/* costum */
+
 
 .inputpdf {
     display: none;
 }
 
-.pdfbtn {
-    border: none;
-    padding: 1em 3rem;
-    background-color: var(--primary-color);
-    color: white;
-    font-size: 1rem;
-    border-radius: 0.5rem 0 0 0.5rem;
-    -webkit-border-radius: 0.5rem 0 0 0.5rem;
-    -moz-border-radius: 0.5rem 0 0 0.5rem;
-    -ms-border-radius: 0.5rem 0 0 0.5rem;
-    -o-border-radius: 0.5rem 0 0 0.5rem;
-    transition: var(--trantition);
-    -webkit-transition: var(--trantition);
-    -moz-transition: var(--trantition);
-    -ms-transition: var(--trantition);
-    -o-transition: var(--trantition);
-}
 
-.pdfbtn:hover {
+
+.pdfbtns:hover {
     background-color: var(--secondary-color);
 }
 
-.textpdf {
-    border: 1px solid var(--complementary-color);
-    border-left: none;
-    text-align: left;
-    font-size: 1rem;
-    padding: 1rem 0.75rem;
-    width: 100%;
-    border-radius: 0 0.5rem 0.5rem 0;
-    -webkit-border-radius: 0 0.5rem 0.5rem 0;
-    -moz-border-radius: 0 0.5rem 0.5rem 0;
-    -ms-border-radius: 0 0.5rem 0.5rem 0;
-    -o-border-radius: 0 0.5rem 0.5rem 0;
-}
+
 
 .labelpdf {
     color: var(--text-color-primary);
@@ -100,6 +74,72 @@ select {
     color: var(--text-color-secondary);
 }
 
-.layoutPdf {
+.layoutPdfs {
     display: flex;
+}
+
+@media screen and (max-width:767px){
+    .textpdf {
+        border: 1px solid var(--complementary-color);
+        border-left: none;
+        text-align: left;
+        font-size: 0.85rem;
+        padding: 0.25rem 0.75rem;
+        width: 100%;
+        border-radius: 0 0.5rem 0.5rem 0;
+        -webkit-border-radius: 0 0.5rem 0.5rem 0;
+        -moz-border-radius: 0 0.5rem 0.5rem 0;
+        -ms-border-radius: 0 0.5rem 0.5rem 0;
+        -o-border-radius: 0 0.5rem 0.5rem 0;
+    }
+    .pdfbtns {
+        border: none;
+        padding: 0.5rem 1rem;
+        background-color: var(--primary-color);
+        color: white;
+        font-size: 1rem;
+        border-radius: 0.5rem 0 0 0.5rem;
+        -webkit-border-radius: 0.5rem 0 0 0.5rem;
+        -moz-border-radius: 0.5rem 0 0 0.5rem;
+        -ms-border-radius: 0.5rem 0 0 0.5rem;
+        -o-border-radius: 0.5rem 0 0 0.5rem;
+        transition: var(--trantition);
+        -webkit-transition: var(--trantition);
+        -moz-transition: var(--trantition);
+        -ms-transition: var(--trantition);
+        -o-transition: var(--trantition);
+    }
+    
+}
+@media screen and (min-width:768px){
+    .textpdf {
+        border: 1px solid var(--complementary-color);
+        border-left: none;
+        text-align: left;
+        font-size: 1rem;
+        padding: 0.9rem 0.75rem;
+        width: 100%;
+        border-radius: 0 0.5rem 0.5rem 0;
+        -webkit-border-radius: 0 0.5rem 0.5rem 0;
+        -moz-border-radius: 0 0.5rem 0.5rem 0;
+        -ms-border-radius: 0 0.5rem 0.5rem 0;
+        -o-border-radius: 0 0.5rem 0.5rem 0;
+    }
+    .pdfbtns {
+        border: none;
+        padding: 0.75rem 3rem;
+        background-color: var(--primary-color);
+        color: white;
+        font-size: 1rem;
+        border-radius: 0.5rem 0 0 0.5rem;
+        -webkit-border-radius: 0.5rem 0 0 0.5rem;
+        -moz-border-radius: 0.5rem 0 0 0.5rem;
+        -ms-border-radius: 0.5rem 0 0 0.5rem;
+        -o-border-radius: 0.5rem 0 0 0.5rem;
+        transition: var(--trantition);
+        -webkit-transition: var(--trantition);
+        -moz-transition: var(--trantition);
+        -ms-transition: var(--trantition);
+        -o-transition: var(--trantition);
+    }
 }

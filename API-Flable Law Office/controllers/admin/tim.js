@@ -147,7 +147,7 @@ const editTim = async (req, res) => {
 const detailTim = async (req,res) => {
     const {id_team} = req.params
     const dataTeam = await modelTim.findByPk(id_team, {
-        attributes: ['foto_tim', 'nama', 'spesialis', 'instagram', 'linkedln', 'portofolio'],
+        attributes: ['foto_tim', 'nama', 'spesialis', 'instagram', 'linkedln', 'portofolio', 'deskripsi'],
         include: [
             {
                 model: modelPosisi,

@@ -17,9 +17,9 @@
   object-fit: cover;
   margin: 10px;
   scroll-snap-align: center;
-  transition: transform 0.3s ease; /* Transisi transform untuk efek visual */
+  transition: transform 0.3s ease; 
 }
 
 .dragging {
-  transform: scale(0.98); /* Mengurangi skala gambar untuk memberikan efek visual */
+  transform: scale(0.98); 
 }

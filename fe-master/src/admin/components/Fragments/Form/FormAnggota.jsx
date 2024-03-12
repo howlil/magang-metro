@@ -4,7 +4,6 @@ import Button from "../../../../components/Button/Button";
 import SelectIndex from "../../Elements/Input/SelectIndex";
 import Label from "../../Elements/Input/Label";
 import CostumFile from "../../Elements/Input/CostumFile";
-import SingleImage from "../../Elements/Galeri/SingleImage";
 import tambahTim from "../../../../api/tim/tambahTim";
 import detailTim from "../../../../api/tim/detailTim";
 import tampilPosisi from "../../../../api/posisi/tampilPosisi";
@@ -14,9 +13,11 @@ import { useEffect, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Toast from "../../Elements/Alert/Toast";
 import TextArea from "../../Elements/Input/TextArea";
+import SingleImageTim from "../../Elements/Galeri/SingleImageTim";
 
 export default function FormAnggota() {
-  const [initialImageUrl, setInitialImageUrl] = useState("");
+  const [initialImageUrl, setInitialImageUrl] = useState(""); // menampung API img
+  const [getLinkPdf, setLinkPdf] = useState(""); // menampung API pdf
   const [nama, setNama] = useState("");
   const [bidang, setBidang] = useState("");
   const [posisi, setPosisi] = useState([]);
@@ -36,16 +37,13 @@ export default function FormAnggota() {
   useEffect(() => {
     if (isEditing) {
       detailTim(id_team).then((data) => {
-        console.log("====================================");
-        console.table(data);
-        console.log("====================================");
         if (data.success) {
           setNama(data.data.nama);
           setBidang(data.data.spesialis);
           setAmbilPosisi(data.data.dataPosisi.nama_posisi);
-          setInstagram(data.data.data.instagram);
+          setInstagram(data.data.instagram);
           setInitialImageUrl(data.data.foto_tim);
-          setPdfFile(data.data.portofolio);
+          setLinkPdf(data.data.portofolio);
           setLinkedin(data.data.linkedln);
           setDeskripsi(data.data.deskripsi);
         }
@@ -57,9 +55,6 @@ export default function FormAnggota() {
     tampilPosisi()
       .then((data) => {
         setPosisi(data.data);
-        console.log("====================================");
-        console.log(data.data);
-        console.log("====================================");
       })
       .catch((error) => console.log(error));
   }, []);
@@ -67,9 +62,8 @@ export default function FormAnggota() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+    let response;
     try {
-      let response;
       if (isEditing) {
         response = await editTim(
           file,
@@ -115,7 +109,7 @@ export default function FormAnggota() {
         <form onSubmit={handleSubmit}>
           <Label label="Foto Tim" />
           <div className={s.img}>
-            <SingleImage
+            <SingleImageTim
               onFileSelect={(selectedFile) => setFile(selectedFile)}
               initialImageUrl={initialImageUrl}
             />
@@ -149,7 +143,7 @@ export default function FormAnggota() {
                   ? `${ambilPosisi}`
                   : "Plih Posisi"
                 : posisi
-                ? `${ambilPosisi}`
+                ? "Plih Posisi"
                 : "Tambahkan Posisi dulu"
             }
             htmlFor="posisi"
@@ -218,7 +212,8 @@ export default function FormAnggota() {
             label="Upload Portofolio (.Pdf)"
             htmlFor="porto"
             btn="Browse"
-            setPdfFile={setPdfFile}
+            onSelectPdf={(pickPdf)=>setPdfFile(pickPdf)}
+            linkPdf={getLinkPdf}
           />
 
           <div className={s.btnly}>

@@ -5,7 +5,7 @@ export default function Logo(props) {
   const { alignImage } = props;
   return (
     <div className={`${style[alignImage]}`}>
-      <img src={logo} alt="logo" />
+      <img src={logo} alt="logo" className={style.logomobile} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import s from "./image.module.css";
 import silang from "/public/silang.svg";
 import add from "/public/addimg.svg";
@@ -16,14 +16,14 @@ const Image = () => {
   const [deleteGaleri, setDeleteGaleri] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notif, setNotif] = useState("");
-  const [initialImageCount, setInitialImageCount] = useState(5); // State baru untuk jumlah Skeleton
+  const [initialImageCount, setInitialImageCount] = useState(5);
 
   const fetchData = async () => {
     setLoading(true);
     try {
       const data = await tampilGaleri();
       setImages(data.data);
-      setInitialImageCount(data.data.length); // Set jumlah Skeleton berdasarkan jumlah data
+      setInitialImageCount(data.data.length); 
     } catch (error) {
       console.error(error);
     } finally {
@@ -38,13 +38,13 @@ const Image = () => {
   const handleImageChange = async (e) => {
     e.preventDefault();
     const files = e.target.files;
-    if (files.length === 0) return; // Early return jika tidak ada file yang dipilih
+    if (files.length === 0) return; 
 
     setLoading(true);
     try {
       await tambahGaleri(files[0]);
       setNotif("Gambar berhasil ditambahkan");
-      fetchData(); // Memanggil ulang data gambar dari API setelah menambahkan
+      fetchData();
     } catch (error) {
       setNotif("Gagal menambahkan gambar");
       console.error(error);
@@ -54,12 +54,12 @@ const Image = () => {
   };
 
   const handleRemoveImage = async (id) => {
-    setIsModalOpen(false); // Tutup modal konfirmasi
+    setIsModalOpen(false); 
     setLoading(true);
     try {
       await hapusGaleri(id);
       setNotif("Gambar berhasil dihapus");
-      fetchData(); // Memanggil ulang data gambar dari API setelah menghapus
+      fetchData(); 
     } catch (error) {
       setNotif("Gagal menghapus gambar");
       console.error(error);
@@ -101,7 +101,7 @@ const Image = () => {
             ))}
           </>
         ) : images ? (
-          images.map((image) => (
+            images.map((image) => (
             <div key={image.id_galeri} className={s.container}>
               <button
                 className={s.close}
@@ -116,6 +116,7 @@ const Image = () => {
               />
             </div>
           ))
+          
         ) : (
           <p>Belum Ada data</p>
         )}
