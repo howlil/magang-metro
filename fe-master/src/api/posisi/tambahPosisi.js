@@ -18,7 +18,7 @@ const tambahPosisi = async (nama_posisi) => {
   let res;
   try {
     const req = await fetch(
-      "https://28jqlrhg-5000.asse.devtunnels.ms/tambahPosisi",
+      "http://localhost:5000/tambahPosisi",
       requestOptions
     );
     res = req.json();

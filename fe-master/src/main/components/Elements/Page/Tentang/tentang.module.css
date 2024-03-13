@@ -3,6 +3,7 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
+    padding-top: 4rem;
 }
 
 .tentangBox{
@@ -50,4 +51,27 @@
     background-color: var(--primary-color); 
     margin-right: 8px; 
     vertical-align: middle;
+}
+
+.lineV{
+    content: '';
+    display: inline-block;
+    width: 0.2rem; 
+    height: fit-content;
+    background-color: var(--primary-color); 
+    margin-right: 1rem; 
+    vertical-align: middle;
+}
+
+.lineV h1{
+    margin: 0 0 0 1rem;
+    padding: 0;
+    color: var(--edit-color);
+    width: 20rem;
+}
+
+.lineV p{
+    margin: 0 0 0 1rem;
+    padding: 0;
+    width: 10rem;
 }

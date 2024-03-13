@@ -15,7 +15,7 @@ const loginAdmin = async (username, password) => {
 
   try {
     const response = await fetch(
-      "https://28jqlrhg-5000.asse.devtunnels.ms/loginAdmin",
+      "http://localhost:5000/loginAdmin",
       requestOptions
     );
 

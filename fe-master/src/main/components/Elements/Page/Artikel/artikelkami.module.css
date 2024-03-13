@@ -19,8 +19,7 @@
 .swiper {
     width: 100%;
     height: fit-content;
-    padding-bottom: 3rem;
-    margin-bottom: 7rem;
+
 }
 
 .swiperSlideArtikel {
@@ -34,8 +33,13 @@
     cursor: grab;
 }
 
+.swiperSlideArtikel:active{
+    cursor: grabbing;
+}
+
 .swiperSlideArtikel img{
     width: 100%;
+    height: 12rem;
     object-fit: cover;
     border-radius: 1rem 1rem 0 0;
 }
@@ -44,6 +48,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    padding: 3rem;
 }
 
 .artikelCard{
@@ -54,10 +59,12 @@
 .artikelCard p{
     text-align: start;
     overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    min-height: 4.5rem;
+    text-align: justify;
 }
 
 @media screen and (max-width: 1200px){
@@ -70,6 +77,12 @@
 .artikelCard h1{
     font-size: var(--font-size-large);
     font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 3.8rem;
 }
 
 .artikelCard a{
@@ -83,4 +96,13 @@
     align-items: center;
     justify-content: center;
     padding-top: 3rem;
+    margin: 0;
+}
+
+.error {
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+    margin: 3rem;
+    font-size: var(--font-size-base);
 }

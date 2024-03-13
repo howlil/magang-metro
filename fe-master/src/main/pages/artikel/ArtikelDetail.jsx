@@ -45,7 +45,10 @@ const ArtikelDetail = () => {
             <h6>{formatTanggal(detailArtikel.data.created_at)}</h6>
             <h1>{detailArtikel.data.judul}</h1>
             <h6>Author : Fiable Lawyer</h6>
-            <img src={detailArtikel.data.foto_postingan} alt="Foto" />
+            <div  className={style.image} >
+
+            <img src={`http://localhost:5000/fotoPostingan/${detailArtikel.data.foto_postingan}`} alt="Foto" />
+            </div>
             <p>{detailArtikel.data.body}</p>
         </div>
       </div>

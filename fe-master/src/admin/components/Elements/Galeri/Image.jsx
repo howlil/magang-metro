@@ -110,7 +110,7 @@ const Image = () => {
                 <img className={s.silang} src={silang} alt="silang" />
               </button>
               <img
-                src={`https://28jqlrhg-5000.asse.devtunnels.ms/fotoGaleri/${image.foto_galeri}`}
+                src={`http://localhost:5000/fotoGaleri/${image.foto_galeri}`}
                 className={s.layout}
                 alt={`Image ${image.id_galeri + 1}`}
               />

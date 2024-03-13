@@ -12,7 +12,7 @@ const hapusTim = async (id_team) => {
     let del;
     try {
       const response = await fetch(
-        `https://28jqlrhg-5000.asse.devtunnels.ms/hapusTim/${id_team}`,
+        `http://localhost:5000/hapusTim/${id_team}`,
         requestOptions
       );
       del = await response.json();

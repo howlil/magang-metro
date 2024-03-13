@@ -8,8 +8,8 @@ import {testimoni} from "../../../../data/dataTestimoni"
 
 const TestiIsi = () => {
     return (
-        <div className={style.testimoniBack}>
-          <Container>
+        <div className={style.testimoniBack} data-aos="fade-up" data-aos-duration="1000">
+          <Container >
             <Row className={style.testimoni}>
               <Col>
                 <h1>Testimoni</h1>
@@ -18,7 +18,7 @@ const TestiIsi = () => {
             </Row>
             <Row>
               <Col>
-              <div >
+              <div className={style.previousNextButtons}>
               <Previous></Previous>
               <Next></Next>
               </div>

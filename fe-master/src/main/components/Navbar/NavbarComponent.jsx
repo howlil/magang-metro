@@ -11,9 +11,9 @@ const NavbarComponent = () => {
     <div >
       <Navbar expand="lg" className={style.navbar}>
       <Container>
-        <Navbar.Brand href="#home"><Logo></Logo></Navbar.Brand>
+        <Navbar.Brand href="/beranda"><Logo></Logo></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav" className={style.navbarOpen}>
           <Nav className={style.navlink}>
             {navLinks.map((link) => {
               return (

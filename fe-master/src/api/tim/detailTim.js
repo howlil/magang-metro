@@ -11,7 +11,7 @@ const detailPost = async ( id_team) => {
       
     try {
       const response = await fetch(
-        `https://28jqlrhg-5000.asse.devtunnels.ms/detailTim/${id_team}`,
+        `http://localhost:5000/detailTim/${id_team}`,
         requestOptions
       );
       const result = await response.json();

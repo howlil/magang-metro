@@ -8,10 +8,9 @@ require('dotenv').config()
 
 
 //tampilan tim
-let totalKonsultasi = 0
 const tampilTim = async (req,res) => {
     const dataTim = await modelTim.findAll({
-        attributes: ['nama', 'spesialis', 'instagram', 'linkedln', 'portofolio']
+        attributes: ['nama', 'foto_tim', 'spesialis', 'instagram', 'linkedln', 'portofolio']
     })
     if (dataTim.length > 0) {
         return res.status(200).json({success: true, message: 'Data tim ditemukan', data: dataTim})
@@ -50,22 +49,23 @@ const detailArtikel = async (req,res) => {
 }
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail', 
-  auth: {
-    user: process.env.email_owner, 
-    pass: process.env.password_owner 
-  },
-  tls: {
-    rejectUnauthorized: false
-}
+    service: 'gmail', 
+    auth: {
+        user: process.env.email_owner, 
+        pass: process.env.password_owner 
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
 });
 //konsultasi gratis -> masuk ke email aku
+let totalKonsultasi = 0
 const konsultasiGratis = async (req,res) => {
     const {nama, email, no_telp, deskripsi} = req.body
     if (!nama || !email || !no_telp || !deskripsi) {
         return res.status(400).json({success: false, message: 'Silahkan lengkapi data anda terlebih dahulu'})
     }
-
+    
     const mailOptions = {
         from: email,
         to: process.env.email_owner, 

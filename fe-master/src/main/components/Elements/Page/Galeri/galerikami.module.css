@@ -1,0 +1,16 @@
+.galeri{
+    margin: 5rem;
+}
+
+.judul {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.judul h1{
+    font-size: 3rem;
+    font-weight: 600;
+    font-family: 'butler';
+}

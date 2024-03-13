@@ -12,7 +12,7 @@ const tampilKategori = async () => {
   let req;
   try {
     const response = await fetch(
-      "https://28jqlrhg-5000.asse.devtunnels.ms/tampilKategori",
+      "http://localhost:5000/tampilKategori",
       requestOptions
     );
     req = await response.json();

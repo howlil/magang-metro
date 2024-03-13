@@ -1,9 +1,13 @@
 import NavbarComponent from "../../components/Navbar/NavbarComponent"
+import FooterComponent from "../../components/Footer/FooterComponent"
+import TimKami from "../../components/Elements/Page/Tim/TimKami"
+
 const Tim = () => {
   return (
     <>
       <NavbarComponent></NavbarComponent>
-      <div>Tim</div>
+      <TimKami></TimKami>
+      <FooterComponent></FooterComponent>
     </>
   )
 }

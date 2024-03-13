@@ -17,6 +17,8 @@
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@mui/material": "^5.15.11",
     "@radix-ui/react-dialog": "^1.0.5",
+    "animate.css": "^4.1.1",
+    "aos": "^3.0.0-beta.6",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "lucide-react": "^0.341.0",
@@ -25,6 +27,8 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.22.1",
+    "react-swipeable": "^7.0.1",
+    "react-swipeable-views": "^0.14.0",
     "swiper": "^11.0.7"
   },
   "devDependencies": {

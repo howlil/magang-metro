@@ -1,5 +1,10 @@
 const fetchDetailArtikel = async (id_postingan) => {
-    try {
+  const requestOptions = {
+    method: "GET",
+    redirect: "follow",
+  };
+
+  try {
         const response = await fetch(`http://localhost:5000/detailArtikel/${id_postingan}`);
         if (!response.ok) {
           throw new Error('Gagal mengambil data artikel');

@@ -11,7 +11,7 @@ const detailKategori = async ( id_kategori) => {
       
     try {
       const response = await fetch(
-        `https://28jqlrhg-5000.asse.devtunnels.ms/detailKategori/${id_kategori}`,
+        `http://localhost:5000/detailKategori/${id_kategori}`,
         requestOptions
       );
       const result = await response.json();

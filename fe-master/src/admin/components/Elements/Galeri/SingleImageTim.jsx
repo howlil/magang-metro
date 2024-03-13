@@ -54,7 +54,7 @@ const SingleImage = (props) => {
             <img
               className={s.layout}
               alt={apiImg}
-              src={`https://28jqlrhg-5000.asse.devtunnels.ms/fotoTim/${apiImg}`}
+              src={`http://localhost:5000/fotoTim/${apiImg}`}
               onClick={handleAddImage}
             />
           ) : (

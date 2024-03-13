@@ -12,7 +12,7 @@ const hapusGaleri = async (id_galeri) => {
     let del;
     try {
       const response = await fetch(
-        `https://28jqlrhg-5000.asse.devtunnels.ms/hapusGaleri/${id_galeri}`,
+        `http://localhost:5000/hapusGaleri/${id_galeri}`,
         requestOptions
       );
       del = await response.json();

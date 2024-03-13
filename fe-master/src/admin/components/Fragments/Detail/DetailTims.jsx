@@ -27,7 +27,7 @@ export default function DetailTims() {
         <div className={s.img}>
           <img
             className={s.gbr}
-            src={`https://28jqlrhg-5000.asse.devtunnels.ms/fotoTim/${data.foto_tim}`}
+            src={`http://localhost:5000/fotoTim/${data.foto_tim}`}
             alt={data.nama}
             onClick={() => setIsModalOpen(true)}
             style={{ cursor: "pointer" }}
@@ -102,7 +102,7 @@ export default function DetailTims() {
               <span className={s.stik}></span>
             </span>
             <iframe
-              src={`https://28jqlrhg-5000.asse.devtunnels.ms/filePortofolio/${data.portofolio}`}
+              src={`http://localhost:5000/filePortofolio/${data.portofolio}`}
               className={s.previewPdf}
               width="100%"
               height="100%"

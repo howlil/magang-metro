@@ -1,39 +1,35 @@
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useRef, useState, useEffect } from 'react';
+import style from './galeri.module.css';
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/grid';
-import 'swiper/css/pagination';
+export default function Gallery(props) {
+  const { images } = props;
+  const galleryRef = useRef(null);
 
-import './galeri.module.css';
+  const firstRowImages = [];
+  const secondRowImages = [];
+  images.forEach((image, index) => {
+    if (index % 2 === 0) {
+      firstRowImages.push(image);
+    } else {
+      secondRowImages.push(image);
+    }
+  });
 
-// import required modules
-import { Grid, Pagination } from 'swiper/modules';
-
-export default function SwiperGaleri(props) {
-    const { data } = props
-    return (
-    <>
-      <Swiper
-        slidesPerView={3}
-        grid={{
-          rows: 2,
-        }}
-        spaceBetween={30}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Grid, Pagination]}
-        className="mySwiper"
-      >
-        {data.map((item) =>{
-            return <SwiperSlide className='swiper-slide' key={item.id}>
-                <img src={item.image} alt="Foto" />
-            </SwiperSlide>
-        })}
-      </Swiper>
-    </>
+  return (
+    <div
+      className={style.gallery}
+      ref={galleryRef}
+    >
+      <div className={style.row}>
+        {firstRowImages.map((image, index) => (
+          <img key={index} src={image} alt={`Image ${index}`} className={style.image} />
+        ))}
+      </div>
+      <div className={style.row}>
+        {secondRowImages.map((image, index) => (
+          <img key={index} src={image} alt={`Image ${index}`} className={style.image} />
+        ))}
+      </div>
+    </div>
   );
 }

@@ -12,7 +12,7 @@ const getPostingan = async () => {
   let req;
   try {
     const response = await fetch(
-      "https://28jqlrhg-5000.asse.devtunnels.ms/totalPostingan",
+      "http://localhost:5000/totalPostingan",
       requestOptions
     );
     req = await response.json();

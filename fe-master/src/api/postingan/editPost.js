@@ -18,7 +18,7 @@ const editPost = async (judul, slug,kategori,body,file,id_postingan) => {
     };
     try {
       const response = await fetch(
-        `https://28jqlrhg-5000.asse.devtunnels.ms/editPostingan/${id_postingan}`,
+        `http://localhost:5000/editPostingan/${id_postingan}`,
         requestOptions
       );
       const result = await response.json();

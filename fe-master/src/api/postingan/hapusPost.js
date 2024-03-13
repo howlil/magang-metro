@@ -12,7 +12,7 @@ const hapusPost = async (id_postingan) => {
     let del;
     try {
       const response = await fetch(
-        `https://28jqlrhg-5000.asse.devtunnels.ms/hapusPostingan/${id_postingan}`,
+        `http://localhost:5000/hapusPostingan/${id_postingan}`,
         requestOptions
       );
       del = await response.json();

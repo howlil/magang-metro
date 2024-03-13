@@ -15,7 +15,7 @@ const editKategori = async (namaKategori, slug, id_kategori) => {
   };
   try {
     const response = await fetch(
-      `https://28jqlrhg-5000.asse.devtunnels.ms/editKategori/${id_kategori}`,
+      `http://localhost:5000/editKategori/${id_kategori}`,
       requestOptions
     );
     const result = await response.json();
