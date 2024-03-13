@@ -15,7 +15,7 @@ const FooterComponent = () => {
               <img src={logo} alt="Fiable Law Office" />
             </a>
           </div>
-          <Row>
+          <Row className={style.row}>
             <Col className="col-lg-6">
               <div className={style.location}>
                 <Link to="https://maps.app.goo.gl/srahzfiZPLMZ53LK7">
@@ -48,13 +48,11 @@ const FooterComponent = () => {
                   <Link to="/beranda">Beranda</Link>
                   <Link to="/tentang">Tentang Kami</Link>
                   <Link to="/layanan">Layanan Kami</Link>
-                  <Link to="/tim">Tim</Link>
                 </div>
                 <div className={style.menu}>
                   <Link to="/testimoni">Testimoni</Link>
                   <Link to="/artikel">Artikel</Link>
-                  <Link>Galeri</Link>
-                  <Link>Konsultasi Gratis</Link>
+                  <Link to="/tim">Tim</Link>
                 </div>
               </div>
             </Col>

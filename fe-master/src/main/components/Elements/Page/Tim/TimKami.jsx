@@ -48,14 +48,14 @@ const TimKami = () => {
             </div>
             {errorMessage && <p className={style.error}>{errorMessage}</p>}
             {timData.length > 0 && (
-                <Swiper
-                    slidesPerView={2}
+                <Swiper 
+                    slidesPerView={1}
                     spaceBetween={10}
                     pagination={{
                         clickable: true,
                     }}
                     breakpoints={{
-                        640: {
+                        425: {
                             slidesPerView: 1,
                             spaceBetween: 20
                         },
@@ -72,7 +72,7 @@ const TimKami = () => {
                     className={style.swiper}
                 >
                     {timData.map((tim) => (
-                        <SwiperSlide key={tim.id_tim}>
+                        <SwiperSlide key={tim.nama}>
                             <div className={style.swiperTim}>
                                 <img className={style.image} src={`http://localhost:5000/fotoTim/${tim.foto_tim}`} alt="Foto" />
                                 <h1>{tim.nama}</h1>

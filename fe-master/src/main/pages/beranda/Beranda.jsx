@@ -13,11 +13,18 @@ import TimKami from "../../components/Elements/Page/Tim/TimKami"
 import style from "./beranda.module.css"
 import { Container, Row, Col } from "react-bootstrap"
 import { useNavigate } from "react-router-dom";
-import React from 'react';
+import React, { useRef } from 'react';
 
 
 const Beranda = () => {
   const navigate = useNavigate();
+  const konsultasiRef = useRef(null);
+
+  const scrollToKonsultasi = () => {
+    if (konsultasiRef.current) {
+      konsultasiRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <>
       <div className={style.hero}>
@@ -29,7 +36,7 @@ const Beranda = () => {
               <h1>We <span>Fight</span> For <br /> The Right</h1>
               <p>Temukan solusi permasalahan hukum yang tepat untuk Anda dengan Fiable Law Office!</p>
               <button onClick={() => window.location.href = "https://wa.me/+6285375917227"} className={style.btnPrimary}>Hubungi Kami</button>
-              <button className={style.btnSecondary}>Konsultasi Gratis</button>
+              <button onClick={scrollToKonsultasi} className={style.btnSecondary}>Konsultasi Gratis</button>
               </Col>
             </Row>
           </Container>
@@ -40,7 +47,9 @@ const Beranda = () => {
         <Testi></Testi>
         <ArtikelKami></ArtikelKami>
         <GaleriKami></GaleriKami>
-        <Konsultasi></Konsultasi>
+        <div ref={konsultasiRef}>
+          <Konsultasi></Konsultasi>
+        </div>
         <FooterComponent></FooterComponent>
         
       </div>

@@ -18,7 +18,7 @@ const TestiIsi = () => {
             </Row>
             <Row>
               <Col>
-              <div >
+              <div className={style.previousNextButtons}>
               <Previous></Previous>
               <Next></Next>
               </div>

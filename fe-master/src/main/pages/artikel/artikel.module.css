@@ -16,6 +16,13 @@
     text-align: start;
 }
 
+@media (max-width: 768px) { 
+    .card{
+        width: 100%; 
+        margin-bottom: 2rem; 
+    }
+}
+
 .card img{
     width: 100%;
     border-radius: 1rem 1rem 0 0;

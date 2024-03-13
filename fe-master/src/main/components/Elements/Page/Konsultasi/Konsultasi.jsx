@@ -59,7 +59,7 @@ const Konsultasi = () => {
       <div className={style.kontaks}>
         <form onSubmit={handleSubmit}>
           <div>
-            <Row>
+            <Row className={style.row}>
                 <Col>
                 <Input
                     label="Nama"
@@ -82,7 +82,7 @@ const Konsultasi = () => {
                 </Col>
                 <Col>
                     <Input
-                    label="No Telepon"
+                    label="No Telp"
                     placeholder="No Telepon"
                     type="text"
                     name="no_telp"

@@ -28,3 +28,10 @@
     color: var(--background-color);
     font-family: 'butler';
 }
+
+@media (max-width: 768px) {
+    .previousNextButtons {
+      display: none;
+    }
+  }
+  
