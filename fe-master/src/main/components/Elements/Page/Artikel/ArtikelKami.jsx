@@ -32,7 +32,7 @@ const ArtikelKami = () => {
     }, []);
 
     return (
-        <div className={style.artikel}>
+        <div className={style.artikel} data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
             <Container>
                 <Row className={style.artikelBox}>
                     <Col lg="4">

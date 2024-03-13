@@ -30,13 +30,13 @@ const Artikel = () => {
     return (
         <>
             <NavbarComponent />
-            <div className={style.artikelBack}>
+            <div className={style.artikelBack} data-aos="fade-up" data-aos-duration="1000">
                 <h1>Artikel Kami</h1>
             </div>
             <div className={style.artikel}>
                 {errorMessage && <p className={style.error}>{errorMessage}</p>}
                 {artikelData.map((arc) => (
-                    <Card className={style.card} key={arc.id_postingan}>
+                    <Card className={style.card} key={arc.id_postingan} data-aos="fade-up" data-aos-delay="300">
                         <div>
                             <img src={`http://localhost:5000/fotoPostingan/${arc.foto_postingan}`} alt="Artikel" />
                             <div className={style.cardInfo}>

@@ -7,13 +7,13 @@ const LayananKami = () => {
         <div className={style.layananBack}>
           <Container>
             <Row className={style.layanan}>
-              <Col>
+              <Col data-aos="fade-up">
                 <h1>Layanan Kami</h1>
               </Col>
             </Row>
             <Row className={style.layananCard}>
               {layananKami.map ((layanan) => {
-                return <Col key={layanan.id}>
+                return <Col key={layanan.id} data-aos="fade-up" data-aos-delay={layanan.delay}>
                   <img src={layanan.image}></img>
                   <div>
                     <h1>{layanan.title}</h1>
@@ -23,7 +23,7 @@ const LayananKami = () => {
               })}
             </Row>
             <Row>
-              <div className={style.layananBtn}>
+              <div className={style.layananBtn} data-aos="fade-up"  aos-delay="1500">
                 <a href="/layanan" className={style.btnTertiary}>Selengkapnya</a>
               </div>
             </Row>

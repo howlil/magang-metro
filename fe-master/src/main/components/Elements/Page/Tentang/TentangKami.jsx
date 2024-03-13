@@ -20,7 +20,7 @@ const TentangKami = () => {
   }, []);
 
     return (
-        <div className={style.tentang}>
+        <div className={style.tentang} data-aos="fade-up" data-aos-duration="1000">
         <Container>
             <Row className={style.tentangBox}>
               <Col lg="6">

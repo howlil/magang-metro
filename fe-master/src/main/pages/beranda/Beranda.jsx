@@ -30,7 +30,7 @@ const Beranda = () => {
       <div className={style.hero}>
       <NavbarComponent></NavbarComponent>
         <header className="w-100 min-vh-100 d-flex align-items-center">
-          <Container>
+          <Container className="animate__animated animate__fadeInUp">
             <Row className={style.headerBox}>
               <Col>
               <h1>We <span>Fight</span> For <br /> The Right</h1>

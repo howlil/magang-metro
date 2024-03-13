@@ -45,7 +45,7 @@ const Konsultasi = () => {
   };
 
   return (
-    <div>
+    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
       <div className={style.kontak}>
         <h1>Konsultasi Gratis</h1>
         <p>
@@ -56,7 +56,7 @@ const Konsultasi = () => {
             <p className={style.berhasil}>{submissionStatus}</p>
         )}
       </div>
-      <div className={style.kontaks}>
+      <div className={style.kontaks} >
         <form onSubmit={handleSubmit}>
           <div>
             <Row className={style.row}>

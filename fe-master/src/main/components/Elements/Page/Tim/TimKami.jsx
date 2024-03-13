@@ -43,7 +43,8 @@ const TimKami = () => {
 
     return (
         <>
-            <div className={style.timBox}>
+        <div data-aos="fade-up" data-aos-duration="1000">
+            <div className={style.timBox} >
                 <h1>Tim Kami</h1>
             </div>
             {errorMessage && <p className={style.error}>{errorMessage}</p>}
@@ -91,7 +92,7 @@ const TimKami = () => {
                     ))}
                 </Swiper>
             )}
-
+        </div>
             {showPDFModal && (
                 <div className={style.modalBackdrop}>
                     <div className={style.modalContent}>

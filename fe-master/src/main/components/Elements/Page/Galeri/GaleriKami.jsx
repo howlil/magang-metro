@@ -20,7 +20,7 @@ const GaleriKami = () => {
   }, []);
 
   return (
-    <div className={style.galeri}>
+    <div className={style.galeri} data-aos="fade-up" data-aos-duration="1000">
       <div className={style.judul}>
         <h1>Galeri</h1>
         <p>Kumpulan foto dokumentasi pekerjaan kami</p>
